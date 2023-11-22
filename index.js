@@ -1,18 +1,23 @@
-import express from "express";
+const express = require("express")
 
-import path from "path";
-import { fileURLToPath } from "url";
-const __dirname = path.dirname(fileURLToPath(import.meta.url));
+const path = require("path")
 
 const app = express();
+
 app.set("puerto", 4000);
-app.listen(app.get("puerto"));
-console.log("ESCUCHANDO EN EL PUERTO", app.get("puerto"));
+
 
 app.use(express.static(__dirname + "/public"));
 
 app.set("views",path.join(__dirname, "views"))
 
-app.set('view engine', 'ejs');
+//middlewares que facilitaran el tratado de datos
+app.use(express.urlencoded({extended:false}))
+app.use(express.json())
 
-app.get("/", (req, res) => res.render("login.ejs"));
+app.set('view engine', 'ejs');
+app.use(require("./routes/mainrouter.js"))
+
+app.listen(app.get("puerto"));
+
+console.log("ESCUCHANDO EN EL PUERTO", app.get("puerto"));
