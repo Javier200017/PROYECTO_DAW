@@ -4,7 +4,7 @@ const {pool} = require("../configuration/connection_db")
 const {secreto} = require("../helpers/bcrypt")
 
 main_router.get("/",(req, res) => {
-    res.render("login.ejs")
+    res.render("login.ejs",{"error":false,"error_message":null})
 })
 
 main_router.post("/register", async (req, res)=> {
@@ -15,6 +15,7 @@ main_router.post("/register", async (req, res)=> {
     const user = {
         NOMBRE: req.body.nombre,
         APELLIDOS: req.body.apellidos,
+        RANGO: req.body.rango,
         EMAIL: req.body.correo_electronico,
         TELEFONO: req.body.telefono,
         NOMBRE_DE_USUARIO: req.body.nombre_de_usuario,
@@ -26,7 +27,7 @@ main_router.post("/register", async (req, res)=> {
 
     const result = pool.query("INSERT INTO Usuarios SET ?", [user])
 
-    res.render("login.ejs")
+    res.render("principal.ejs")
 })
 
 main_router.post("/login", async(req, res) => {
@@ -37,14 +38,14 @@ main_router.post("/login", async(req, res) => {
         const comprobacion_password = await secreto.desencriptador(req.body.contrasenya,comprobacion_email[0]["CONTRASEÑA"])
         if(comprobacion_password){
             console.log("¡¡ LA CONTRASEÑA COINCIDE !!")
-            res.render("principal.ejs",{contrasenya:"contrasenya"})
+            res.render("principal.ejs")
         }else{
             console.log("¡¡ LA CONTRASEÑA NO COINCIDE !!")
-            res.render("login.ejs")
+            res.render("login.ejs",{"error":"passwd","error_message":null})
         }
     }else{
         console.log("¡¡ EL CORREO ELECTRÓNICO NO COINCIDE !!")
-        res.render("login.ejs")
+        res.render("login.ejs",{"error":"mail","error":"both","error_message":"El usuario introducido no existe"})
     }
 })
 

@@ -21,24 +21,35 @@
                 </div>
                 <input name="nombre" type="text" placeholder="NOMBRE" required>
                 <input name="apellidos" type="text" placeholder="APELLIDOS" required>
+                
                 <input name="telefono" type="tel" placeholder="TELÉFONO" required>
                 <input name="nombre_de_usuario" type="text" placeholder="NOMBRE DE USUARIO" required>
                 <input name="nivel_de_padel" type="number" placeholder="NIVEL DE PÁDEL" required>
                 <input name="posicion_en_pista" type="text" placeholder="POSICIÓN EN PISTA" required>
                 <input name="correo_electronico" type="email" placeholder="CORREO ELÉCTRONICO" required>
                 <input name="contrasenya" type="password" placeholder="CONTRASEÑA" required>
+                <label for="rango">TIPO DE USUARIO</label>
+                <select name="rango" id="rango">
+                    <option value="participante">PARTICIPANTE</option>
+                    <option value="administrador">ADMINISTRADOR</option>
+                </select>
                 <button type="submit">CREAR PERFIL</button>
             </form>
         </div>
         <div class="form-container sign-in">
             <form action="/login" method="post">
                 <h1>INICIAR SESIÓN</h1>
-                <input name="correo_electronico" type="email" placeholder="CORREO ELÉCTRONICO" required>
-
-                <% if(contrasenya) {%>
-                    <h1>contrasenya mal</h1>
+                <% if (error == "mail" || error == "both"){ %>
+                    <input style="border: 1px solid red;" name="correo_electronico" type="text" placeholder="CORREO ELECTRÓNICO" required>
+                <% } else {%>
+                    <input name="correo_electronico" type="email" placeholder="CORREO ELÉCTRONICO" required>
                 <% } %>
-                <input name="contrasenya" type="password" placeholder="CONTRASEÑA" required>
+                <% if(error == "passwd" || error == "both"){ %>
+                    <input style="border: 1px solid red;" name="contrasenya" type="password" placeholder="CONTRASEÑA" required>
+                <% } else {%>
+                    <input name="contrasenya" type="password" placeholder="CONTRASEÑA" required>
+                <% } %>
+                <h5><%= error_message %></h5>
                 <button>INICIAR SESIÓN</button>
             </form>
         </div>
