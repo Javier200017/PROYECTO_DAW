@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="agregar.css">
+    <title>Document</title>
+</head>
+<body>
+    <div class="contenedor">
+        <div  id="imagen">
+            <img src="/imagenes/imagen1.jpeg" alt="imagen">
+        </div>
+        <div class="container" id="container">
+            <div class="form_container">
+                <form action="/eventos" method="post">
+                    <input name="nombre" type="text" placeholder="NOMBRE" required>
+                    <input name="precio" type="number" placeholder="PRECIO DE ENTRADA" required>
+                    <input name="fecha" type="date" placeholder="FECHA Y HORA DEL EVENTO" required>
+                    <input name="participantes_maximos" type="number" placeholder="NÚMERO MÁXIMO DE PARTICIPANTES" required>
+                    <input id="min" name="categoria_min" type="range" min="2.75" max="4.75" step="0.25" placeholder="NIVEL DE CATEGORIA MINIMA" required>
+                    <p id="min_text"></p>
+                    <input name="categoria_max" type="range" min="2.75" max="4.75" step="0.25" placeholder="NIVEL DE CATEGORIA MAXIMA" required>
+                    <input name="premio" type="number" placeholder="SUMA DE PREMIOS EN EUROS" required>
+                    <input name="portada" type="file" value="PORTADA DEL EVENTO" required>
+                    <input name="instagram" type="url" placeholder="LINK DEL INSTAGRAM" required>
+                    <label for="">DIRECCIÓN DEL EVENTO</label>
+                    <input name="direccion" type="text" placeholder="AVENIDA ARAGÓN 25" required>
+                    <button type="submit">PUBLICAR EVENTO</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
+<script>
+    addEventListener('load',inicio,false);
+    function inicio()
+    {
+      document.getElementById('min').addEventListener('change',cambioTemperatura,false);
+    }
+  
+    function cambioTemperatura()
+    {    
+      document.getElementById('min_text').innerHTML=document.getElementById('min').value;
+    }
+</script>

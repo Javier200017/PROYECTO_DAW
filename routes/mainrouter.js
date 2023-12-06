@@ -49,4 +49,14 @@ main_router.post("/login", async(req, res) => {
     }
 })
 
+main_router.get("/eventos", async(req, res) => {
+    res.render("agregar_eventos.ejs")
+
+})
+
+main_router.post("/eventos", async (req, res) => {
+    console.log(req.body)
+
+})
+
 module.exports = main_router
