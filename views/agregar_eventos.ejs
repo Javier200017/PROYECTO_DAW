@@ -9,24 +9,60 @@
 <body>
     <div class="contenedor">
         <div  id="imagen">
-            <img src="/imagenes/imagen1.jpeg" alt="imagen">
+            <img src="/imagenes/IMAGEN2.webp" alt="imagen">
         </div>
         <div class="container" id="container">
             <div class="form_container">
+                <h1>PUBLICACIÓN DEL NUEVO TORNEO</h1>
                 <form action="/eventos" method="post">
-                    <input name="nombre" type="text" placeholder="NOMBRE" required>
-                    <input name="precio" type="number" placeholder="PRECIO DE ENTRADA" required>
-                    <input name="fecha" type="date" placeholder="FECHA Y HORA DEL EVENTO" required>
-                    <input name="participantes_maximos" type="number" placeholder="NÚMERO MÁXIMO DE PARTICIPANTES" required>
-                    <input id="min" name="categoria_min" type="range" min="2.75" max="4.75" step="0.25" placeholder="NIVEL DE CATEGORIA MINIMA" required>
-                    <p id="min_text"></p>
-                    <input name="categoria_max" type="range" min="2.75" max="4.75" step="0.25" placeholder="NIVEL DE CATEGORIA MAXIMA" required>
-                    <input name="premio" type="number" placeholder="SUMA DE PREMIOS EN EUROS" required>
-                    <input name="portada" type="file" value="PORTADA DEL EVENTO" required>
-                    <input name="instagram" type="url" placeholder="LINK DEL INSTAGRAM" required>
-                    <label for="">DIRECCIÓN DEL EVENTO</label>
-                    <input name="direccion" type="text" placeholder="AVENIDA ARAGÓN 25" required>
-                    <button type="submit">PUBLICAR EVENTO</button>
+                    <div>
+                        <input name="nombre" type="text" placeholder="NOMBRE DEL EVENTO ..." required>
+                        <input name="precio" type="number" placeholder="PRECIO DE LA INSCRIPCIÓN ..." required>
+                    </div>
+                    <div class="fecha_hora">
+                        <div class="mas_info">
+                            <label for="">FECHA DEL EVENTO</label>
+                            <input name="fecha" type="date" required>
+                        </div>
+                        <div class="mas_info">
+                            <label for="">HORA DE INICIO DEL EVENTO</label>
+                            <input name="hora" type="time" required>
+                        </div>
+                    </div>
+                    <div class="rangos">
+                        <input id="min" name="categoria_min" type="range" min="2.75" max="4.75" step="0.25" value="0" autocomplete="off" placeholder="NIVEL DE CATEGORIA MINIMA" required>
+                        <p id="min_text"></p>
+                        <input id="max" name="categoria_max" type="range" min="2.75" max="4.75" step="0.25" value="4.75" autocomplete="off" placeholder="NIVEL DE CATEGORIA MAXIMA" required>
+                        <p id="max_text"></p>
+                    </div>
+                    <div>
+                        <input name="participantes_maximos" type="number" placeholder="NÚMERO MÁXIMO DE PARTICIPANTES ..." required>
+                        <input name="direccion" type="text" placeholder="¿DÓNDE SE JUEGA?" required>
+                    </div>
+                    <div>
+                        <input name="link_fotos" type="url" placeholder="LINK DE LAS FOTOGRAFIAS ..." required>
+                        <input name="instagram" type="url" placeholder="INSTAGRAM DEL TORNEO ..." required>
+                    </div>
+                    <div>
+                        <input name="telefono_organizador" type="tel" pattern="[0-9]{9}" placeholder="TELÉFONO DEL ORGANIZADOR ..." required>
+                        <input name="premio" type="number" placeholder="TOTAL EN PREMIOS ..." required>
+                    </div>
+                    <div class="reglamento_cartel">
+                        <div class="mas_info">
+                            <label for="">REGLAMENTO</label>
+                            <input name="reglamento" type="file" placeholder="REGLAMENTO ..." required>
+                        </div>
+                        <div class="mas_info">
+                            <label for="">CARTEL DEL TORNEO</label>
+                            <input name="portada" type="file" value="PORTADA DEL EVENTO" required>
+                        </div>
+                    </div>
+                    <button class="publicar">
+                        <span class="circle" aria-hidden="true">
+                        <span class="icon arrow"></span>
+                        </span>
+                        <span class="button-text">PUBLICAR</span>
+                      </button>
                 </form>
             </div>
         </div>
@@ -38,11 +74,13 @@
     addEventListener('load',inicio,false);
     function inicio()
     {
-      document.getElementById('min').addEventListener('change',cambioTemperatura,false);
+      document.getElementById('min').addEventListener('change',change,false);
+      document.getElementById('max').addEventListener('change',change,false);
     }
   
-    function cambioTemperatura()
+    function change()
     {    
       document.getElementById('min_text').innerHTML=document.getElementById('min').value;
+      document.getElementById('max_text').innerHTML=document.getElementById('max').value;
     }
 </script>

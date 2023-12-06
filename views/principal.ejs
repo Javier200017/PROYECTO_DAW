@@ -6,6 +6,17 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>JAVIER</h1>
+    <% for (let i = 0; i < eventos.length; i++){ %>
+        <section>
+            <h4><%= eventos[i].NOMBRE %></h4>
+            <h4><%= eventos[i].PRECIO %></h4>
+            <h4><%= eventos[i].FECHA %></h4>
+            <h4><%= eventos[i].PARTICIPANTES_ACTUALES %></h4>
+            <h4><%= eventos[i].CATEGORIA_MIN %></h4>
+            <h4><%= eventos[i].CATEGORIA_MAX %></h4>
+            <h4><%= eventos[i].PREMIO %></h4>
+            <h4><%= eventos[i].PORTADA %></h4>
+        </section>
+    <% } %>
 </body>
 </html>
