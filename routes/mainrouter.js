@@ -84,7 +84,9 @@ main_router.post("/eventos", async (req, res) => {
         DIRECCION: req.body.direccion,
         INSTAGRAM: req.body.instagram,
         PREMIO: req.body.premio,
-        PORTADA: req.body.portada
+        PORTADA: req.body.portada,
+        LINK_FOTOS: req.body.link_fotos,
+        REGLAMENTO:req.body.reglamento
     }
 
     console.log(evento)

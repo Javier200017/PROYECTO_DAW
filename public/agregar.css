@@ -39,7 +39,7 @@ h1 {
 }
 
 .reglamento_cartel .mas_info input {
-    width: 380px;
+    width: 280px;
 }
 
 input[type='range'],
@@ -217,7 +217,7 @@ button:hover .button-text {
 }
 
 .rangos {
-    margin-left: 40px;
+    margin-left: 35px;
 }
 
 .container label{
