@@ -11,6 +11,13 @@ main_router.get("/principal", async (req, res) => {
     const [eventos] = await pool.query ("SELECT * FROM Eventos")
 
     console.log(eventos)
+
+    for (let i =0;i<eventos.length;i++){
+        eventos[i]["FECHA"] = eventos[i]["FECHA"].split("---")[0]
+    }
+
+
+    console.log(eventos)
     res.render("principal.ejs", {eventos})
 })
 
@@ -63,17 +70,38 @@ main_router.get("/eventos", async(req, res) => {
 main_router.post("/eventos", async (req, res) => {
     console.log(req.body)
 
+    console.log("fecha => ",req.body.fecha)
+
     let participantes_maximos = req.body.participantes_maximos ? req.body.participantes_maximos : null
     let premio = req.body.premio ? req.body.premio : null
     let instagram = req.body.instagram ? req.body.instagram : null
     let link_fotos = req.body.link_fotos ? req.body.link_fotos : null
     let reglamento = req.body.reglamento ? req.body.reglamento : null
 
+    // Crea un objeto de fecha con la fecha del input
+    var fecha = new Date(req.body.fecha);
+
+    // Obtiene el día, mes y año
+    var dia = fecha.getDate();
+    var mes = fecha.getMonth(); // Los meses comienzan desde 0 (enero es 0)
+    var año = fecha.getFullYear();
+
+    // Array con nombres de meses en español
+    var meses = [
+    "enero", "febrero", "marzo", "abril", "mayo", "junio",
+    "julio", "agosto", "septiembre", "octubre", "noviembre", "diciembre"
+    ];
+
+    // Convierte el mes a su nombre en español
+    var nombreMes = meses[mes];
+
+    var nuevaFecha = dia + " de " + nombreMes + " de " + año;
+
     const evento = {
         NOMBRE: req.body.nombre,
         PRECIO: req.body.precio,
         TELEFONO_ORGANIZADOR: req.body.telefono_organizador,
-        FECHA: req.body.fecha + " --- " + req.body.hora_inicio + "---" + req.body.hora_fin,
+        FECHA: nuevaFecha + " --- " + req.body.hora_inicio + "---" + req.body.hora_fin,
         PARTICIPANTES_MAXIMO: participantes_maximos,
         CATEGORIA_MIN: req.body.categoria_min,
         CATEGORIA_MAX: req.body.categoria_max,
