@@ -11,13 +11,7 @@ main_router.get("/principal", async (req, res) => {
     const [eventos] = await pool.query ("SELECT * FROM Eventos")
 
     console.log(eventos)
-
-
-
     res.render("principal.ejs", {eventos})
-
-
-
 })
 
 main_router.post("/register", async (req, res)=> {
