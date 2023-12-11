@@ -16,10 +16,31 @@ main_router.get("/principal", async (req, res) => {
         eventos[i]["FECHA"] = eventos[i]["FECHA"].split("---")[0]
     }
 
-
     console.log(eventos)
     res.render("principal.ejs", {eventos})
 })
+
+main_router.get('/get_img/:id', async (req, res) => {
+    const id = req.params.id;
+  
+    // Realizar la consulta para obtener la imagen por su ID
+    const query = await pool.query('SELECT PORTADA FROM Eventos WHERE id = ?',[id]);
+    console.log("INTENTANDO MOSTRAR PORTADA",query)
+
+
+
+    console.log("Hola",query[0][0].PORTADA)
+  
+    const blobData = query[0][0].PORTADA;
+
+    // Convertir el blob a un buffer
+    const buffer = Buffer.from(blobData, 'binary');
+
+    // Enviar el buffer como respuesta al navegador
+    res.writeHead(200, { 'Content-Type': 'image/jpeg' });
+    res.end(buffer, 'binary');
+
+});
 
 main_router.post("/register", async (req, res)=> {
     console.log(req.body)
