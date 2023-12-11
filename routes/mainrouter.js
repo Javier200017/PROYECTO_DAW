@@ -57,30 +57,32 @@ main_router.post("/login", async(req, res) => {
 })
 
 main_router.get("/eventos", async(req, res) => {
-
-
-
     res.render("agregar_eventos.ejs")
-
 })
 
 main_router.post("/eventos", async (req, res) => {
     console.log(req.body)
 
+    let participantes_maximos = req.body.participantes_maximos ? req.body.participantes_maximos : null
+    let premio = req.body.premio ? req.body.premio : null
+    let instagram = req.body.instagram ? req.body.instagram : null
+    let link_fotos = req.body.link_fotos ? req.body.link_fotos : null
+    let reglamento = req.body.reglamento ? req.body.reglamento : null
+
     const evento = {
         NOMBRE: req.body.nombre,
         PRECIO: req.body.precio,
         TELEFONO_ORGANIZADOR: req.body.telefono_organizador,
-        FECHA: req.body.fecha + " --- " + req.body.hora,
-        PARTICIPANTES_MAXIMO:req.body.participantes_maximos,
+        FECHA: req.body.fecha + " --- " + req.body.hora_inicio + "---" + req.body.hora_fin,
+        PARTICIPANTES_MAXIMO: participantes_maximos,
         CATEGORIA_MIN: req.body.categoria_min,
         CATEGORIA_MAX: req.body.categoria_max,
         DIRECCION: req.body.direccion,
-        INSTAGRAM: req.body.instagram,
-        PREMIO: req.body.premio,
+        INSTAGRAM: instagram,
+        PREMIO: premio,
         PORTADA: req.body.portada,
-        LINK_FOTOS: req.body.link_fotos,
-        REGLAMENTO:req.body.reglamento
+        LINK_FOTOS: link_fotos,
+        REGLAMENTO: reglamento
     }
 
     console.log(evento)

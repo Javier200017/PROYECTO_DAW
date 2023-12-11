@@ -26,7 +26,11 @@
                         </div>
                         <div class="mas_info">
                             <label for="">HORA DE INICIO DEL EVENTO</label>
-                            <input name="hora" type="time" required>
+                            <input name="hora_inicio" type="time" required>
+                        </div>
+                        <div class="mas_info">
+                            <label for="">HORA FIN DEL EVENTO</label>
+                            <input name="hora_fin" type="time" required>
                         </div>
                     </div>
                     <div class="rangos">
@@ -36,25 +40,25 @@
                         <p id="max_text"></p>
                     </div>
                     <div>
-                        <input name="participantes_maximos" type="number" placeholder="NÚMERO MÁXIMO DE PARTICIPANTES ..." required>
+                        <input name="participantes_maximos" type="number" placeholder="NÚMERO MÁXIMO DE PARTICIPANTES ...">
                         <input name="direccion" type="text" placeholder="¿DÓNDE SE JUEGA?" required>
                     </div>
                     <div>
-                        <input name="link_fotos" type="url" placeholder="LINK DE LAS FOTOGRAFIAS ..." required>
-                        <input name="instagram" type="url" placeholder="INSTAGRAM DEL TORNEO ..." required>
+                        <input name="link_fotos" type="url" placeholder="LINK DE LAS FOTOGRAFIAS ...">
+                        <input name="instagram" type="url" placeholder="INSTAGRAM DEL TORNEO ...">
                     </div>
                     <div>
                         <input name="telefono_organizador" type="tel" pattern="[0-9]{9}" placeholder="TELÉFONO DEL ORGANIZADOR ..." required>
-                        <input name="premio" type="number" placeholder="TOTAL EN PREMIOS ..." required>
+                        <input name="premio" type="number" placeholder="TOTAL EN PREMIOS ...">
                     </div>
                     <div class="reglamento_cartel">
                         <div class="mas_info">
                             <label for="">REGLAMENTO</label>
-                            <input name="reglamento" type="file" placeholder="REGLAMENTO ..." required>
+                            <input name="reglamento" type="file" placeholder="REGLAMENTO ...">
                         </div>
                         <div class="mas_info">
                             <label for="">CARTEL DEL TORNEO</label>
-                            <input name="portada" type="file" value="PORTADA DEL EVENTO" required>
+                            <input name="portada" type="file" value="PORTADA DEL EVENTO">
                         </div>
                     </div>
                     <button class="publicar">
