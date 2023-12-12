@@ -1,0 +1,468 @@
+@import url('https://fonts.googleapis.com/css?family=Dosis:400,500|Poppins:400,600,700&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Dosis', sans-serif;
+}
+
+body{
+    background-color: #c9e7fb;
+}
+
+.contenedor {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    height: 100vh;
+}
+
+.container{
+    background-color: #fff;
+    border-radius: 30px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.35);
+    position: relative;
+    overflow: hidden;
+    width: 50%;
+    height: 95%;
+    padding-top: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+@media only screen and (max-width:768px) {
+    .container {
+        width: 90%;
+    }
+}
+
+#imagen {
+    width: 30%;
+    height: 95%;
+    overflow: hidden;
+    border-radius: 30px;
+    
+}
+
+img {
+    width: 100%;
+    height: 100%;
+}
+
+@media only screen and (max-width:768px) {
+    #imagen {
+        display: none;
+    }
+}
+
+h1 {
+    text-align: center;
+    font-size: 60px;
+}
+
+@media only screen and (max-width:768px) {
+    h1 {
+        font-size: 24px;
+    }
+}
+
+.nombre_precio {
+    display: flex;
+    justify-content: space-around
+}
+
+
+@media only screen and (max-width:768px) {
+    .nombre_precio .nombre_del_evento {
+        margin-right: 5px;
+        font-size: 12px;
+    }
+    .nombre_precio .precio_inscripcion {
+        font-size: 12px;
+    }
+}
+
+.fecha_hora {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.fecha_hora .fecha {
+    font-size: 20px;
+    width: 170px;
+}
+
+.fecha_hora .hora_inicio {
+    font-size: 20px;
+}
+
+.fecha_hora .hora_fin {
+    font-size: 20px;
+}
+
+@media only screen and (max-width:768px) {
+    .fecha_hora .fecha {
+        padding: 5px;
+        width: 100px;
+        margin-right: 5px;
+        font-size: 12px;
+    }
+    .fecha_hora .hora_inicio {
+        padding: 5px;
+        width: 80px;
+        margin-right: 5px;
+        font-size: 12px;
+    }
+    .fecha_hora .hora_fin {
+        padding: 5px;
+        width: 80px;
+        margin-left: -1px;
+        font-size: 12px;
+    }
+}
+
+input[type='range'],
+input[type='range']::-webkit-slider-runnable-track,
+input[type='range']::-webkit-slider-thumb {
+    -webkit-appearance: none;
+}
+  
+input[type=range]::-webkit-slider-thumb {
+    background-color: #00DCFF;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    margin-top: -7px;
+}
+  
+input[type=range]::-webkit-slider-runnable-track {
+    background-color: #777;
+    height: 3px;
+}
+
+.rangos {
+    margin-left: 35px;
+}
+
+@media only screen and (max-width:768px) {
+    .rangos {
+        margin-left: 0px;
+    }
+    #min {
+        margin-right: 5px;
+    }
+}
+
+.participantes_direccion .participantes_maximos {
+    width: 300px;
+    margin-left: -12px;
+}
+
+.participantes_direccion .direccion {
+    margin-right: 150px;
+    width: 250px;
+}
+
+@media only screen and (max-width:768px) {
+    .participantes_direccion .participantes_maximos {
+        font-size: 12px;
+        margin-right: 3px;
+        width: 145px;
+    }
+    .participantes_direccion .direccion {
+        font-size: 12px;
+        width: 145px;
+        margin-right: -3px;
+    }
+}
+
+.fotos_instagram .link_fotos {
+    width: 350px;
+    margin-left: 50px;
+}
+
+.fotos_instagram .instagram {
+    width: 350px;
+    margin-left: -8px;
+}
+
+@media only screen and (max-width:768px) {
+    .fotos_instagram .link_fotos {
+        font-size: 12px;
+        margin-right: 5px;
+        margin-left: -20px;
+        width: 140px;
+    }
+    .fotos_instagram .instagram {
+        font-size: 12px;
+        width: 140px;
+    }
+}
+
+.telefono_premio .telefono_organizador {
+    width: 400px;
+    margin-left: 50px;
+}
+
+.telefono_premio .premio {
+    width: 200px;
+    margin-left: 170px;
+}
+
+@media only screen and (max-width:768px) {
+    .telefono_premio .telefono_organizador {
+        font-size: 12px;
+        margin-right: 5px;
+        margin-left: 20px;
+        width: 250px;
+    }
+    .telefono_premio .premio {
+        font-size: 12px;
+        margin-right: 35px;
+        margin-left: -7px;
+        width: 140px;
+    }
+}
+
+.reglamento_cartel {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+@media only screen and (max-width:768px) {
+    .reglamento_cartel{
+        flex-direction: column;
+    }
+}
+
+.reglamento_cartel .mas_info input {
+    width: 280px;
+    font-size: 12px;
+    text-transform: uppercase;
+}
+
+button {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+    outline: none;
+    border: 0;
+    vertical-align: middle;
+    text-decoration: none;
+    background: transparent;
+    padding: 0;
+    font-size: inherit;
+    font-family: 'Dosis', sans-serif;
+    margin-top: 20px;
+}
+   
+button.publicar {
+    width: 12rem;
+    height: auto;
+}
+   
+button.publicar .circle {
+    transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
+    position: relative;
+    display: block;
+    margin: 0;
+    width: 3rem;
+    height: 3rem;
+    background: #00DCFF;
+    border-radius: 1.625rem;
+}
+   
+button.publicar .circle .icon {
+    transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    background: #fff;
+}
+   
+button.publicar .circle .icon.arrow {
+    transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
+    left: 0.625rem;
+    width: 1.125rem;
+    height: 0.125rem;
+    background: none;
+}
+   
+button.publicar .circle .icon.arrow::before {
+    position: absolute;
+    content: "";
+    top: -0.29rem;
+    right: 0.0625rem;
+    width: 0.625rem;
+    height: 0.625rem;
+    border-top: 0.125rem solid #fff;
+    border-right: 0.125rem solid #fff;
+    transform: rotate(45deg);
+}
+   
+button.publicar .button-text {
+    transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    padding: 0.75rem 0;
+    margin: 0 0 0 1.85rem;
+    color: #00DCFF;
+    font-weight: 700;
+    line-height: 1.6;
+    text-align: center;
+    text-transform: uppercase;
+}
+   
+button:hover .circle {
+    width: 100%;
+}
+   
+button:hover .circle .icon.arrow {
+    background: #fff;
+    transform: translate(1rem, 0);
+}
+   
+button:hover .button-text {
+    color: #fff;
+}
+
+.container form{
+    background-color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 0 40px;
+    height: 100%;
+    
+}
+
+.container form div {
+    display: flex;
+    width: 100%;
+    justify-content: space-evenly;
+    
+}
+
+.container form div input {
+    width: 40%;
+}
+
+@media only screen and (max-width:768px) {
+    .container form div input {
+        width: 55%;
+    }
+}
+
+.container input{
+    background-color: #eee;
+    border: none;
+    margin: 8px 0;
+    padding: 10px 15px;
+    font-size: 20px;
+    border-radius: 8px;
+    width: 100%;
+    outline: none;
+}
+
+.mas_info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.container label{
+    font-size: 15px;
+    color: #00DCFF;
+}
+
+@media only screen and (max-width:768px) {
+    .container label {
+        font-size: 12px;
+    }
+}
+
+.opcional_participantes_maximos {
+    display: flex;
+    flex-direction: column;
+    margin-left: 120px;
+}
+
+.opcional_fotos {
+    display: flex;
+    flex-direction: column;
+    margin-left: 10px;
+}
+
+.opcional_instagram {
+    display: flex;
+    flex-direction: column;
+    margin-left: 10px;
+}
+
+.opcional_premio {
+    display: flex;
+    flex-direction: column;
+    margin-left: 10px;
+}
+
+@media only screen and (max-width:768px) {
+    .opcional_participantes_maximos {
+        margin-left: -3px;
+    }
+}
+
+.opcional1 {
+    color: #9be604;
+    font-size: 12px;
+    margin-bottom: -6px;
+    margin-left: 15px;
+}
+
+.opcional2 {
+    color: #9be604;
+    font-size: 12px;
+    margin-bottom: -6px;
+    margin-left: 75px;
+}
+
+@media only screen and (max-width:768px) {
+    .opcional2 {
+        margin-left: 5px;
+    }
+}
+
+.opcional3 {
+    color: #9be604;
+    font-size: 12px;
+    margin-bottom: -6px;
+    margin-left: 10px;
+}
+
+.opcional4 {
+    color: #9be604;
+    font-size: 12px;
+    margin-bottom: -6px;
+    margin-left: 180px;
+}
+
+@media only screen and (max-width:768px) {
+    .opcional4 {
+        margin-left: 10px;
+    }
+}
+
+.opcional5 {
+    margin-bottom: -6px;
+    margin-left: -190px;
+    font-size: 12px;
+    color: #9be604;
+}
