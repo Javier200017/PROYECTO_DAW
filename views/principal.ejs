@@ -20,6 +20,20 @@
             <nav class="navbar navbar-expand-lg custom_nav-container">
               <a class="navbar-brand" href="principal.ejs">
                 <span>BOOKPADEL TECH</span>
+                <% if (user) { %>
+                    <h1>JAVIER</h1>
+                    <div id="user">
+                        <div>
+                            <a href="/mishilos">
+                                <h3><%= user.NOMBRE %></h3>
+                            </a>
+                        </div>
+                        <a href="/logout">
+                            <img src="/images/logout.png">
+                        </a>
+                    </div>
+                <% } else { %>
+                <% } %>
             </a>
             <div class="navbar-collapse" id="">
                 <div class="custom_menu-btn">
@@ -68,7 +82,7 @@
                 <h1 class="fecha_torneo"><%= eventos[i].FECHA %></h1>
                 <h4><%= eventos[i].NOMBRE %></h4>
                 <div class="about_img-box">
-                    <img src="/get_img/<%= eventos[i].ID%>" alt="">
+                    <img id="miImagen" alt="">
                     <a href="" class="about_btn">
                     INSCRIBIRSE
                     </a>
@@ -233,6 +247,37 @@
             document.getElementById("myNav").classList.toggle("menu_width")
             document.querySelector(".custom_menu-btn").classList.toggle("menu_btn-style")
         }
+        // Función para cargar la imagen desde el servidor
+        async function cargarImagenDesdeServidor(id) {
+            try {
+                // Realizar una solicitud al servidor para obtener la imagen en formato base64
+                const respuesta = await fetch(`http://localhost:4000/get_img/${id}`);
+                
+                if (!respuesta.ok) {
+                    console.error('Error al cargar la imagen:', respuesta.statusText);
+                    return;
+                }
+    
+                // Obtener la respuesta como texto (cadena base64)
+                const base64Data = await respuesta.text();
+    
+                // Obtener la referencia a la etiqueta de imagen en el HTML
+                const imgElement = document.getElementById('miImagen');
+    
+                // Establecer la cadena base64 como la fuente de la imagen
+                imgElement.src = 'data:image/jpeg;base64,' + base64Data;
+            } catch (error) {
+                console.error('Error en la carga de la imagen:', error);
+            }
+        }
+    
+        // Llamar a la función para cargar la imagen al cargar la página (puedes llamarla según tus necesidades)
+        document.addEventListener('DOMContentLoaded', () => {
+            // Supongamos que el ID de la imagen que deseas cargar es 1
+            cargarImagenDesdeServidor(1);
+        });
     </script>
+
+
 </body>
 </html>

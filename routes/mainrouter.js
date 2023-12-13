@@ -3,6 +3,8 @@ const main_router = Router()
 const {pool} = require("../configuration/connection_db")
 const {secreto} = require("../helpers/bcrypt")
 
+const passport = require("passport")
+
 main_router.get("/",(req, res) => {
     res.render("login.ejs",{"error":false,"error_message":null})
 })
@@ -10,39 +12,46 @@ main_router.get("/",(req, res) => {
 main_router.get("/principal", async (req, res) => {
     const [eventos] = await pool.query ("SELECT * FROM Eventos")
 
-    console.log(eventos)
 
     for (let i =0;i<eventos.length;i++){
         eventos[i]["FECHA"] = eventos[i]["FECHA"].split("---")[0]
     }
-
-    console.log(eventos)
     res.render("principal.ejs", {eventos})
 })
 
 main_router.get('/get_img/:id', async (req, res) => {
     const id = req.params.id;
-  
-    // Realizar la consulta para obtener la imagen por su ID
-    const query = await pool.query('SELECT PORTADA FROM Eventos WHERE id = ?',[id]);
-    console.log("INTENTANDO MOSTRAR PORTADA",query)
 
+    try {
+        // Realizar la consulta para obtener la imagen por su ID
+        const query = await pool.query('SELECT PORTADA FROM Eventos WHERE id = ?', [id]);
 
+        if (!query || !query[0] || !query[0][0]) {
+            res.status(404).send('Imagen no encontrada');
+            console.log("Imagen no encontrada para el ID:", id);
+            return;
+        }
 
-    console.log("Hola",query[0][0].PORTADA)
-  
-    const blobData = query[0][0].PORTADA;
+        const blobData = query[0][0].PORTADA;
 
-    // Convertir el blob a un buffer
-    const buffer = Buffer.from(blobData, 'binary');
+        // Convertir el blob a un buffer
+        const buffer = Buffer.from(blobData);
 
-    // Enviar el buffer como respuesta al navegador
-    res.writeHead(200, { 'Content-Type': 'image/jpeg' });
-    res.end(buffer, 'binary');
+        // Convertir el buffer a una cadena base64
+        const base64Data = buffer.toString('base64');
 
+        // Enviar la cadena base64 como respuesta al navegador
+        res.writeHead(200, { 'Content-Type': 'image/jpeg' });
+        res.end(base64Data, 'base64');
+    } catch (error) {
+        console.error('Error al procesar la imagen:', error);
+        res.status(500).send('Error interno del servidor');
+    }
 });
 
+
 main_router.post("/register", async (req, res)=> {
+
     console.log(req.body)
 
     let encriptador = await secreto.encriptador(req.body.contrasenya)
@@ -65,7 +74,7 @@ main_router.post("/register", async (req, res)=> {
     res.render("principal.ejs")
 })
 
-main_router.post("/login", async(req, res) => {
+main_router.post("/login", async(req, res, next) => {
     console.log(req.body)
     const [comprobacion_email] = await pool.query("SELECT * FROM Usuarios WHERE EMAIL = ?",[req.body.correo_electronico])
     if(comprobacion_email[0]){
@@ -73,7 +82,14 @@ main_router.post("/login", async(req, res) => {
         const comprobacion_password = await secreto.desencriptador(req.body.contrasenya,comprobacion_email[0]["CONTRASEÑA"])
         if(comprobacion_password){
             console.log("¡¡ LA CONTRASEÑA COINCIDE !!")
-            res.render("principal.ejs")
+
+            await passport.authenticate("local.signin"
+              // successRedirect:"/",
+              // failureRedirect:"/#login-form",
+              // failureFlash:true}
+            )
+            (req,res,next)
+            res.redirect("/principal")
         }else{
             console.log("¡¡ LA CONTRASEÑA NO COINCIDE !!")
             res.render("login.ejs",{"error":"passwd","error_message":null})
@@ -118,6 +134,11 @@ main_router.post("/eventos", async (req, res) => {
 
     var nuevaFecha = dia + " de " + nombreMes + " de " + año;
 
+    const base64Image = req.body.portada;
+
+// Convierte la cadena base64 a un objeto binario (Buffer)
+    const binaryImage = Buffer.from(base64Image, 'base64');
+
     const evento = {
         NOMBRE: req.body.nombre,
         PRECIO: req.body.precio,
@@ -129,7 +150,7 @@ main_router.post("/eventos", async (req, res) => {
         DIRECCION: req.body.direccion,
         INSTAGRAM: instagram,
         PREMIO: premio,
-        PORTADA: req.body.portada,
+        PORTADA: binaryImage,
         LINK_FOTOS: link_fotos,
         REGLAMENTO: reglamento
     }
