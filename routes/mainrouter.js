@@ -24,7 +24,7 @@ main_router.get('/get_img/:id', async (req, res) => {
 
     try {
         // Realizar la consulta para obtener la imagen por su ID
-        const query = await pool.query('SELECT PORTADA FROM Eventos WHERE id = ?', [id]);
+        const query = await pool.query('SELECT PORTADA FROM Eventos WHERE ID = ?', [id]);
 
         if (!query || !query[0] || !query[0][0]) {
             res.status(404).send('Imagen no encontrada');
@@ -32,7 +32,11 @@ main_router.get('/get_img/:id', async (req, res) => {
             return;
         }
 
+
+
         const blobData = query[0][0].PORTADA;
+
+        console.log(blobData)
 
         // Convertir el blob a un buffer
         const buffer = Buffer.from(blobData);
@@ -41,7 +45,7 @@ main_router.get('/get_img/:id', async (req, res) => {
         const base64Data = buffer.toString('base64');
 
         // Enviar la cadena base64 como respuesta al navegador
-        res.writeHead(200, { 'Content-Type': 'image/jpeg' });
+        res.writeHead(200, { 'Content-Type': 'image/png' });
         res.end(base64Data, 'base64');
     } catch (error) {
         console.error('Error al procesar la imagen:', error);
@@ -83,13 +87,11 @@ main_router.post("/login", async(req, res, next) => {
         if(comprobacion_password){
             console.log("¡¡ LA CONTRASEÑA COINCIDE !!")
 
-            await passport.authenticate("local.signin"
-              // successRedirect:"/",
-              // failureRedirect:"/#login-form",
-              // failureFlash:true}
+            await passport.authenticate("local.signin",{
+              successRedirect:"/principal",
+              failureFlash:true}
             )
             (req,res,next)
-            res.redirect("/principal")
         }else{
             console.log("¡¡ LA CONTRASEÑA NO COINCIDE !!")
             res.render("login.ejs",{"error":"passwd","error_message":null})
@@ -162,4 +164,23 @@ main_router.post("/eventos", async (req, res) => {
     res.redirect("/principal")
 })
 
+main_router.get("/logout", async(req, res) => {
+    req.logOut( function(err){
+        if(err){
+          return next(err)
+        }
+      })
+    res.redirect("/principal")
+})
+
+main_router.get("/inscribirse", (req, res) => {
+    if (req.isAuthenticated()) {
+        // req.user contiene el usuario autenticado
+        const usuarioAutenticado = req.user;
+        res.render("inscribirse.ejs")
+    }else[
+        res.redirect("/")
+    ]
+
+})
 module.exports = main_router
