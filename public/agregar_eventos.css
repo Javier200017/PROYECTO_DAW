@@ -130,22 +130,21 @@ h1 {
 
 .nombre_precio .nombre_del_evento {
     width: 100%;
-    margin: 5px;
+    margin-right: 10px;
 }
 
 .nombre_precio .precio_inscripcion {
     width: 100%;
-    margin: 5px;
 }
 
 @media only screen and (max-width:768px) {
     .nombre_precio .nombre_del_evento {
         font-size: 12px;
-        width: 150%;
+        width: 100%;
     }
     .nombre_precio .precio_inscripcion {
         font-size: 12px;
-        width: 160%;
+        width: 100%;
     }
 }
 
@@ -173,19 +172,18 @@ h1 {
     .fecha_hora .fecha {
         padding: 5px;
         width: 100px;
-        margin-right: 5px;
+        margin-right: 10px;
         font-size: 12px;
     }
     .fecha_hora .hora_inicio {
         padding: 5px;
         width: 80px;
-        margin-right: 5px;
+        margin-right: 10px;
         font-size: 12px;
     }
     .fecha_hora .hora_fin {
         padding: 5px;
         width: 80px;
-        margin-left: -1px;
         font-size: 12px;
     }
 }
@@ -218,8 +216,7 @@ input[type=range]::-webkit-slider-runnable-track {
         margin-left: 8px;
     }
     #min {
-        margin-right: 5px;
-        margin-left: -15px;
+        margin-right: 10px;
         width: 135px;
     }
     #max {
@@ -230,7 +227,6 @@ input[type=range]::-webkit-slider-runnable-track {
 .participantes_direccion .participantes_maximos {
     width: 100%;
     margin-right: 10px;
-
 }
 
 .participantes_direccion .direccion {
@@ -241,32 +237,27 @@ input[type=range]::-webkit-slider-runnable-track {
 @media only screen and (max-width:768px) {
     .participantes_direccion .participantes_maximos {
         font-size: 12px;
-        margin-right: 3px;
+        
         width: 145px;
     }
     .participantes_direccion .direccion {
         font-size: 12px;
         width: 145px;
-        margin-right: -3px;
     }
 }
 
 .fotos_instagram .link_fotos {
     width: 100%;
     margin-right: 10px;
-    
 }
 
 .fotos_instagram .instagram {
     width: 100%;
-    
 }
 
 @media only screen and (max-width:768px) {
     .fotos_instagram .link_fotos {
         font-size: 12px;
-        margin-right: 5px;
-        margin-left: -20px;
         width: 140px;
     }
     .fotos_instagram .instagram {
@@ -278,7 +269,6 @@ input[type=range]::-webkit-slider-runnable-track {
 .telefono_premio .telefono_organizador {
     width: 100%;
     margin-right: 10px;
-
 }
 
 .telefono_premio .premio {
@@ -288,13 +278,9 @@ input[type=range]::-webkit-slider-runnable-track {
 @media only screen and (max-width:768px) {
     .telefono_premio .telefono_organizador {
         font-size: 12px;
-        margin-right: 5px;
-        margin-left: 20px;
     }
     .telefono_premio .premio {
         font-size: 12px;
-        margin-right: 35px;
-        margin-left: -7px;
         width: 125px;
     }
 }
@@ -404,4 +390,3 @@ button:hover .circle .icon.arrow {
 button:hover .button-text {
     color: #fff;
 }
-
