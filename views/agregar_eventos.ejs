@@ -34,32 +34,34 @@
                         </div>
                     </div>
                     <div class="rangos">
-                        <input id="min" name="categoria_min" type="range" min="2.75" max="4.75" step="0.25" value="0" autocomplete="off" placeholder="NIVEL DE CATEGORIA MINIMA" required>
-                        <p id="min_text"></p>
-                        <input id="max" name="categoria_max" type="range" min="2.75" max="4.75" step="0.25" value="4.75" autocomplete="off" placeholder="NIVEL DE CATEGORIA MAXIMA" required>
-                        <p id="max_text"></p>
+                        <div class="mas_info2">
+                            <label for="">NIVEL MÍNIMO</label>
+                            <input id="min" name="categoria_min" type="range" min="2.75" max="4.75" step="0.25" value="0" autocomplete="off" required>
+                            <p id="min_text"></p>
+                        </div>
+                        <div class="mas_info2">
+                            <label for="">NIVEL MÁXIMO</label>
+                            <input id="max" name="categoria_max" type="range" min="2.75" max="4.75" step="0.25" value="4.75" autocomplete="off" required>
+                            <p id="max_text"></p>
+                        </div>
                     </div>
                     <div class="participantes_direccion">
                         <div class="opcional_participantes_maximos">
-                            
                             <input class="participantes_maximos" name="participantes_maximos" type="number" placeholder="JUGADORES MÁXIMOS ...">
                         </div>
                         <input class="direccion" name="direccion" type="text" placeholder="¿DÓNDE SE JUEGA?" required>
                     </div>
                     <div class="fotos_instagram">
                         <div class="opcional_fotos">
-                            
                             <input class="link_fotos" name="link_fotos" type="url" placeholder="LINK FOTOGRAFIAS ...">
                         </div>
                         <div class="opcional_instagram">
-                            
                             <input class="instagram" name="instagram" type="url" placeholder="INSTAGRAM TORNEO ...">
                         </div>
                     </div>
                     <div class="telefono_premio">
                         <input class="telefono_organizador" name="telefono_organizador" type="tel" pattern="[0-9]{9}" placeholder="TELÉFONO CONTACTO ..." required>
                         <div class="opcional_premio">
-                            
                             <input class="premio" name="premio" type="number" placeholder="SUMA DE PREMIOS ...">
                         </div>
                     </div>

@@ -11,11 +11,11 @@ let mi_connection = {
         port:process.env.MYSQL_DEV_ADDON_PORT
     },
     database_prod:{
-        host:process.env.MYSQL_PROD_ADDON_HOST,
-        database:process.env.MYSQL_PROD_ADDON_DB,
-        user:process.env.MYSQL_PROD_ADDON_USER,
-        password:process.env.MYSQL_PROD_ADDON_PASSWORD,
-        port:process.env.MYSQL_PROD_ADDON_PORT
+        host:process.env.MYSQL_ADDON_HOST,
+        database:process.env.MYSQL_ADDON_DB,
+        user:process.env.MYSQL_ADDON_USER,
+        password:process.env.MYSQL_ADDON_PASSWORD,
+        port:process.env.MYSQL_ADDON_PORT
 }}
 
 let current_db

@@ -10,7 +10,7 @@
     <div class="contenedor">
         <div class="container" id="container">
             <div class="form_container">
-                <h1>INSCRIPCIÓN AL NUEVO TORNEO ...</h1>
+                <h1>INSCRIPCIÓN AL TORNEO ELEGIDO ...</h1>
                 <form action="/eventos" method="post">
                     <div class="info_jugador_1">
                         <input class="nombre" name="nombre" type="text" placeholder="NOMBRE JUGADOR 1 ..." required>
@@ -23,8 +23,13 @@
                         <input class="telefono" name="telefono" type="tel" placeholder="TELÉFONO JUGADOR 2 ..." required>
                     </div>
                     <div class="info_equipo">
-                        <input class="nombre_equipo" name="nombre_equipo" type="text" placeholder="NOMBRE DEL EQUIPO ..." required>
-                        <input class="categoria" name="categoria" type="text" placeholder="JUGAR EN CATEGORIA  ..." required>
+                        <label for="">¿EN QUÉ CATEGORIA QUIEREN JUGAR?</label>
+                        <select name="categoria">
+                            <option value="primera">PRIMERA</option>
+                            <option value="segunda">SEGUNDA</option>
+                            <option value="tercera">TERCERA</option>
+                            <option value="cuarta">CUARTA</option>
+                        </select>
                     </div>
                     <button class="publicar">
                         <span class="circle" aria-hidden="true">

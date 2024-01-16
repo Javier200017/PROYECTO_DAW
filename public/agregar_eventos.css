@@ -82,6 +82,18 @@ body{
     align-items: center;
     justify-content: center;
 }
+.mas_info2 {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+@media only screen and (max-width:768px) {
+    .mas_info2  {
+        flex-direction: column;
+    }
+}
 
 .container label{
     font-size: 15px;
@@ -114,7 +126,8 @@ img {
 
 h1 {
     text-align: center;
-    font-size: 35px;
+    font-size: 45px;
+    color: #00DCFF;
 }
 
 @media only screen and (max-width:768px) {
@@ -131,10 +144,12 @@ h1 {
 .nombre_precio .nombre_del_evento {
     width: 100%;
     margin-right: 10px;
+    border: #9be604 solid;
 }
 
 .nombre_precio .precio_inscripcion {
     width: 100%;
+    border: #9be604 solid;
 }
 
 @media only screen and (max-width:768px) {
@@ -156,16 +171,19 @@ h1 {
 .fecha_hora .fecha {
     font-size: 20px;
     width: 80%;
+    border: #9be604 solid;
 }
 
 .fecha_hora .hora_inicio {
     font-size: 20px;
     width: 50%;
+    border: #9be604 solid;
 }
 
 .fecha_hora .hora_fin {
     font-size: 20px;
     width: 50%;
+    border: #9be604 solid;
 }
 
 @media only screen and (max-width:768px) {
@@ -195,15 +213,16 @@ input[type='range']::-webkit-slider-thumb {
 }
   
 input[type=range]::-webkit-slider-thumb {
-    background-color: #00DCFF;
+    background-color: #9be604;
     width: 16px;
     height: 16px;
     border-radius: 50%;
     margin-top: -7px;
+    border: #9be604 solid;
 }
   
 input[type=range]::-webkit-slider-runnable-track {
-    background-color: #777;
+    background-color: #00DCFF;
     height: 3px;
 }
 
@@ -227,10 +246,12 @@ input[type=range]::-webkit-slider-runnable-track {
 .participantes_direccion .participantes_maximos {
     width: 100%;
     margin-right: 10px;
+    border: #9be604 solid;
 }
 
 .participantes_direccion .direccion {
     width: 100%;
+    border: #9be604 solid;
 
 }
 
@@ -249,10 +270,12 @@ input[type=range]::-webkit-slider-runnable-track {
 .fotos_instagram .link_fotos {
     width: 100%;
     margin-right: 10px;
+    border: #9be604 solid;
 }
 
 .fotos_instagram .instagram {
     width: 100%;
+    border: #9be604 solid;
 }
 
 @media only screen and (max-width:768px) {
@@ -269,10 +292,12 @@ input[type=range]::-webkit-slider-runnable-track {
 .telefono_premio .telefono_organizador {
     width: 100%;
     margin-right: 10px;
+    border: #9be604 solid;
 }
 
 .telefono_premio .premio {
     width: 100%;
+    border: #9be604 solid;
 }
 
 @media only screen and (max-width:768px) {

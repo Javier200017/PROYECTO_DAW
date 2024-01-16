@@ -17,6 +17,7 @@ body{
     justify-content: space-evenly;
     align-items: center;
     height: 100vh;
+    
 }
 
 @media only screen and (max-width:768px) {
@@ -41,6 +42,7 @@ body{
     display: flex;
     flex-direction: column;
     justify-content: center;
+    
 }
 
 @media only screen and (max-width:768px) {
@@ -103,8 +105,16 @@ h1 {
     }
 }
 
-.container .info_equipo .nombre_equipo {
-    border: #9be604 solid;
+.container .info_equipo {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+}
+
+.container .info_equipo {
+    display: flex;
+    flex-direction: column;
+    color: #00DCFF;
 }
 
 .container .info_equipo .categoria {
@@ -156,6 +166,20 @@ h1 {
     border-radius: 8px;
     width: 100%;
     outline: none;
+}
+
+.container select{
+    background-color: #eee;
+    border: none;
+    margin: 8px 0;
+    padding: 10px 15px;
+    font-size: 20px;
+    border-radius: 8px;
+    width: 40%;
+    outline: none;
+    border: #9be604 solid;
+    color: gray;
+
 }
 
 button {
