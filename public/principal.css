@@ -4,12 +4,6 @@ body {
   background-color: #ffffff;
 }
 
-.body-bg {
-  background-image: url(../images/body-bg.png);
-  background-size: cover;
-  background-repeat: no-repeat;
-}
-
 .layout_padding {
   padding: 0;
   

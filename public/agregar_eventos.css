@@ -39,6 +39,61 @@ body{
     }
 }
 
+.container form{
+    background-color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 0 40px;
+    height: 100%;   
+}
+
+.container form div {
+    display: flex;
+    width: 100%;
+    justify-content: space-evenly;
+}
+
+.container form div input {
+    width: 40%;
+}
+
+@media only screen and (max-width:768px) {
+    .container form div input {
+        width: 55%;
+    }
+}
+
+.container input{
+    background-color: #eee;
+    border: none;
+    margin: 8px 0;
+    padding: 10px 15px;
+    font-size: 20px;
+    border-radius: 8px;
+    width: 100%;
+    outline: none;
+}
+
+.mas_info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.container label{
+    font-size: 15px;
+    color: #00DCFF;
+}
+
+@media only screen and (max-width:768px) {
+    .container label {
+        font-size: 12px;
+    }
+}
+
 #imagen {
     width: 30%;
     height: 95%;
@@ -74,39 +129,44 @@ h1 {
 }
 
 .nombre_precio .nombre_del_evento {
-    width: 400px;
+    width: 100%;
+    margin: 5px;
 }
 
 .nombre_precio .precio_inscripcion {
-    width: 400px;
+    width: 100%;
+    margin: 5px;
 }
 
 @media only screen and (max-width:768px) {
     .nombre_precio .nombre_del_evento {
-        margin-right: 5px;
         font-size: 12px;
+        width: 150%;
     }
     .nombre_precio .precio_inscripcion {
         font-size: 12px;
+        width: 160%;
     }
 }
 
 .fecha_hora {
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-around;
 }
 
 .fecha_hora .fecha {
     font-size: 20px;
-    width: 170px;
+    width: 80%;
 }
 
 .fecha_hora .hora_inicio {
     font-size: 20px;
+    width: 50%;
 }
 
 .fecha_hora .hora_fin {
     font-size: 20px;
+    width: 50%;
 }
 
 @media only screen and (max-width:768px) {
@@ -168,13 +228,14 @@ input[type=range]::-webkit-slider-runnable-track {
 }
 
 .participantes_direccion .participantes_maximos {
-    width: 300px;
-    margin-left: -12px;
+    width: 100%;
+    margin-right: 10px;
+
 }
 
 .participantes_direccion .direccion {
-    margin-right: 150px;
-    width: 250px;
+    width: 100%;
+
 }
 
 @media only screen and (max-width:768px) {
@@ -191,13 +252,14 @@ input[type=range]::-webkit-slider-runnable-track {
 }
 
 .fotos_instagram .link_fotos {
-    width: 350px;
-    margin-left: 50px;
+    width: 100%;
+    margin-right: 10px;
+    
 }
 
 .fotos_instagram .instagram {
-    width: 350px;
-    margin-left: -8px;
+    width: 100%;
+    
 }
 
 @media only screen and (max-width:768px) {
@@ -214,13 +276,13 @@ input[type=range]::-webkit-slider-runnable-track {
 }
 
 .telefono_premio .telefono_organizador {
-    width: 400px;
-    margin-left: 50px;
+    width: 100%;
+    margin-right: 10px;
+
 }
 
 .telefono_premio .premio {
-    width: 250px;
-    margin-left: 170px;
+    width: 100%;
 }
 
 @media only screen and (max-width:768px) {
@@ -343,134 +405,3 @@ button:hover .button-text {
     color: #fff;
 }
 
-.container form{
-    background-color: #fff;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    padding: 0 40px;
-    height: 100%;   
-}
-
-.container form div {
-    display: flex;
-    width: 100%;
-    justify-content: space-evenly;
-}
-
-.container form div input {
-    width: 40%;
-}
-
-@media only screen and (max-width:768px) {
-    .container form div input {
-        width: 55%;
-    }
-}
-
-.container input{
-    background-color: #eee;
-    border: none;
-    margin: 8px 0;
-    padding: 10px 15px;
-    font-size: 20px;
-    border-radius: 8px;
-    width: 100%;
-    outline: none;
-}
-
-.mas_info {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-}
-
-.container label{
-    font-size: 15px;
-    color: #00DCFF;
-}
-
-@media only screen and (max-width:768px) {
-    .container label {
-        font-size: 12px;
-    }
-}
-
-.opcional_participantes_maximos {
-    display: flex;
-    flex-direction: column;
-    margin-left: 120px;
-}
-
-@media only screen and (max-width:768px) {
-    .opcional_participantes_maximos {
-        margin-left: -3px;
-    }
-}
-
-.opcional_fotos {
-    display: flex;
-    flex-direction: column;
-    margin-left: 10px;
-}
-
-.opcional_instagram {
-    display: flex;
-    flex-direction: column;
-    margin-left: 10px;
-}
-
-.opcional_premio {
-    display: flex;
-    flex-direction: column;
-    margin-left: 10px;
-}
-
-.opcional1 {
-    color: #9be604;
-    font-size: 12px;
-    margin-bottom: -6px;
-    margin-left: 15px;
-}
-
-.opcional2 {
-    color: #9be604;
-    font-size: 12px;
-    margin-bottom: -6px;
-    margin-left: 75px;
-}
-
-@media only screen and (max-width:768px) {
-    .opcional2 {
-        margin-left: 5px;
-    }
-}
-
-.opcional3 {
-    color: #9be604;
-    font-size: 12px;
-    margin-bottom: -6px;
-    margin-left: 10px;
-}
-
-.opcional4 {
-    color: #9be604;
-    font-size: 12px;
-    margin-bottom: -6px;
-    margin-left: 180px;
-}
-
-@media only screen and (max-width:768px) {
-    .opcional4 {
-        margin-left: 10px;
-    }
-}
-
-.opcional5 {
-    margin-bottom: -6px;
-    margin-left: -200px;
-    font-size: 12px;
-    color: #9be604;
-}
