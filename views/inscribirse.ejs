@@ -3,11 +3,38 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="stylesheet" href="inscribirse.css">
+    <title>INSCRIPCIÓN ...</title>
 </head>
 <body>
-    <h1>
-        HOLA MUNDO
-    </h1>
+    <div class="contenedor">
+        <div class="container" id="container">
+            <div class="form_container">
+                <h1>INSCRIPCIÓN AL NUEVO TORNEO ...</h1>
+                <form action="/eventos" method="post">
+                    <div class="info_jugador_1">
+                        <input class="nombre" name="nombre" type="text" placeholder="NOMBRE JUGADOR 1 ..." required>
+                        <input class="apellidos" name="apellidos" type="text" placeholder="APELLIDOS JUGADOR 1 ..." required>
+                        <input class="telefono" name="telefono" type="tel" placeholder="TELÉFONO JUGADOR 1 ..." required>
+                    </div>
+                    <div class="info_jugador_2">
+                        <input class="nombre" name="nombre" type="text" placeholder="NOMBRE JUGADOR 2 ..." required>
+                        <input class="apellidos" name="apellidos" type="text" placeholder="APELLIDOS JUGADOR 2 ..." required>
+                        <input class="telefono" name="telefono" type="tel" placeholder="TELÉFONO JUGADOR 2 ..." required>
+                    </div>
+                    <div class="info_equipo">
+                        <input class="nombre_equipo" name="nombre_equipo" type="text" placeholder="NOMBRE DEL EQUIPO ..." required>
+                        <input class="categoria" name="categoria" type="text" placeholder="JUGAR EN CATEGORIA  ..." required>
+                    </div>
+                    <button class="publicar">
+                        <span class="circle" aria-hidden="true">
+                        <span class="icon arrow"></span>
+                        </span>
+                        <span class="button-text">INSCRIBIRSE</span>
+                      </button>
+                </form>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
