@@ -13,12 +13,6 @@
         <div class="form-container sign-up">
             <form action="/register" method="post">
                 <h1>CREAR PERFIL</h1>
-                <div class="social-icons">
-                    <a href="#" class="icon"><i class="fa-brands fa-google-plus-g"></i></a>
-                    <a href="#" class="icon"><i class="fa-brands fa-facebook-f"></i></a>
-                    <a href="#" class="icon"><i class="fa-brands fa-github"></i></a>
-                    <a href="#" class="icon"><i class="fa-brands fa-linkedin-in"></i></a>
-                </div>
                 <input name="nombre" type="text" placeholder="NOMBRE" required>
                 <input name="apellidos" type="text" placeholder="APELLIDOS" required>
                 <input name="telefono" type="tel" placeholder="TELÉFONO" required>
@@ -32,6 +26,7 @@
                     <option value="participante">PARTICIPANTE</option>
                     <option value="administrador">ADMINISTRADOR</option>
                 </select>
+                <input style="border: 1px solid yellow;visibility: hidden;" name="clave_seguridad" type="password" placeholder="CLAVE DE SEGURIDAD">
                 <button type="submit">CREAR PERFIL</button>
             </form>
         </div>

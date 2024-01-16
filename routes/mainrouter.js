@@ -58,6 +58,15 @@ main_router.post("/register", async (req, res,next)=> {
 
     console.log(req.body)
 
+    if (req.body.rango == "administrador" ) {
+        if (req.body.clave_seguridad != process.env.ADMIN_PASS){
+            console.log("rango admin pero clave incorrecta")
+            return res.status(401).send("acceso denegado")
+        }else{
+            console.log("rango admin y clave correcta")
+        }
+    }
+
     let encriptador = await secreto.encriptador(req.body.contrasenya)
 
     const user = {
@@ -107,7 +116,14 @@ main_router.post("/login", async(req, res, next) => {
 })
 
 main_router.get("/eventos", async(req, res) => {
-    res.render("agregar_eventos.ejs")
+
+    if (req.user && req.user.RANGO == "administrador"){
+        console.log("estrategia de auth en ventos => ",req.user)
+        res.render("agregar_eventos.ejs")
+    }else{
+        res.redirect("/")
+    }
+
 })
 
 main_router.post("/eventos", async (req, res) => {
