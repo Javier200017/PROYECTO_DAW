@@ -54,7 +54,7 @@ main_router.get('/get_img/:id', async (req, res) => {
 });
 
 
-main_router.post("/register", async (req, res)=> {
+main_router.post("/register", async (req, res,next)=> {
 
     console.log(req.body)
 
@@ -73,9 +73,13 @@ main_router.post("/register", async (req, res)=> {
     }
     console.log(user)
 
-    const result = pool.query("INSERT INTO Usuarios SET ?", [user])
+    const result = await pool.query("INSERT INTO Usuarios SET ?", [user])
 
-    res.render("principal.ejs")
+    await passport.authenticate("local.signin",{
+        successRedirect:"/principal",
+        failureFlash:true}
+      )
+    (req,res,next)
 })
 
 main_router.post("/login", async(req, res, next) => {

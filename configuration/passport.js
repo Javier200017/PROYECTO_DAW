@@ -9,15 +9,15 @@ passport.use("local.signin", new localstrategy({
     passReqToCallback:true
 }, async (req,username,password,done) =>{
 
-    console.log(username,password)
+    console.log("estrategia de log y sign =>",username,password)
 
     const [result] = await pool.query("select * from Usuarios where EMAIL = ?",[username])
 
     console.log(result)
     
     return done(null,result[0])
-
 }))
+
 
 passport.serializeUser((user,done)=>{
     console.log("serial")
