@@ -195,12 +195,41 @@ main_router.get("/logout", async(req, res) => {
 
 main_router.get("/inscribirse", (req, res) => {
     if (req.isAuthenticated()) {
-        // req.user contiene el usuario autenticado
-        const usuarioAutenticado = req.user;
-        res.render("inscribirse.ejs")
+
+
+        console.log(req.query)
+
+        let id_evento = req.query.id
+
+        console.log("id del evento =",id_evento)
+
+
+        res.render("inscribirse.ejs",{id_evento})
     }else[
         res.redirect("/")
     ]
+
+})
+
+main_router.post("/inscripcion", async (req, res) => {
+    console.log(req.body)
+
+    const inscripccion = {
+
+        NOMBRE_JUGADOR_UNO: req.body.nombre_jugador_uno,
+        APELLIDOS_JUGADOR_UNO: req.body.apellidos_jugador_uno,
+        TELEFONO_JUGADOR_UNO: req.body.telefono_jugador_uno,
+        NOMBRE_JUGADOR_DOS: req.body.nombre_jugador_dos,
+        APELLIDOS_JUGADOR_DOS: req.body.apellidos_jugador_dos,
+        TELEFONO_JUGADOR_DOS: req.body.telefono_jugador_dos,
+        CATEGORIA: req.body.categoria,
+        ID_EVENTO: req.body.id_evento
+    }
+
+    await pool.query ("INSERT INTO Inscripciones SET ?", [inscripccion])
+
+    res.redirect("/principal")
+
 
 })
 module.exports = main_router

@@ -65,23 +65,13 @@
     <div class="container">
     <div class="about_card-container">
 <% for (let i = 0; i < eventos.length; i++){ %>
-    <!-- <section>
-        <h4><%= eventos[i].NOMBRE %></h4>
-        <h4><%= eventos[i].PRECIO %></h4>
-        <h4><%= eventos[i].FECHA %></h4>
-        <h4><%= eventos[i].PARTICIPANTES_ACTUALES %></h4>
-        <h4><%= eventos[i].CATEGORIA_MIN %></h4>
-        <h4><%= eventos[i].CATEGORIA_MAX %></h4>
-        <h4><%= eventos[i].PREMIO %></h4>
-    </section> -->
-
             <div class="about_card">
                 <div class="about-detail">
                 <h1 class="fecha_torneo"><%= eventos[i].FECHA %></h1>
                 <h4><%= eventos[i].NOMBRE %></h4>
                 <div class="about_img-box">
                     <img src="/get_img/11" id="miImagen" alt="">
-                    <a href="/inscribirse" class="about_btn">
+                    <a href="/inscribirse/?id=<%=eventos[i].ID%>" class="about_btn">
                     INSCRIBIRSE
                     </a>
                 </div>
