@@ -1,68 +1,101 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+  <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BOOKPADELTECH</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <link rel="stylesheet" href="style.css">
-</head>
 <body>
-    <div class="container" id="container">
-        <div class="form-container sign-up">
-            <form action="/register" method="post">
-                <h1>CREAR PERFIL</h1>
-                <input name="nombre" type="text" placeholder="NOMBRE" required>
-                <input name="apellidos" type="text" placeholder="APELLIDOS" required>
-                <input name="telefono" type="tel" placeholder="TELÉFONO" required>
-                <input name="nombre_de_usuario" type="text" placeholder="NOMBRE DE USUARIO" required>
-                <input name="nivel_de_padel" type="number" placeholder="NIVEL DE PÁDEL" required>
-                <input name="posicion_en_pista" type="text" placeholder="POSICIÓN EN PISTA" required>
-                <input name="correo_electronico" type="email" placeholder="CORREO ELÉCTRONICO" required>
-                <input name="contrasenya" type="password" placeholder="CONTRASEÑA" required>
-                <label for="rango">¿ERES JUGADOR O ADMINISTRADOR?</label>
-                <select name="rango" id="rango">
-                    <option value="participante">PARTICIPANTE</option>
-                    <option value="administrador">ADMINISTRADOR</option>
-                </select>
-                <input style="border: 1px solid yellow;visibility: hidden;" name="clave_seguridad" type="password" placeholder="CLAVE DE SEGURIDAD">
-                <button type="submit">CREAR PERFIL</button>
-            </form>
+    <div class="container">
+        <input type="checkbox" id="flip">
+        <div class="cover">
+            <div class="front">
+                <img src="https://static.vecteezy.com/system/resources/previews/031/597/040/non_2x/the-paddle-tennis-court-features-a-defining-white-boundary-line-vertical-mobile-wallpaper-ai-generated-free-photo.jpg" alt="">
+            </div>
         </div>
-        <div class="form-container sign-in">
-            <form action="/login" method="post">
-                <h1>INICIAR SESIÓN</h1>
-                <% if (error == "mail" || error == "both"){ %>
-                    <input style="border: 1px solid red;" name="correo_electronico" type="text" placeholder="CORREO ELECTRÓNICO" required>
-                <% } else {%>
-                    <input name="correo_electronico" type="email" placeholder="CORREO ELÉCTRONICO" required>
-                <% } %>
-                <% if(error == "passwd" || error == "both"){ %>
-                    <input style="border: 1px solid red;" name="contrasenya" type="password" placeholder="CONTRASEÑA" required>
-                <% } else {%>
-                    <input name="contrasenya" type="password" placeholder="CONTRASEÑA" required>
-                <% } %>
-                <h5><%= error_message %></h5>
-                <button>INICIAR SESIÓN</button>
-            </form>
-        </div>
-        <div class="toggle-container">
-            <div class="toggle">
-                <div class="toggle-panel toggle-left">
-                    <h1>BIENVENIDO A BOOKPADEL</h1>
-                    <p>¡ CORRE Y APUNTATE A LOS MEJORES TORNEOS !</p>
-                    <button class="hidden" id="login">INICIAR SESIÓN</button>
+        <div class="forms">
+            <div class="form-content">
+                <div class="login-form">
+                    <div class="title">INICIAR SESIÓN</div>
+                    <form action="/login" method="post">
+                        <div class="input-boxes">
+                            <div class="input-box">
+                                <i class="fas fa-envelope"></i>
+                                <% if (error == "mail" || error == "both"){ %>
+                                    <input style="border: 1px solid red;" name="correo_electronico" type="text" placeholder="CORREO ELECTRÓNICO" required>
+                                <% } else {%>
+                                    <input name="correo_electronico" type="email" placeholder="CORREO ELÉCTRONICO" required>
+                                <% } %>
+                            </div>
+                            <div class="input-box">
+                                <i class="fas fa-lock"></i>
+                                <% if(error == "passwd" || error == "both"){ %>
+                                    <input style="border: 1px solid red;" name="contrasenya" type="password" placeholder="CONTRASEÑA" required>
+                                <% } else {%>
+                                    <input name="contrasenya" type="password" placeholder="CONTRASEÑA" required>
+                                <% } %>
+                            </div>
+                            <h5><%= error_message %></h5>
+                            <div class="button input-box">
+                                <input type="submit" value="INICIAR SESIÓN">
+                            </div>
+                            <div class="text sign-up-text">¿NO TIENE UN PERFIL? <label for="flip">CREAR PERFIL</label></div>
+                        </div>
+                    </form>
                 </div>
-                <div class="toggle-panel toggle-right">
-                    <h1>BIENVENDIO A BOOKPADEL</h1>
-                    <p>¿ QUIERES PERTENECER A LOS MEJORES TORNEOS DEL MUNDO ?</p>
-                    <button class="hidden" id="register">CREAR PERFIL</button>
+                <div class="signup-form">
+                    <div class="title">CREAR PERFIL</div>
+                    <form action="/register" method="post">
+                        <div class="input-boxes">
+                            <div class="input-box">
+                                <i class="fas fa-user"></i>
+                                <input name="nombre" type="text" placeholder="NOMBRE" required>
+                            </div>
+                            <div class="input-box">
+                                <i class="fas fa-user-tag"></i>
+                                <input name="apellidos" type="text" placeholder="APELLIDOS" required>
+                            </div>
+                            <div class="input-box">
+                                <i class="fas fa-phone-alt"></i>
+                                <input name="telefono" type="text" placeholder="TELÉFONO" required>
+                            </div>
+                            <div class="input-box">
+                                <i class="fas fa-user-ninja"></i>
+                                <input name="nombre_de_usuario" type="text" placeholder="NOMBRE DE USUARIO" required>
+                            </div>
+                            <div class="input-box">
+                                <i class="fas fa-eye"></i>
+                                <input name="nivel_de_padel" type="text" placeholder="NIVEL DE PÁDEL" required>
+                            </div>
+                            <div class="input-box">
+                                <i class="fas fa-crosshairs"></i>
+                                <input name="posicion_en_pista" type="text" placeholder="POSICIÓN EN PISTA" required>
+                            </div>
+                            <div class="input-box">
+                                <i class="fas fa-envelope"></i>
+                                <input name="correo_electronico" type="text" placeholder="CORREO ELECTRÓNICO" required>
+                            </div>
+                            <div class="input-box">
+                                <i class="fas fa-lock"></i>
+                                <input name="contrasenya" type="password" placeholder="CONTRASEÑA" required>
+                            </div>
+                            <select name="rango" id="rango">
+                                <option value="participante">PARTICIPANTE</option>
+                                <option value="administrador">ADMINISTRADOR</option>
+                            </select>
+                            <input style="border: 1px solid yellow;visibility: hidden;" name="clave_seguridad" type="password" placeholder="CLAVE DE SEGURIDAD">
+                            <div class="button input-box">
+                                <input type="submit" value="CREAR PERFIL">
+                            </div>
+                            <div class="text sign-up-text">¿YA TIENE UN PERFIL? <label for="flip">INICIAR SESIÓN</label></div>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
     </div>
 </body>
 <script src="login.js"></script>
-<script src="/scripts/mensajes_error.js"></script>
 </html>
