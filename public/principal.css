@@ -6,7 +6,6 @@ body {
 
 .layout_padding {
   padding: 0;
-  
 }
 
 @media only screen and (max-width:768px) {
@@ -56,6 +55,37 @@ body {
 
 .sub_page .hero_area::before {
   clip-path: none;
+}
+
+.hero_area #user div {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin-left: 150px;
+}
+
+@media only screen and (max-width:768px) {
+  .hero_area #user div {
+    margin-left: 0;
+  }
+}
+
+@media only screen and (max-width:768px) {
+  .hero_area #user div h2 {
+    font-size: 18px;
+    color: #9be604;
+  }
+}
+
+.hero_area #user div a i {
+  margin-left: 280px;
+}
+
+@media only screen and (max-width:768px) {
+  .hero_area #user div a i {
+    margin-left: 10px;
+  }
 }
 
 .custom_menu-btn {
@@ -189,7 +219,7 @@ a:focus {
 
 .about_section {
   text-align: center;
-  border: #9be604 solid;
+  
 }
 
 .about_section h2 {
@@ -221,7 +251,7 @@ a:focus {
   justify-content: center;
   align-content: center;
   width: 100%;
-  border: #00DCFF solid;
+  
 }
 
 .about_card {

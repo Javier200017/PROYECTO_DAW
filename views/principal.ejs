@@ -22,7 +22,7 @@
                 <% if (user) { %>
                     <div id="user">
                         <div>
-                            <h2> Bienvenido, <%= user.NOMBRE  %></h2>
+                            <h2> Bienvenido, <%= user.NOMBRE + " " + user.APELLIDOS %></h2>
                             <a href="/logout">
                                 <i class="fa-solid fa-arrow-right-from-bracket fa-2xl"></i>
                             </a>
@@ -225,18 +225,14 @@
 <section class="container-fluid footer_section">
     <p>
         &copy;
-        2023 TODOS LOS DERECHOS RESERVADOS -- BOOKPADEL TECH
+        2024 TODOS LOS DERECHOS RESERVADOS -- BOOKPADEL TECH
     </p>
     </section>
-    <!-- <script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
-    <script type="text/javascript" src="js/bootstrap.js"></script> -->
     <script>
         function openNav() {
             document.getElementById("myNav").classList.toggle("menu_width")
             document.querySelector(".custom_menu-btn").classList.toggle("menu_btn-style")
         }
     </script>
-
-
 </body>
 </html>
