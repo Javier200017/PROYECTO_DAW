@@ -11,7 +11,7 @@
         <div class="container" id="container">
             <div class="form_container">
                 <h1>INSCRIPCIÓN AL TORNEO ELEGIDO ...</h1>
-                <form action="/inscripcion" method="post">
+                <form id="ins" action="/inscripcion" method="post">
                     <input name="id_evento" style="display: none;" value=" <%= id_evento %> "></input>
                     <div class="info_jugador_1">
                         <input class="nombre" name="nombre_jugador_uno" type="text" placeholder="NOMBRE JUGADOR 1 ..." required>
@@ -19,9 +19,9 @@
                         <input class="telefono" name="telefono_jugador_uno" type="tel" placeholder="TELÉFONO JUGADOR 1 ..." required>
                     </div>
                     <div class="info_jugador_2">
-                        <input class="nombre" name="nombre_jugador_dos" type="text" placeholder="NOMBRE JUGADOR 2 ..." required>
-                        <input class="apellidos" name="apellidos_jugador_dos" type="text" placeholder="APELLIDOS JUGADOR 2 ..." required>
-                        <input class="telefono" name="telefono_jugador_dos" type="tel" placeholder="TELÉFONO JUGADOR 2 ..." required>
+                        <input class="nombre" name="nombre_jugador_dos" type="text" placeholder="NOMBRE JUGADOR 2 ...">
+                        <input class="apellidos" name="apellidos_jugador_dos" type="text" placeholder="APELLIDOS JUGADOR 2 ...">
+                        <input class="telefono" name="telefono_jugador_dos" type="tel" placeholder="TELÉFONO JUGADOR 2 ...">
                     </div>
                     <div class="info_equipo">
                         <label for="">¿EN QUÉ CATEGORIA QUIEREN JUGAR?</label>
@@ -39,8 +39,14 @@
                         <span class="button-text">INSCRIBIRSE</span>
                       </button>
                 </form>
+            
+                <div id="popup" class="popup">
+                    Inscripción completada con éxito.
+                    <img src="https://media1.giphy.com/media/fAD6cLlOb33uzmTU9v/giphy.gif?cid=6c09b952484uw0rndbrnp79dku54tuu30szujnippxpq7jxs&ep=v1_stickers_related&rid=giphy.gif&ct=s" alt="">
+                </div>
             </div>
         </div>
     </div>
+    <script src="/scripts/popup_inscripcion.js"></script>
 </body>
 </html>

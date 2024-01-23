@@ -17,15 +17,20 @@
         <header class="header_section">
           <div class="container-fluid">
             <nav class="navbar navbar-expand-lg custom_nav-container">
-              <a class="navbar-brand" href="principal.ejs">
-                <span>BOOKPADEL TECH</span>
+              <section class="navbar-brand" href="principal.ejs">
+                <a href="/principal">BOOKPADEL TECH</a>
                 <% if (user) { %>
                     <div id="user">
                         <div>
                             <h2> Bienvenido, <%= user.NOMBRE + " " + user.APELLIDOS %></h2>
                             <a href="/logout">
-                                <i class="fa-solid fa-arrow-right-from-bracket fa-2xl"></i>
+                                <i class="fa-solid fa-arrow-right-from-bracket"></i>
                             </a>
+                            <% if(user.RANGO == "administrador") {%>
+                                <a href="/eventos">
+                                    <button id="agregar_evento">Agregar Evento</button>
+                                </a>
+                            <% } %>
                         </div>
                     </div>
                 <% } else { %>

@@ -8,6 +8,10 @@ body {
   padding: 0;
 }
 
+.container{
+  width: 850px !important;
+}
+
 @media only screen and (max-width:768px) {
   .layout_padding {
       padding: 35px;
@@ -67,7 +71,7 @@ body {
 
 @media only screen and (max-width:768px) {
   .hero_area #user div {
-    margin-left: 0;
+    flex-direction: column;
   }
 }
 
@@ -78,9 +82,7 @@ body {
   }
 }
 
-.hero_area #user div a i {
-  margin-left: 280px;
-}
+
 
 @media only screen and (max-width:768px) {
   .hero_area #user div a i {
@@ -209,6 +211,7 @@ a:focus {
   .navbar-brand {
     font-size: 30px;
     margin-top: 15px;
+    flex-direction: column;
   }
 }
 
@@ -550,4 +553,14 @@ body{
   .footer_section p { 
       font-size: 13px;
   }
+}
+
+#agregar_evento{
+  padding: .8em;
+  font-size: 18px;
+  border: none;
+  background: #232434;
+  color: #eeee;
+  border-radius: 10px;
+  margin-left: 7em;
 }
