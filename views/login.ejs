@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BOOKPADELTECH</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="login.css">
 <body>
     <div class="container">
         <input type="checkbox" id="flip">
@@ -22,20 +22,22 @@
                     <form action="/login" method="post">
                         <div class="input-boxes">
                             <div class="input-box">
-                                <i class="fas fa-envelope"></i>
                                 <% if (error == "mail" || error == "both"){ %>
-                                    <input style="border: 1px solid red;" name="correo_electronico" type="text" placeholder="CORREO ELECTRÓNICO" required>
-                                <% } else {%>
-                                    <input name="correo_electronico" type="email" placeholder="CORREO ELÉCTRONICO" required>
+                                    <i style="color: red;" class="fas fa-envelope"></i>
+                                    <% } else {%>
+                                    <i class="fas fa-envelope"></i>
                                 <% } %>
+                                    <input name="correo_electronico" type="text" placeholder="CORREO ELECTRÓNICO" required>
                             </div>
                             <div class="input-box">
                                 <i class="fas fa-lock"></i>
-                                <% if(error == "passwd" || error == "both"){ %>
-                                    <input style="border: 1px solid red;" name="contrasenya" type="password" placeholder="CONTRASEÑA" required>
+                                <% if(error == "passwd" || error == "both" || error == "mail"){ %>
+                                    <i style="color: red" class="fas fa-lock"></i>
+
                                 <% } else {%>
-                                    <input name="contrasenya" type="password" placeholder="CONTRASEÑA" required>
+                                    <i class="fas fa-lock"></i>
                                 <% } %>
+                                    <input name="contrasenya" type="password" placeholder="CONTRASEÑA" required>
                             </div>
                             <h5><%= error_message %></h5>
                             <div class="button input-box">
@@ -59,7 +61,7 @@
                             </div>
                             <div class="input-box">
                                 <i class="fas fa-phone-alt"></i>
-                                <input name="telefono" type="text" placeholder="TELÉFONO" required>
+                                <input name="telefono" type="text" placeholder="TELÉFONO" maxlength="9" required>
                             </div>
                             <div class="input-box">
                                 <i class="fas fa-user-ninja"></i>
@@ -67,7 +69,20 @@
                             </div>
                             <div class="input-box">
                                 <i class="fas fa-eye"></i>
-                                <input name="nivel_de_padel" type="text" placeholder="NIVEL DE PÁDEL" required>
+
+                                <select name="nivel_de_padel" id="nivel_padel">
+                                    <option value="null" selected>NIVEL DE PADEL</option>
+                                    <option value="2,75">2,75</option>
+                                    <option value="3,00">3,00</option>
+                                    <option value="3,25">3,25</option>
+                                    <option value="3,50">3,50</option>
+                                    <option value="3,75">3,75</option>
+                                    <option value="4,00">4,00</option>
+                                    <option value="4,25">4,25</option>
+                                    <option value="4,50">4,50</option>
+                                    <option value="4,75">4,75</option>
+                                    <option value="5,00">5,00</option>
+                                </select>
                             </div>
                             <div class="input-box">
                                 <i class="fas fa-crosshairs"></i>
@@ -81,10 +96,13 @@
                                 <i class="fas fa-lock"></i>
                                 <input name="contrasenya" type="password" placeholder="CONTRASEÑA" required>
                             </div>
-                            <select name="rango" id="rango">
-                                <option value="participante">PARTICIPANTE</option>
-                                <option value="administrador">ADMINISTRADOR</option>
-                            </select>
+                            <div class="input-box">
+                                <i class="fa-solid fa-gear"></i>
+                                <select name="rango" id="rango">
+                                    <option value="participante">PARTICIPANTE</option>
+                                    <option value="administrador">ADMINISTRADOR</option>
+                                </select>
+                            </div>
                             <input style="border: 1px solid yellow;visibility: hidden;" name="clave_seguridad" type="password" placeholder="CLAVE DE SEGURIDAD">
                             <div class="button input-box">
                                 <input type="submit" value="CREAR PERFIL">

@@ -1,243 +1,125 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BOOKPADELTECH</title>
-    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.1.3/assets/owl.carousel.min.css">
-    <link rel="stylesheet" type="text/css" href="bootstrap.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css?family=Dosis:400,500|Poppins:400,600,700&display=swap" rel="stylesheet">
-    <link href="principal.css" rel="stylesheet">
-    <link href="responsive.css" rel="stylesheet">
-    <title>PRINCIPAL</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BOOKPADELTECH</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css?family=Dosis:400,500|Poppins:400,600,700&display=swap" rel="stylesheet">
+  <link href="principal.css" rel="stylesheet">
+  <link href="responsive.css" rel="stylesheet">
+  <title>PRINCIPAL</title>
 </head>
 <body>
-    <div class="hero_area">
-        <header class="header_section">
-          <div class="container-fluid">
-            <nav class="navbar navbar-expand-lg custom_nav-container">
-              <section class="navbar-brand" href="principal.ejs">
-                <a href="/principal">BOOKPADEL TECH</a>
-                <% if (user) { %>
-                    <div id="user">
-                        <div>
-                            <h2> Bienvenido, <%= user.NOMBRE + " " + user.APELLIDOS %></h2>
-                            <a href="/logout">
-                                <i class="fa-solid fa-arrow-right-from-bracket"></i>
-                            </a>
-                            <% if(user.RANGO == "administrador") {%>
-                                <a href="/eventos">
-                                    <button id="agregar_evento">Agregar Evento</button>
-                                </a>
-                            <% } %>
-                        </div>
-                    </div>
-                <% } else { %>
-                    <a href="/">
-                        <button>Acceder</button>
-                    </a>
-                <% } %>
-            </a>
-            <div class="navbar-collapse" id="">
-                <div class="custom_menu-btn">
-                  <button onclick="openNav()">
-                    <span class="s-1">
-                    </span>
-                    <span class="s-2">
-                    </span>
-                    <span class="s-3">
-                    </span>
-                  </button>
-                </div>
-                <div id="myNav" class="overlay">
-                    <div class="overlay-content">
-                    <a href="index.html">PRINCIPAL</a>
-                    <a href="team.html">DIRECCIÓN EJECUTIVA</a>
-                    <a href="portfolio.html">PORTFOLIO</a>
-                    <a href="contact.html">CONTACTO</a>
-                </div>
-            </div>
-        </div>
+  <header class="header">
+    <nav>
+      <div class="logo">
+        <a href="/principal">BOOKPADEL.<span>TECH</span></a>
+      </div>
+      <input type="checkbox" id="menu-toggle">
+      <label for="menu-toggle" class="menu-icon">&#9776;</label>
+      <ul class="menu">
+        <li><a href="#">PÁGINA PRINCIPAL</a></li>
+        <% if( user && user.RANGO == "administrador") {%>
+              <li><a href="/eventos">AGREGAR EVENTO</a></li>
+        <% } %>
+        <li><a href="#">MIS INSCRIPCIONES</a></li>
+        <% if ( !user ) {%>
+          <li><a href="/login">INICIAR SESIÓN</a></li>
+        <% } else { %>
+          <li id="username"><%= user.NOMBRE.toUpperCase() + " " + user.APELLIDOS.toUpperCase() %></li>
+          <a href="/logout">
+            <i class="fa-solid fa-arrow-right-from-bracket"></i>
+          </a>
+        <% } %>
+      </ul>
     </nav>
-</div>
-</header>
-</div>
-<section class="about_section layout_padding">
+  </header>
+
+  <section class="about_section layout_padding">
     <div class="container">
         <h2>PROXIMOS TORNEOS</h2>
     </div>
     <div class="container">
     <div class="about_card-container">
-<% for (let i = 0; i < eventos.length; i++){ %>
-            <div class="about_card">
-                <div class="about-detail">
-                <h1 class="fecha_torneo"><%= eventos[i].FECHA %></h1>
-                <h4><%= eventos[i].NOMBRE %></h4>
-                <div class="about_img-box">
-                    <img src="/get_img/11" id="miImagen" alt="">
-                    <a href="/inscribirse/?id=<%=eventos[i].ID%>" class="about_btn">
-                    INSCRIBIRSE
-                    </a>
-                </div>
-                </div>
-            </div>
-<% } %>
-        </div>
+      <% for (let i = 0; i < eventos.length; i++){ %>
+        <div class="about_card">
+          <div class="about-detail">
+                      <h1 class="fecha_torneo"><%= eventos[i].FECHA %></h1>
+                      <h4><%= eventos[i].NOMBRE %></h4>
+                      <div class="about_img-box">
+                          <img src="/get_img/11" id="miImagen" alt="">
+                          <a href="/inscribirse/?id=<%=eventos[i].ID%>" class="about_btn">INSCRIBIRSE</a>
+                      </div>
+                      </div>
+                  </div>
+      <% } %>
+    </div>
     </div>
 </section>
 
-<section class="team_section layout_padding">
-    <div class="container">
-        <h2>
-            JUNTA DIRECTIVA
-        </h2>
-        <p>It is a long established fact that a reader will be distracted by the readable</p>
-    </div>
-    <div class="container">
-        <div class="team_card-container layout_padding2">
-            <div class="team_card">
-                <div class="team_img-box">
-                    <img src="imagenes/IMG_1486-modified.png" alt="">
-                </div>
-                <div class="team_detail-box">
-                    <h5>JAVIER MÁÑEZ</h5>
-                    <p>CEO - DISEÑADOR</p>
-                    <div class="team_follow">
-                        <div class="team_social">
-                            <div>
-                                <a href=""><i class="fa-brands fa-facebook-f fa-2xl"></i></a>
-                            </div>
-                            <div>
-                                <a href=""><i class="fa-brands fa-twitter fa-2xl"></i></a>
-                            </div>
-                            <div>
-                                <a href=""><i class="fa-brands fa-linkedin fa-2xl"></i></a>
-                            </div>
-                            <div>
-                                <a href=""><i class="fa-brands fa-instagram fa-2xl"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="team_card">
-                <div class="team_img-box">
-                    <img src="imagenes/Captura de pantalla 2023-11-28 a las 16.47.24-modified.png">
-                </div>
-                <div class="team_detail-box">
-                    <h5>JAIME CAMPOS</h5>
-                    <p>CEO - FINANZAS</p>
-                <div class="team_follow">
-                    <div class="team_social">
-                        <div>
-                            <a href=""><i class="fa-brands fa-facebook-f fa-2xl"></i></a>
-                        </div>
-                        <div>
-                            <a href=""><i class="fa-brands fa-twitter fa-2xl"></i></a>
-                        </div>
-                        <div>
-                            <a href=""><i class="fa-brands fa-linkedin fa-2xl"></i></a>
-                        </div>
-                        <div>
-                            <a href=""><i class="fa-brands fa-instagram fa-2xl"></i></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="team_card">
-            <div class="team_img-box">
-                <img src="imagenes/Captura de pantalla 2023-11-28 a las 16.51.19-modified.png" alt="">
-            </div>
-            <div class="team_detail-box">
-                <h5>HENRY VALDIVIA</h5>
-                <p>CEO - VENTAS</p>
-            <div class="team_follow">
-                <div class="team_social">
-                    <div>
-                        <a href=""><i class="fa-brands fa-facebook-f fa-2xl"></i></a>
-                    </div>
-                    <div>
-                        <a href=""><i class="fa-brands fa-twitter fa-2xl"></i></a>
-                    </div>
-                    <div>
-                        <a href=""><i class="fa-brands fa-linkedin fa-2xl"></i></a>
-                    </div>
-                        <div>
-                            <a href=""><i class="fa-brands fa-instagram fa-2xl"></i></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-    <div id="contact" class="contact-area section-padding">
-        <div class="container">										
-          <div class="section-title text-center">
-            <h1>CONTÁCTANOS</h1>
-          </div>					
-          <div class="row">
-            <div class="col-lg-7">	
-              <div class="contact">
-                <form class="form" name="enq" method="post" action="contact.php" onsubmit="return validation();">
-                  <div class="row">
-                    <div class="form-group col-md-6">
-                      <input type="text" name="name" class="form-control" placeholder="NOMBRE & APELLIDOS" required="required">
-                    </div>
-                    <div class="form-group col-md-6">
-                      <input type="email" name="email" class="form-control" placeholder="CORREO ELECTRÓNICO" required="required">
-                    </div>
-                    <div class="form-group col-md-12">
-                      <input type="text" name="subject" class="form-control" placeholder="MOTIVO" required="required">
-                    </div>
-                    <div class="form-group col-md-12">
-                      <textarea rows="6" name="message" class="form-control" placeholder="TU MENSAJE ..." required="required"></textarea>
-                    </div>
-                    <div class="col-md-12 text-center">
-                      <button type="submit" value="Send message" name="submit" id="submitButton" class="btn btn-contact-bg" title="Submit Your Message!">Send Message</button>
-                    </div>
-                  </div>
-                </form>
+<div id="contact" class="contact-area section-padding">
+  <div class="container">										
+    <div class="section-title text-center">
+      <h1>CONTÁCTANOS</h1>
+    </div>					
+    <div class="row">
+      <div class="col-lg-7">	
+        <div class="contact">
+          <form class="form" name="enq" method="post" action="contact.php" onsubmit="return validation();">
+            <div class="row">
+              <div class="form-group col-md-6">
+                <input type="text" name="name" class="form-control" placeholder="NOMBRE & APELLIDOS" required="required">
+              </div>
+              <div class="form-group col-md-6">
+                <input type="email" name="email" class="form-control" placeholder="CORREO ELECTRÓNICO" required="required">
+              </div>
+              <div class="form-group col-md-12">
+                <input type="text" name="subject" class="form-control" placeholder="MOTIVO" required="required">
+              </div>
+              <div class="form-group col-md-12">
+                <textarea rows="6" name="message" class="form-control" placeholder="TU MENSAJE ..." required="required"></textarea>
+              </div>
+              <div class="col-md-12 text-center">
+                <button type="submit" value="Send message" name="submit" id="submitButton" class="btn btn-contact-bg" title="Submit Your Message!">Send Message</button>
               </div>
             </div>
-            <div class="contenedor_emoticonos">
-                <div class="single_address">
-                    <i class="fa fa-map-marker"></i>
-                    <h4>DIRECCIÓN</h4>
-                    <p>AVDA ARAGÓN 25, 46010</p>
-                </div>
-                <div class="single_address">
-                    <i class="fa fa-envelope"></i>
-                    <h4>CORREO ELECTRONICO</h4>
-                    <p>BOOKPADELTECH@HOTMAIL.COM</p>
-                </div>
-                <div class="single_address">
-                    <i class="fa fa-phone"></i>
-                    <h4>TELÉFONO</h4>
-                    <p>(+34) 620 898 879</p>
-                </div>
-                <div class="single_address">
-                    <i class="fa fa-clock-o"></i>
-                    <h4>HORARIO</h4>
-                    <p>LUNES - VIERNES: 08:00 - 16:00. <br>SÁBADOS: 10:00 - 14:00</p>
-                </div>					
-            </div>
+          </form>
         </div>
-    </div>
+      </div>
+      <div class="contenedor_emoticonos">
+          <div class="single_address">
+              <i class="fa fa-map-marker"></i>
+              <h4>DIRECCIÓN</h4>
+              <p>AVDA ARAGÓN 25, 46010</p>
+          </div>
+          <div class="single_address">
+              <i class="fa fa-envelope"></i>
+              <h4>CORREO ELECTRONICO</h4>
+              <p>BOOKPADELTECH@HOTMAIL.COM</p>
+          </div>
+          <div class="single_address">
+              <i class="fa fa-phone"></i>
+              <h4>TELÉFONO</h4>
+              <p>(+34) 620 898 879</p>
+          </div>
+          <div class="single_address">
+              <i class="fa fa-clock-o"></i>
+              <h4>HORARIO</h4>
+              <p>LUNES - VIERNES: 08:00 - 16:00. <br>SÁBADOS: 10:00 - 14:00</p>
+          </div>					
+      </div>
+  </div>
 </div>
-<section class="container-fluid footer_section">
-    <p>
+</div>
+
+  <footer>
+    <div class="footer_container">
+      <p>
         &copy;
         2024 TODOS LOS DERECHOS RESERVADOS -- BOOKPADEL TECH
-    </p>
-    </section>
-    <script>
-        function openNav() {
-            document.getElementById("myNav").classList.toggle("menu_width")
-            document.querySelector(".custom_menu-btn").classList.toggle("menu_btn-style")
-        }
-    </script>
+      </p>
+    </div>
+  </footer>
 </body>
 </html>

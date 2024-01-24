@@ -5,11 +5,11 @@ const {secreto} = require("../helpers/bcrypt")
 
 const passport = require("passport")
 
-main_router.get("/",(req, res) => {
+main_router.get("/login",(req, res) => {
     res.render("login.ejs",{"error":false,"error_message":null})
 })
 
-main_router.get("/principal", async (req, res) => {
+main_router.get("/", async (req, res) => {
     const [eventos] = await pool.query ("SELECT * FROM Eventos")
 
 
@@ -85,7 +85,7 @@ main_router.post("/register", async (req, res,next)=> {
     const result = await pool.query("INSERT INTO Usuarios SET ?", [user])
 
     await passport.authenticate("local.signin",{
-        successRedirect:"/principal",
+        successRedirect:"/",
         failureFlash:true}
       )
     (req,res,next)
@@ -101,7 +101,7 @@ main_router.post("/login", async(req, res, next) => {
             console.log("¡¡ LA CONTRASEÑA COINCIDE !!")
 
             await passport.authenticate("local.signin",{
-              successRedirect:"/principal",
+              successRedirect:"/",
               failureFlash:true}
             )
             (req,res,next)
@@ -181,7 +181,7 @@ main_router.post("/eventos", async (req, res) => {
 
     const result = await pool.query("INSERT INTO Eventos SET ?", [evento])
 
-    res.redirect("/principal")
+    res.redirect("/")
 })
 
 main_router.get("/logout", async(req, res) => {
@@ -190,7 +190,7 @@ main_router.get("/logout", async(req, res) => {
           return next(err)
         }
       })
-    res.redirect("/principal")
+    res.redirect("/")
 })
 
 main_router.get("/inscribirse", (req, res) => {
@@ -206,7 +206,7 @@ main_router.get("/inscribirse", (req, res) => {
 
         res.render("inscribirse.ejs",{id_evento})
     }else[
-        res.redirect("/")
+        res.redirect("/login")
     ]
 
 })
