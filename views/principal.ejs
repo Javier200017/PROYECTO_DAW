@@ -3,18 +3,17 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>BOOKPADELTECH</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
   <link href="https://fonts.googleapis.com/css?family=Dosis:400,500|Poppins:400,600,700&display=swap" rel="stylesheet">
   <link href="principal.css" rel="stylesheet">
   <link href="responsive.css" rel="stylesheet">
-  <title>PRINCIPAL</title>
+  <title>PÁGINA PRINCIPAL</title>
 </head>
 <body>
   <header class="header">
     <nav>
       <div class="logo">
-        <a href="/principal">BOOKPADEL.<span>TECH</span></a>
+        <a href="/principal">BOOKPADEL<span>TECH</span></a>
       </div>
       <input type="checkbox" id="menu-toggle">
       <label for="menu-toggle" class="menu-icon">&#9776;</label>
@@ -35,83 +34,30 @@
       </ul>
     </nav>
   </header>
-
-  <section class="about_section layout_padding">
-    <div class="container">
-        <h2>PROXIMOS TORNEOS</h2>
-    </div>
-    <div class="container">
-    <div class="about_card-container">
-      <% for (let i = 0; i < eventos.length; i++){ %>
-        <div class="about_card">
-          <div class="about-detail">
-                      <h1 class="fecha_torneo"><%= eventos[i].FECHA %></h1>
-                      <h4><%= eventos[i].NOMBRE %></h4>
-                      <div class="about_img-box">
-                          <img src="/get_img/11" id="miImagen" alt="">
-                          <a href="/inscribirse/?id=<%=eventos[i].ID%>" class="about_btn">INSCRIBIRSE</a>
-                      </div>
-                      </div>
-                  </div>
-      <% } %>
-    </div>
-    </div>
-</section>
-
-<div id="contact" class="contact-area section-padding">
-  <div class="container">										
-    <div class="section-title text-center">
-      <h1>CONTÁCTANOS</h1>
-    </div>					
-    <div class="row">
-      <div class="col-lg-7">	
-        <div class="contact">
-          <form class="form" name="enq" method="post" action="contact.php" onsubmit="return validation();">
-            <div class="row">
-              <div class="form-group col-md-6">
-                <input type="text" name="name" class="form-control" placeholder="NOMBRE & APELLIDOS" required="required">
-              </div>
-              <div class="form-group col-md-6">
-                <input type="email" name="email" class="form-control" placeholder="CORREO ELECTRÓNICO" required="required">
-              </div>
-              <div class="form-group col-md-12">
-                <input type="text" name="subject" class="form-control" placeholder="MOTIVO" required="required">
-              </div>
-              <div class="form-group col-md-12">
-                <textarea rows="6" name="message" class="form-control" placeholder="TU MENSAJE ..." required="required"></textarea>
-              </div>
-              <div class="col-md-12 text-center">
-                <button type="submit" value="Send message" name="submit" id="submitButton" class="btn btn-contact-bg" title="Submit Your Message!">Send Message</button>
-              </div>
-            </div>
-          </form>
+  
+  <div class="container">
+    <% for (let i = 0; i < eventos.length; i++){ %>
+      <div class="card">
+        <img src="https://www.2playbook.com/uploads/s1/28/48/33/credit-premier-padel-29.jpeg"/>
+        <div class="fecha_precio">
+          <h1><%= eventos[i].FECHA %> <br> <%= eventos[i].FECHA %></h1>
+          <h1 class="precio"><%= eventos[i].PRECIO + " €" %> <br> <%= eventos[i].DIRECCION %></h1>
         </div>
+        <h3><%= eventos[i].NOMBRE %></h3>
+        <div class="card_categorias">
+          <p>1ª CATEGORIA -- HASTA 4,50</p>
+          <p>2ª CATEGORIA -- HASTA 4,00</p>
+          <p>3ª CATEGORIA -- HASTA 3,50</p>
+          <p>4ª CATEGORIA -- HASTA 3,00</p>
+        </div>
+        <div class="tel_cartel">
+          <p><%="ORGANIZADOR - " + eventos[i].TELEFONO_ORGANIZADOR %></p>
+          <p>VER CARTEL</p>
+        </div>
+        <button onclick="location.href='/inscribirse/?id=<%=eventos[i].ID%>' "style="--clr:#39FF14"><span>INSCRIBIRSE</span><i></i></button>
       </div>
-      <div class="contenedor_emoticonos">
-          <div class="single_address">
-              <i class="fa fa-map-marker"></i>
-              <h4>DIRECCIÓN</h4>
-              <p>AVDA ARAGÓN 25, 46010</p>
-          </div>
-          <div class="single_address">
-              <i class="fa fa-envelope"></i>
-              <h4>CORREO ELECTRONICO</h4>
-              <p>BOOKPADELTECH@HOTMAIL.COM</p>
-          </div>
-          <div class="single_address">
-              <i class="fa fa-phone"></i>
-              <h4>TELÉFONO</h4>
-              <p>(+34) 620 898 879</p>
-          </div>
-          <div class="single_address">
-              <i class="fa fa-clock-o"></i>
-              <h4>HORARIO</h4>
-              <p>LUNES - VIERNES: 08:00 - 16:00. <br>SÁBADOS: 10:00 - 14:00</p>
-          </div>					
-      </div>
+    <% } %>
   </div>
-</div>
-</div>
 
   <footer>
     <div class="footer_container">

@@ -6,6 +6,15 @@ const {secreto} = require("../helpers/bcrypt")
 const passport = require("passport")
 
 main_router.get("/login",(req, res) => {
+
+    console.log(req.query.from)
+
+    if (req.query.from == "inscription"){
+        null
+    }else[
+        null
+    ]
+
     res.render("login.ejs",{"error":false,"error_message":null})
 })
 
@@ -228,7 +237,7 @@ main_router.post("/inscripcion", async (req, res) => {
 
     await pool.query ("INSERT INTO Inscripciones SET ?", [inscripccion])
 
-    res.redirect("/principal")
+    res.redirect("/")
 
 
 })
