@@ -119,7 +119,6 @@ nav {
   margin: 1rem;
 }
 
-
 .card {
   height: 300px;
   position: relative;
@@ -182,6 +181,12 @@ h3 {
   display: flex;
   justify-content: space-evenly;
   text-transform: uppercase;
+}
+
+.tel_cartel a {
+  color: white;
+  text-decoration: underline;
+  text-underline-offset: 4px;
 }
 
 img {
@@ -298,7 +303,6 @@ button:hover i::after {
   }
 }
 
-
 /* FOOTER */
 
 footer{
@@ -322,6 +326,6 @@ footer{
 
 @media only screen and (max-width: 768px) {
   .footer_container{
-    font-size: 14px;
+    font-size: 13px;
   }
 }
