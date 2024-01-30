@@ -155,7 +155,7 @@ nav {
 
 h3 {
   color: #9be604;
-  font-size: 21px;
+  font-size: 25px;
   text-align: center;
   display: flex;
   justify-content: center;
@@ -165,7 +165,9 @@ h3 {
 
 .card_categorias {
   color: white;
-  align-self: flex-start;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
   position: relative;
   margin: 0px 0 70px 20px;
 }
