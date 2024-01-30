@@ -40,18 +40,33 @@
       <div class="card">
         <img src="https://www.2playbook.com/uploads/s1/28/48/33/credit-premier-padel-29.jpeg"/>
         <div class="fecha_precio">
-          <h1><%= eventos[i].FECHA %> <br> <%= eventos[i].FECHA %></h1>
+          <h1><%= eventos[i].FECHA.split("---")[0] %> <br> <%= eventos[i].FECHA.split("---")[1] %> - <%= eventos[i].FECHA.split("---")[2] %></h1>
           <h1 class="precio"><%= eventos[i].PRECIO + " €" %> <br> <%= eventos[i].DIRECCION %></h1>
         </div>
         <h3><%= eventos[i].NOMBRE %></h3>
         <div class="card_categorias">
-          <p>1ª CATEGORIA -- HASTA 4,50</p>
-          <p>2ª CATEGORIA -- HASTA 4,00</p>
-          <p>3ª CATEGORIA -- HASTA 3,50</p>
-          <p>4ª CATEGORIA -- HASTA 3,00</p>
-          <p>5ª CATEGORIA -- HASTA 2,75</p>
-          <p>6ª CATEGORIA -- HASTA 2,50</p>
-          <p>7ª CATEGORIA -- HASTA 2,25</p>
+          <p>1ª CATEGORIA -- HASTA <%= eventos[i].CATEGORIA_1 %></p>
+          <% if (eventos[i].CATEGORIA_2 > 0) { %>
+            <p>2ª CATEGORIA -- HASTA <%= eventos[i].CATEGORIA_2 %></p>
+          <% } %>
+          <% if (eventos[i].CATEGORIA_3 > 0) { %>
+            <p>3ª CATEGORIA -- HASTA <%= eventos[i].CATEGORIA_3 %></p>
+          <% } %>
+          <% if (eventos[i].CATEGORIA_4 > 0) { %>
+            <p>4ª CATEGORIA -- HASTA <%= eventos[i].CATEGORIA_4 %></p>
+          <% } %>
+          <% if (eventos[i].CATEGORIA_5 > 0) { %>
+            <p>5ª CATEGORIA -- HASTA <%= eventos[i].CATEGORIA_5 %></p>
+          <% } %>
+          <% if (eventos[i].CATEGORIA_6 > 0) { %>
+            <p>6ª CATEGORIA -- HASTA <%= eventos[i].CATEGORIA_6 %></p>
+          <% } %>
+          <% if (eventos[i].CATEGORIA_7 > 0) { %>
+            <p>7ª CATEGORIA -- HASTA <%= eventos[i].CATEGORIA_7 %></p>
+          <% } %>
+          <% if (eventos[i].CATEGORIA_FEMENINA > 0) { %>
+            <p>CATEGORIA FEMENINA -- HASTA <%= eventos[i].CATEGORIA_FEMENINA %></p>
+          <% } %>
         </div>
         <div class="tel_cartel">
           <p><%="ORGANIZADOR - " + eventos[i].TELEFONO_ORGANIZADOR %></p>

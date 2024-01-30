@@ -15,10 +15,7 @@ main_router.get("/login",(req, res) => {
 })
 
 main_router.get("/", async (req, res) => {
-    const [eventos] = await pool.query ("SELECT * FROM Eventos")
-    for (let i =0;i<eventos.length;i++){
-        eventos[i]["FECHA"] = eventos[i]["FECHA"].split("---")[0]
-    }
+    const [eventos] = await pool.query ("SELECT * FROM Eventos order by FECHA_NUMERICA ASC")
     res.render("principal.ejs", {eventos})
 })
 
@@ -109,11 +106,6 @@ main_router.get("/eventos", async(req, res) => {
 main_router.post("/eventos", async (req, res) => {
     console.log(req.body)
     console.log("fecha => ",req.body.fecha)
-    let participantes_maximos = req.body.participantes_maximos ? req.body.participantes_maximos : null
-    let premio = req.body.premio ? req.body.premio : null
-    let instagram = req.body.instagram ? req.body.instagram : null
-    let link_fotos = req.body.link_fotos ? req.body.link_fotos : null
-    let reglamento = req.body.reglamento ? req.body.reglamento : null
     var fecha = new Date(req.body.fecha);
     var dia = fecha.getDate();
     var mes = fecha.getMonth();
@@ -131,15 +123,17 @@ main_router.post("/eventos", async (req, res) => {
         PRECIO: req.body.precio,
         TELEFONO_ORGANIZADOR: req.body.telefono_organizador,
         FECHA: nuevaFecha + " --- " + req.body.hora_inicio + "---" + req.body.hora_fin,
-        PARTICIPANTES_MAXIMO: participantes_maximos,
-        CATEGORIA_MIN: req.body.categoria_min,
-        CATEGORIA_MAX: req.body.categoria_max,
+        FECHA_NUMERICA: req.body.fecha,
+        CATEGORIA_1: parseFloat( req.body.categoria_1),
+        CATEGORIA_2: parseFloat( req.body.categoria_2),
+        CATEGORIA_3: parseFloat( req.body.categoria_3),
+        CATEGORIA_4: parseFloat( req.body.categoria_4),
+        CATEGORIA_5: parseFloat( req.body.categoria_5),
+        CATEGORIA_6: parseFloat( req.body.categoria_6),
+        CATEGORIA_7: parseFloat( req.body.categoria_7),
+        CATEGORIA_FEMENINA: parseFloat( req.body.categoria_femenina),
         DIRECCION: req.body.direccion,
-        INSTAGRAM: instagram,
-        PREMIO: premio,
         PORTADA: binaryImage,
-        LINK_FOTOS: link_fotos,
-        REGLAMENTO: reglamento
     }
     console.log(evento)
     const result = await pool.query("INSERT INTO Eventos SET ?", [evento])
