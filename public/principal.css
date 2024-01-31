@@ -31,6 +31,12 @@ nav {
   color: #fff;
 }
 
+@media only screen and (max-width: 768px) {
+  .logo a {
+    font-size: 28px;
+  }
+}
+
 .logo a .span1 {
   color: #00dcff;
 }
