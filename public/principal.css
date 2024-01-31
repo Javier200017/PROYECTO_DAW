@@ -31,7 +31,11 @@ nav {
   color: #fff;
 }
 
-.logo a span {
+.logo a .span1 {
+  color: #00dcff;
+}
+
+.logo a .span2 {
   color: #9be604;
 }
 
