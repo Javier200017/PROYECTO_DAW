@@ -227,43 +227,46 @@ input[type=range]::-webkit-slider-runnable-track {
 }
 
 .rangos {
-    margin-left: 35px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.fila {
+    display: flex;
+    margin-bottom: 10px;
+}
+
+.mas_info2 {
+    margin-right: 20px; 
+}
+
+select {
+    width: 80px; 
+    border: #00DCFF solid;
+    display: flex;
+    justify-content: center;
+}
+
+label span {
+    color: #9be604;
+    font-size: 8px;
 }
 
 @media only screen and (max-width:768px) {
     .rangos {
-        margin-left: 8px;
-    }
-    #min {
-        margin-right: 10px;
-        width: 135px;
-    }
-    #max {
-        width: 135px;
+        display: flex;
+        flex-wrap: wrap;
     }
 }
 
-.participantes_direccion .participantes_maximos {
-    width: 100%;
-    margin-right: 10px;
-    border: #9be604 solid;
-}
-
-.participantes_direccion .direccion {
+.direccion .direccion_juego {
     width: 100%;
     border: #9be604 solid;
-
 }
 
 @media only screen and (max-width:768px) {
-    .participantes_direccion .participantes_maximos {
+    .direccion .direccion_juego {
         font-size: 12px;
-        
-        width: 145px;
-    }
-    .participantes_direccion .direccion {
-        font-size: 12px;
-        width: 145px;
     }
 }
 
@@ -273,55 +276,30 @@ input[type=range]::-webkit-slider-runnable-track {
     border: #9be604 solid;
 }
 
-.fotos_instagram .instagram {
-    width: 100%;
-    border: #9be604 solid;
-}
-
-@media only screen and (max-width:768px) {
-    .fotos_instagram .link_fotos {
-        font-size: 12px;
-        width: 140px;
-    }
-    .fotos_instagram .instagram {
-        font-size: 12px;
-        width: 140px;
-    }
-}
-
-.telefono_premio .telefono_organizador {
+.telefono .telefono_organizador {
     width: 100%;
     margin-right: 10px;
     border: #9be604 solid;
 }
 
-.telefono_premio .premio {
-    width: 100%;
-    border: #9be604 solid;
-}
-
 @media only screen and (max-width:768px) {
-    .telefono_premio .telefono_organizador {
+    .telefono .telefono_organizador {
         font-size: 12px;
-    }
-    .telefono_premio .premio {
-        font-size: 12px;
-        width: 125px;
     }
 }
 
-.reglamento_cartel {
+.cartel {
     display: flex;
     justify-content: space-evenly;
 }
 
 @media only screen and (max-width:768px) {
-    .reglamento_cartel{
+    .cartel{
         flex-direction: column;
     }
 }
 
-.reglamento_cartel .mas_info input {
+.cartel .mas_info input {
     width: 280px;
     font-size: 12px;
     text-transform: uppercase;
