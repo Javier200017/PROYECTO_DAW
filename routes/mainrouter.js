@@ -105,6 +105,7 @@ main_router.get("/eventos", async(req, res) => {
 
 main_router.post("/eventos", async (req, res) => {
     console.log(req.body)
+    console.log("valor cat 1 parseado =>",parseFloat( req.body.categoria_1 ))
     console.log("fecha => ",req.body.fecha)
     var fecha = new Date(req.body.fecha);
     var dia = fecha.getDate();
@@ -118,6 +119,7 @@ main_router.post("/eventos", async (req, res) => {
     var nuevaFecha = dia + " de " + nombreMes + " de " + año;
     const base64Image = req.body.portada;
     const binaryImage = Buffer.from(base64Image, 'base64');
+
     const evento = {
         NOMBRE: req.body.nombre,
         PRECIO: req.body.precio,

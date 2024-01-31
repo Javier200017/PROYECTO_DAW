@@ -14,6 +14,8 @@ const {pool} = require("./configuration/connection_db.js")
 
 const sesion = require("express-mysql-session")(express_session)
 
+require("./configuration/cron_delete_elements.js")
+
 require("./configuration/passport.js")
 //cookies
 app.use(cookieParser());
