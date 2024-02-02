@@ -319,13 +319,51 @@ button:hover i::after {
 
 /* FOOTER */
 
-footer{
+footer {
   background: black;
   padding: 20px;
   position: sticky;
   bottom: 0;
   width: 100%;
 }
+
+.eleccion {
+  color: #9be604;
+  display: flex;
+  justify-content: space-evenly;
+ padding-bottom: 20px;
+}
+
+.eleccion1 {
+  border: #9be604 solid;
+  padding: 10px;
+  text-align: center;
+  width: 35%;
+}
+
+.eleccion2 {
+  border: #9be604 solid;
+  padding: 10px;
+  text-align: center;
+  width: 35%;
+}
+
+.eleccion1 span{
+  text-align: center;
+  font-size: 15px;
+}
+
+.eleccion2 span{
+  text-align: center;
+  font-size: 15px;
+}
+
+.button_footer {
+  display: flex;
+  align-items: center;
+  margin-top: 30px;
+}
+
 
 .container {
   min-height: 100vh;

@@ -353,7 +353,7 @@ const mailOptions = (asunto,html_content) => {
 
   return {
     from: 'globalsmashpadel@gmail.com', 
-    to: 'javier17052000@icloud.com',
+    to: 'henryvaldivia.ro@gmail.com',
     subject: asunto,
     html:html_content
   }

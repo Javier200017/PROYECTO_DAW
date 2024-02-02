@@ -205,27 +205,7 @@ h1 {
         font-size: 12px;
     }
 }
-
-input[type='range'],
-input[type='range']::-webkit-slider-runnable-track,
-input[type='range']::-webkit-slider-thumb {
-    -webkit-appearance: none;
-}
   
-input[type=range]::-webkit-slider-thumb {
-    background-color: #9be604;
-    width: 16px;
-    height: 16px;
-    border-radius: 50%;
-    margin-top: -7px;
-    border: #9be604 solid;
-}
-  
-input[type=range]::-webkit-slider-runnable-track {
-    background-color: #00DCFF;
-    height: 3px;
-}
-
 .rangos {
     display: flex;
     flex-wrap: wrap;
@@ -248,7 +228,7 @@ select {
 }
 
 label span {
-    color: #9be604;
+    color: black;
     font-size: 8px;
 }
 
@@ -317,7 +297,7 @@ button {
     padding: 0;
     font-size: inherit;
     font-family: 'Dosis', sans-serif;
-    margin-top: 20px;
+    margin-top: 1px;
 }
    
 button.publicar {
