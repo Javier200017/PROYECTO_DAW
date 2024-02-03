@@ -341,7 +341,7 @@ footer {
 }
 
 .eleccion1 {
-  border: white solid;
+  border: #9be604 solid;
   padding: 10px;
   text-align: center;
   width: 48%;
@@ -379,7 +379,7 @@ footer {
 
 @media only screen and (max-width: 768px) {
   .eleccion h4 a {
-    font-size: 12px;
+    font-size: 10px;
   }
 }
 
