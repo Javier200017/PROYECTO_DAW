@@ -38,12 +38,10 @@ nav {
 }
 
 .logo a .span1 {
-  color: #00dcff;
-}
-
-.logo a .span2 {
   color: #9be604;
 }
+
+
 
 .menu {
   display: flex;
@@ -341,7 +339,7 @@ footer {
 }
 
 .eleccion1 {
-  border: #9be604 solid;
+  border: white solid;
   padding: 10px;
   text-align: center;
   width: 48%;
@@ -360,7 +358,7 @@ footer {
 }
 
 .eleccion2 {
-  border: #9be604 solid;
+  border: white solid;
   padding: 10px;
   text-align: center;
   width: 48%;
@@ -374,12 +372,12 @@ footer {
 
 .eleccion h4 a {
   font-size: 21px;
-  color: #9be604;
+  color: white;
 }
 
 @media only screen and (max-width: 768px) {
   .eleccion h4 a {
-    font-size: 10px;
+    font-size: 15px;
   }
 }
 
