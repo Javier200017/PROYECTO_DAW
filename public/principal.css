@@ -328,7 +328,6 @@ footer {
 }
 
 .eleccion {
-  color: #9be604;
   display: flex;
   justify-content: space-evenly;
   padding-bottom: 15px;
@@ -337,7 +336,7 @@ footer {
 @media only screen and (max-width: 768px) {
   .eleccion {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
   }
 }
 
@@ -356,7 +355,7 @@ footer {
 @media only screen and (max-width: 768px) {
   .eleccion1 {
     width: 100%;
-    margin-right: 20px;
+    margin-bottom: 5px;
   }
 }
 
@@ -373,43 +372,15 @@ footer {
   }
 }
 
-.eleccion h4 {
+.eleccion h4 a {
   font-size: 21px;
+  color: #9be604;
 }
 
 @media only screen and (max-width: 768px) {
-  .eleccion h4 {
-    font-size: 11.5px;
+  .eleccion h4 a {
+    font-size: 12px;
   }
-}
-
-.eleccion1 span{
-  text-align: center;
-  font-size: 11px;
-}
-
-@media only screen and (max-width: 768px) {
-  .eleccion1 span {
-    font-size: 6px;
-  }
-}
-
-.eleccion2 span{
-  text-align: center;
-  font-size: 11px;
-}
-
-@media only screen and (max-width: 768px) {
-  .eleccion2 span {
-    font-size: 6px;
-    margin-left: -25px;
-  }
-}
-
-.button_footer {
-  display: flex;
-  align-items: center;
-  margin-top: 30px;
 }
 
 .container {
