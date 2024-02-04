@@ -31,6 +31,7 @@ body{
     display: flex;
     flex-direction: column;
     justify-content: center;
+    
 }
 
 @media only screen and (max-width:768px) {
@@ -206,9 +207,94 @@ h1 {
     }
 }
   
-.rangos {
+
+@media only screen and (max-width:768px) {
+    .categorias {
+        flex-direction: column;
+    }
+    
+}
+
+.categorias .categoria_masculina {
     display: flex;
-    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin: 5px;
+}
+
+.categorias .categoria_masculina h1 {
+    font-size: 15px;
+}
+
+.categorias .categoria_masculina .categoria_1_masculina {
+    margin: 1px;
+}
+
+
+.categorias .categoria_masculina .categoria_1_masculina label{
+    color: #9be604;
+    font-size: 12px;
+    margin-right: 5px;
+    
+
+}
+
+.categorias .categoria_mixta {
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    
+    margin: 5px;
+}
+
+.categorias .categoria_mixta h1 {
+    font-size: 15px;
+}
+
+.categorias .categoria_mixta .categoria_1_masculina {
+    margin: 1px;
+}
+
+
+.categorias .categoria_mixta .categoria_1_masculina label{
+    color: #9be604;
+    font-size: 12px;
+    margin-right: 5px;
+    
+
+}
+
+.categorias .categoria_femenina {
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    
+    margin: 5px;
+}
+
+.categorias .categoria_femenina h1 {
+    font-size: 15px;
+}
+
+.categorias .categoria_femenina .categoria_1_masculina {
+    margin: 1px;
+}
+
+
+.categorias .categoria_femenina .categoria_1_masculina label{
+    color: #9be604;
+    font-size: 12px;
+    margin-right: 5px;
+    
+
 }
 
 .fila {
@@ -220,24 +306,9 @@ h1 {
     margin-right: 20px; 
 }
 
-select {
-    width: 80px; 
-    border: #00DCFF solid;
-    display: flex;
-    justify-content: center;
-}
 
-label span {
-    color: black;
-    font-size: 8px;
-}
 
-@media only screen and (max-width:768px) {
-    .rangos {
-        display: flex;
-        flex-wrap: wrap;
-    }
-}
+
 
 .direccion .direccion_juego {
     width: 100%;
@@ -246,24 +317,6 @@ label span {
 
 @media only screen and (max-width:768px) {
     .direccion .direccion_juego {
-        font-size: 12px;
-    }
-}
-
-.fotos_instagram .link_fotos {
-    width: 100%;
-    margin-right: 10px;
-    border: #9be604 solid;
-}
-
-.telefono .telefono_organizador {
-    width: 100%;
-    margin-right: 10px;
-    border: #9be604 solid;
-}
-
-@media only screen and (max-width:768px) {
-    .telefono .telefono_organizador {
         font-size: 12px;
     }
 }
