@@ -241,6 +241,10 @@ h1 {
 
 }
 
+.categorias .categoria_masculina .categoria_1_masculina span {
+    margin: 3px;
+}
+
 .categorias .categoria_mixta {
     
     display: flex;
@@ -269,6 +273,10 @@ h1 {
 
 }
 
+.categorias .categoria_mixta .categoria_1_masculina span {
+    margin: 3px;
+}
+
 .categorias .categoria_femenina {
     
     display: flex;
@@ -295,6 +303,10 @@ h1 {
     margin-right: 5px;
     
 
+}
+
+.categorias .categoria_femenina .categoria_1_masculina span {
+    margin: 3px;
 }
 
 .fila {
