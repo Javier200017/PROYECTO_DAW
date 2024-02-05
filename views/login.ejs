@@ -99,10 +99,25 @@
                             <div class="input-box">
                                 <i class="fa-solid fa-gear"></i>
                                 <select name="rango" id="rango">
-                                    <option value="participante">PARTICIPANTE</option>
-                                    <option value="administrador">ORGANIZADOR</option>
+                                    <% if (from == "p"){ %>
+
+                                        <option value="participante">PARTICIPANTE</option>
+
+                                    <% }else if (from == "o"){ %>
+
+                                        <option value="administrador">ORGANIZADOR</option>
+
+                                    <% }else { %>
+
+                                        <option value="participante">PARTICIPANTE</option>
+                                        <option value="administrador">ORGANIZADOR</option>
+
+                                    <% } %>
                                 </select>
                             </div>
+                            <% if (from == "o"){ %>
+                                <input style="border: 1px solid yellow;" name="clave_seguridad" type="password" placeholder="CLAVE DE SEGURIDAD">    
+                            <% } %>
                             <input style="border: 1px solid yellow;visibility: hidden;" name="clave_seguridad" type="password" placeholder="CLAVE DE SEGURIDAD">
                             <div class="button input-box">
                                 <input type="submit" value="CREAR PERFIL">

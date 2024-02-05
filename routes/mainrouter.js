@@ -5,13 +5,17 @@ const {secreto} = require("../helpers/bcrypt")
 const passport = require("passport")
 
 main_router.get("/login",(req, res) => {
-    console.log(req.query.from)
+    console.log("query strings : \n",req.query)
+
+    let from = req.query.user
+    console.log(from)
+
     if (req.query.from == "inscription"){
         null
     }else[
         null
     ]
-    res.render("login.ejs",{"error":false,"error_message":null})
+    res.render("login.ejs",{"error":false,"error_message":null,from})
 })
 
 main_router.get("/", async (req, res) => {
