@@ -63,6 +63,35 @@ h1 {
     }
 }
 
+.eleccion_juego {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.eleccion_juego .solo {
+    border: none; 
+    color: white; 
+    padding: 14px 28px; 
+    cursor: pointer; 
+    border-radius: 5px; 
+    background-color: #00DCFF;
+    margin-right: 10px;
+}
+    
+.eleccion_juego .solo:hover {background: #9be604;}
+
+.eleccion_juego .en_pareja {
+    border: none; 
+    color: white; 
+    padding: 14px 28px; 
+    cursor: pointer; 
+    border-radius: 5px; 
+    background-color: #00DCFF;
+}
+    
+.eleccion_juego .en_pareja:hover {background: #9be604;}
+    
 .container .info_jugador_1 .nombre {
     border: #9be604 solid;
 }
@@ -138,6 +167,13 @@ h1 {
     flex-direction: column;
     padding: 0 40px;
     height: 100%;   
+    margin-top: -40px;
+}
+
+@media only screen and (max-width:768px) {
+    .container form {
+        margin-top: -30px ;
+    }
 }
 
 .container form div {
