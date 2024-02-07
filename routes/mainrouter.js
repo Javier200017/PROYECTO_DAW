@@ -240,30 +240,43 @@ main_router.get("/inscribirse", async (req, res) => {
         FROM Eventos
         WHERE ID = ${id_evento};
     `);
-    
-
-        console.log(categorias)
 
         let array_categorias_empty = []
 
 
-        // for (const clave in categorias[0]){
-        //     console.log("clave = ",categorias[0][clave])
-        //     if ( categorias[0][clave] != 0 && typeof categorias[0][clave] === "number"){
+        for (const clave in categorias[0]){
+            console.log("clave = ",categorias[0][clave])
+            if ( categorias[0][clave] != 0 && typeof categorias[0][clave] === "number"){
 
-        //         console.log("categoria descubierta = > ",categorias[0][clave])
+                console.log("categoria descubierta = > ",categorias[0][clave])
 
-        //         array_categorias_empty.push({ [clave] :categorias[0][clave]})
+                if (clave.endsWith("_1")){
+                    const nextKey = clave.replace('_1', '_2');
+                    
+                    let next_value = categorias[0][nextKey]
 
-        //     }
-        // }
+                    console.log("valor actual => ",clave+ ".." +categorias[0][clave])
 
-        for (let i = 0; i < categorias.length; i += 2) {
+                    console.log("valor next => ",nextKey + ".." +next_value)
 
-            console.log()
+                    let nombre_new_cat = clave.replace(/_/g, ' ')
+                    nombre_new_cat = nombre_new_cat.replace(/\s\d+$/, '');
 
+                    let new_cat = {
+                        nombre:nombre_new_cat,
+                        valor: `( ${categorias[0][clave]} -- ${next_value} )`
+                    }
+    
+                    array_categorias_empty.push(new_cat)
+                }
+
+
+            }
         }
-        
+
+        console.log("categorias 0 ",categorias)
+
+        console.log("length",categorias[0].length)
 
         console.log(array_categorias_empty)
 
