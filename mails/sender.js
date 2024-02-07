@@ -357,7 +357,6 @@ const mailOptions = (asunto,html_content) => {
     subject: asunto,
     html:html_content
   }
-
 };
 
 

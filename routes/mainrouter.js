@@ -7,15 +7,18 @@ const passport = require("passport")
 main_router.get("/login",(req, res) => {
     console.log("query strings : \n",req.query)
 
+    let event_from_id = req.query.from
+    console.log(event_from_id)
+
     let from = req.query.user
     console.log(from)
 
     if (req.query.from == "inscription"){
         null
-    }else[
+    }else{
         null
-    ]
-    res.render("login.ejs",{"error":false,"error_message":null,from})
+    }
+    res.render("login.ejs",{"error":false,"error_message":null,from,event_from_id})
 })
 
 main_router.get("/", async (req, res) => {
@@ -76,6 +79,10 @@ main_router.post("/register", async (req, res,next)=> {
 })
 
 main_router.post("/login", async(req, res, next) => {
+
+    console.log("query strings => \n",req.query)
+    let event_from_id = req.query.event_from_id
+
     console.log(req.body)
     const [comprobacion_email] = await pool.query("SELECT * FROM Usuarios WHERE EMAIL = ?",[req.body.correo_electronico])
     if(comprobacion_email[0]){
@@ -83,8 +90,9 @@ main_router.post("/login", async(req, res, next) => {
         const comprobacion_password = await secreto.desencriptador(req.body.contrasenya,comprobacion_email[0]["CONTRASEÑA"])
         if(comprobacion_password){
             console.log("¡¡ LA CONTRASEÑA COINCIDE !!")
+
             await passport.authenticate("local.signin",{
-              successRedirect:"/",
+              successRedirect: event_from_id ? "/inscribirse?id=" + event_from_id : "/",
               failureFlash:true}
             )
             (req,res,next)
@@ -127,17 +135,44 @@ main_router.post("/eventos", async (req, res) => {
     const evento = {
         NOMBRE: req.body.nombre,
         PRECIO: req.body.precio,
-        TELEFONO_ORGANIZADOR: req.body.telefono_organizador,
         FECHA: nuevaFecha + " --- " + req.body.hora_inicio + "---" + req.body.hora_fin,
         FECHA_NUMERICA: req.body.fecha,
-        CATEGORIA_1: parseFloat( req.body.categoria_1),
-        CATEGORIA_2: parseFloat( req.body.categoria_2),
-        CATEGORIA_3: parseFloat( req.body.categoria_3),
-        CATEGORIA_4: parseFloat( req.body.categoria_4),
-        CATEGORIA_5: parseFloat( req.body.categoria_5),
-        CATEGORIA_6: parseFloat( req.body.categoria_6),
-        CATEGORIA_7: parseFloat( req.body.categoria_7),
-        CATEGORIA_FEMENINA: parseFloat( req.body.categoria_femenina),
+        CATEGORIA_MASCULINA_1_1: parseFloat (req.body.categoria_masculina_1_1),
+        CATEGORIA_MASCULINA_1_2: parseFloat (req.body.categoria_masculina_1_2),
+        CATEGORIA_MASCULINA_2_1: parseFloat (req.body.categoria_masculina_2_1),
+        CATEGORIA_MASCULINA_2_2: parseFloat (req.body.categoria_masculina_2_2),
+        CATEGORIA_MASCULINA_3_1: parseFloat (req.body.categoria_masculina_3_1),
+        CATEGORIA_MASCULINA_3_2: parseFloat (req.body.categoria_masculina_3_2),
+        CATEGORIA_MASCULINA_4_1: parseFloat (req.body.categoria_masculina_4_1),
+        CATEGORIA_MASCULINA_4_2: parseFloat (req.body.categoria_masculina_4_2),
+        CATEGORIA_MASCULINA_5_1: parseFloat (req.body.categoria_masculina_5_1),
+        CATEGORIA_MASCULINA_5_2: parseFloat (req.body.categoria_masculina_5_2),
+        CATEGORIA_MASCULINA_6_1: parseFloat (req.body.categoria_masculina_6_1),
+        CATEGORIA_MASCULINA_6_2: parseFloat (req.body.categoria_masculina_6_2),
+        CATEGORIA_MIXTA_1_1: parseFloat (req.body.categoria_mixta_1_1),
+        CATEGORIA_MIXTA_1_2: parseFloat (req.body.categoria_mixta_1_2),
+        CATEGORIA_MIXTA_2_1: parseFloat (req.body.categoria_mixta_2_1),
+        CATEGORIA_MIXTA_2_2: parseFloat (req.body.categoria_mixta_2_2),
+        CATEGORIA_MIXTA_3_1: parseFloat (req.body.categoria_mixta_3_1),
+        CATEGORIA_MIXTA_3_2: parseFloat (req.body.categoria_mixta_3_2),
+        CATEGORIA_MIXTA_4_1: parseFloat (req.body.categoria_mixta_4_1),
+        CATEGORIA_MIXTA_4_2: parseFloat (req.body.categoria_mixta_4_2),
+        CATEGORIA_MIXTA_5_1: parseFloat (req.body.categoria_mixta_5_1),
+        CATEGORIA_MIXTA_5_2: parseFloat (req.body.categoria_mixta_5_2),
+        CATEGORIA_MIXTA_6_1: parseFloat (req.body.categoria_mixta_6_1),
+        CATEGORIA_MIXTA_6_2: parseFloat (req.body.categoria_mixta_6_2),
+        CATEGORIA_FEMENINA_1_1: parseFloat (req.body.categoria_femenina_1_1),
+        CATEGORIA_FEMENINA_1_2: parseFloat (req.body.categoria_femenina_1_2),
+        CATEGORIA_FEMENINA_2_1: parseFloat (req.body.categoria_femenina_2_1),
+        CATEGORIA_FEMENINA_2_2: parseFloat (req.body.categoria_femenina_2_2),
+        CATEGORIA_FEMENINA_3_1: parseFloat (req.body.categoria_femenina_3_1),
+        CATEGORIA_FEMENINA_3_2: parseFloat (req.body.categoria_femenina_3_2),
+        CATEGORIA_FEMENINA_4_1: parseFloat (req.body.categoria_femenina_4_1),
+        CATEGORIA_FEMENINA_4_2: parseFloat (req.body.categoria_femenina_4_2),
+        CATEGORIA_FEMENINA_5_1: parseFloat (req.body.categoria_femenina_5_1),
+        CATEGORIA_FEMENINA_5_2: parseFloat (req.body.categoria_femenina_5_2),
+        CATEGORIA_FEMENINA_6_1: parseFloat (req.body.categoria_femenina_6_1),
+        CATEGORIA_FEMENINA_6_2: parseFloat (req.body.categoria_femenina_6_2),
         DIRECCION: req.body.direccion,
         PORTADA: binaryImage,
     }
@@ -155,14 +190,87 @@ main_router.get("/logout", async(req, res) => {
     res.redirect("/")
 })
 
-main_router.get("/inscribirse", (req, res) => {
+main_router.get("/inscribirse", async (req, res) => {
     if (req.isAuthenticated()) {
+
         console.log(req.query)
+
         let id_evento = req.query.id
+
         console.log("id del evento =",id_evento)
-        res.render("inscribirse.ejs",{id_evento})
+
+        let [categorias] = await pool.query(`
+        SELECT
+            CATEGORIA_MASCULINA_1_1,
+            CATEGORIA_MASCULINA_1_2,
+            CATEGORIA_MASCULINA_2_1,
+            CATEGORIA_MASCULINA_2_2,
+            CATEGORIA_MASCULINA_3_1,
+            CATEGORIA_MASCULINA_3_2,
+            CATEGORIA_MASCULINA_4_1,
+            CATEGORIA_MASCULINA_4_2,
+            CATEGORIA_MASCULINA_5_1,
+            CATEGORIA_MASCULINA_5_2,
+            CATEGORIA_MASCULINA_6_1,
+            CATEGORIA_MASCULINA_6_2,
+            CATEGORIA_MIXTA_1_1,
+            CATEGORIA_MIXTA_1_2,
+            CATEGORIA_MIXTA_2_1,
+            CATEGORIA_MIXTA_2_2,
+            CATEGORIA_MIXTA_3_1,
+            CATEGORIA_MIXTA_3_2,
+            CATEGORIA_MIXTA_4_1,
+            CATEGORIA_MIXTA_4_2,
+            CATEGORIA_MIXTA_5_1,
+            CATEGORIA_MIXTA_5_2,
+            CATEGORIA_MIXTA_6_1,
+            CATEGORIA_MIXTA_6_2,
+            CATEGORIA_FEMENINA_1_1,
+            CATEGORIA_FEMENINA_1_2,
+            CATEGORIA_FEMENINA_2_1,
+            CATEGORIA_FEMENINA_2_2,
+            CATEGORIA_FEMENINA_3_1,
+            CATEGORIA_FEMENINA_3_2,
+            CATEGORIA_FEMENINA_4_1,
+            CATEGORIA_FEMENINA_4_2,
+            CATEGORIA_FEMENINA_5_1,
+            CATEGORIA_FEMENINA_5_2,
+            CATEGORIA_FEMENINA_6_1,
+            CATEGORIA_FEMENINA_6_2
+        FROM Eventos
+        WHERE ID = ${id_evento};
+    `);
+    
+
+        console.log(categorias)
+
+        let array_categorias_empty = []
+
+
+        // for (const clave in categorias[0]){
+        //     console.log("clave = ",categorias[0][clave])
+        //     if ( categorias[0][clave] != 0 && typeof categorias[0][clave] === "number"){
+
+        //         console.log("categoria descubierta = > ",categorias[0][clave])
+
+        //         array_categorias_empty.push({ [clave] :categorias[0][clave]})
+
+        //     }
+        // }
+
+        for (let i = 0; i < categorias.length; i += 2) {
+
+            console.log()
+
+        }
+        
+
+        console.log(array_categorias_empty)
+
+
+        res.render("inscribirse.ejs",{id_evento,array_categorias_empty})
     }else[
-        res.redirect("/login")
+        res.redirect("/login?from="+req.query.id)
     ]
 })
 

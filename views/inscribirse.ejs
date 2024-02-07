@@ -30,10 +30,9 @@
                     <div class="info_equipo">
                         <label for="">¿EN QUÉ CATEGORIA QUIEREN JUGAR?</label>
                         <select name="categoria">
-                            <option value="primera">PRIMERA</option>
-                            <option value="segunda">SEGUNDA</option>
-                            <option value="tercera">TERCERA</option>
-                            <option value="cuarta">CUARTA</option>
+                            <% for (const obj of array_categorias_empty) { %>
+                                <option><%= `${obj.nombre} ${obj.valor}` %></option>
+                            <% } %>
                         </select>
                     </div>
                     <button class="publicar">

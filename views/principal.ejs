@@ -41,35 +41,10 @@
       <div class="card">
         <div class="fecha_precio">
           <h1><%= eventos[i].FECHA.split("---")[0] %> <br> <%= eventos[i].FECHA.split("---")[1] %> - <%= eventos[i].FECHA.split("---")[2] %></h1>
-          <h1 class="precio"><%= eventos[i].PRECIO + " € / JUGADOR" %> <br> <%= eventos[i].DIRECCION %></h1>
+          <h1 class="precio">DESDE <%= eventos[i].PRECIO + " € / JUGADOR" %> <br> <%= eventos[i].DIRECCION %></h1>
         </div>
         <h3><%= eventos[i].NOMBRE %></h3>
-        <!-- <div class="card_categorias">
-          <p>1ª CATEGORIA -- HASTA <%= eventos[i].CATEGORIA_1 %></p>
-          <% if (eventos[i].CATEGORIA_2 > 0) { %>
-            <p>2ª CATEGORIA -- HASTA <%= eventos[i].CATEGORIA_2 %></p>
-          <% } %>
-          <% if (eventos[i].CATEGORIA_3 > 0) { %>
-            <p>3ª CATEGORIA -- HASTA <%= eventos[i].CATEGORIA_3 %></p>
-          <% } %>
-          <% if (eventos[i].CATEGORIA_4 > 0) { %>
-            <p>4ª CATEGORIA -- HASTA <%= eventos[i].CATEGORIA_4 %></p>
-          <% } %>
-          <% if (eventos[i].CATEGORIA_5 > 0) { %>
-            <p>5ª CATEGORIA -- HASTA <%= eventos[i].CATEGORIA_5 %></p>
-          <% } %>
-          <% if (eventos[i].CATEGORIA_6 > 0) { %>
-            <p>6ª CATEGORIA -- HASTA <%= eventos[i].CATEGORIA_6 %></p>
-          <% } %>
-          <% if (eventos[i].CATEGORIA_7 > 0) { %>
-            <p>7ª CATEGORIA -- HASTA <%= eventos[i].CATEGORIA_7 %></p>
-          <% } %>
-          <% if (eventos[i].CATEGORIA_FEMENINA > 0) { %>
-            <p>CATEGORIA FEMENINA -- HASTA <%= eventos[i].CATEGORIA_FEMENINA %></p>
-          <% } %>
-        </div> -->
         <div class="tel_cartel">
-          <!-- <p><%="ORGANIZADOR - " + eventos[i].TELEFONO_ORGANIZADOR %></p> -->
           <a href="https://edit.org/img/blog/jp6-flyer-torneo-padel-editable-gratis.webp" target="_blank">VER CARTEL</a>
         </div>
         <button onclick="location.href='/inscribirse/?id=<%=eventos[i].ID%>' "style="--clr:white"><span>INSCRIBIRSE</span><i></i></button>
