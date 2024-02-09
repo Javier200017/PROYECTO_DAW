@@ -327,12 +327,14 @@ body{
   font-weight: 900;
 }
 
-#popup .contenedor .cargando{ 
+#popup .cargando { 
   position: relative; 
   color: white;
-  margin-top: 6rem;
+  margin-top: 12rem;
   letter-spacing: 0.08em;
-  text-transform: uppercase
+  text-transform: uppercase;
+  text-align: center;
+  font-size: 30px;
 }
 
 @media only screen and (max-width:768px) {
