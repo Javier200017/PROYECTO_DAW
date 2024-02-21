@@ -84,6 +84,27 @@ nav {
   transform: scale(1, 1);
 }
 
+#popup{
+  background: black;
+  opacity: .7;
+  border: 5px solid #9be604;
+  border-radius: 10px;
+  position: absolute;
+  top: 5%;
+  z-index: 5;
+  margin: 2em;
+  width: 95%;
+  height: 90vh;
+}
+#popup i {
+  color: #9be604;
+  font-size: 20px;
+  position: absolute;
+  top: 2.5%;
+  right: 2%;
+  cursor: pointer;
+}
+
 @media only screen and (max-width: 768px) {
   .menu {
     flex-direction: column;

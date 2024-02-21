@@ -22,7 +22,7 @@
         <% if( user && user.RANGO == "administrador") {%>
               <li><a href="/eventos">AGREGAR EVENTO</a></li>
         <% } %>
-        <li><a href="#">¿COMO ME INSCRIBO A UN TORNEO?</a></li>
+        <li onclick="getpopup()"><a href="#">¿COMO ME INSCRIBO A UN TORNEO?</a></li>
         <li><a href="#">MIS INSCRIPCIONES</a></li>
         <% if ( !user ) {%>
           <li><a href="/login">INICIAR SESIÓN</a></li>
@@ -52,7 +52,10 @@
     <% } %>
   </div>
 
+  <section id="popup">
+    <i onclick="close_popup()" class="fa-solid fa-x"></i>
 
+  </section>
   <footer>
     <div class="eleccion">
       <div class="eleccion1">
@@ -67,4 +70,5 @@
     </div>
   </footer>
 </body>
+<script src="scripts/popup_como.js"></script>
 </html>

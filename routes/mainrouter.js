@@ -251,7 +251,8 @@ main_router.get("/inscribirse", async (req, res) => {
                 console.log("categoria descubierta = > ",categorias[0][clave])
 
                 if (clave.endsWith("_1")){
-                    const nextKey = clave.replace('_1', '_2');
+
+                    const nextKey = clave.replace(/_(\d+)$/, `_${2}`)
                     
                     let next_value = categorias[0][nextKey]
 
