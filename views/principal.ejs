@@ -18,7 +18,6 @@
       <input type="checkbox" id="menu-toggle">
       <label for="menu-toggle" class="menu-icon">&#9776;</label>
       <ul class="menu">
-        <li><a href="#">PÁGINA PRINCIPAL</a></li>
         <% if( user && user.RANGO == "administrador") {%>
               <li><a href="/eventos">AGREGAR EVENTO</a></li>
         <% } %>

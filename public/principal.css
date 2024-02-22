@@ -41,8 +41,6 @@ nav {
   color: #9be604;
 }
 
-
-
 .menu {
   display: flex;
   justify-content: center;
@@ -202,7 +200,7 @@ h3 {
 }
 
 button {
-  position: relative;
+  position: sticky;
   bottom: 18px;
   left: 25%;
   color: #9be604;

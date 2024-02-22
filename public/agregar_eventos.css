@@ -132,6 +132,21 @@ img {
     }
 }
 
+i {
+    color: #00DCFF;
+    font-size: 20px;
+    position: absolute;
+    top: 2%;
+    right: 2.5%;
+    cursor: pointer;
+}
+
+@media only screen and (max-width:768px) {
+    i {
+        right: 5%;
+    }
+}
+
 h1 {
     text-align: center;
     font-size: 45px;
@@ -146,7 +161,14 @@ h1 {
 
 .nombre_precio {
     display: flex;
-    justify-content: space-around
+    justify-content: space-around;
+    margin-top: -25px;
+}
+
+@media only screen and (max-width:768px) {
+    .nombre_precio {
+        margin-top: 0px;
+    }
 }
 
 .nombre_precio .nombre_del_evento {
