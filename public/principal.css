@@ -82,7 +82,6 @@ nav {
   transform: scale(1, 1);
 }
 
-<<<<<<< HEAD
 #popup{
   background: black;
   opacity: .7;
@@ -105,8 +104,7 @@ nav {
   cursor: pointer;
 }
 
-=======
->>>>>>> 4ce5317e9dd94cfe836e32adebe474882e637bb6
+
 @media only screen and (max-width: 768px) {
   .menu {
     flex-direction: column;
