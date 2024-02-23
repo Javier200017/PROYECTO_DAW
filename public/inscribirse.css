@@ -9,6 +9,7 @@
 
 body{
     background-color: #c9e7fb;
+    font-weight: 900;
 }
 
 .contenedor {
@@ -50,6 +51,8 @@ body{
         width: 90%;
     }
 }
+
+
 
 h1 {
     text-align: center;
@@ -144,6 +147,17 @@ h1 {
     display: flex;
     flex-direction: column;
     color: #00DCFF;
+}
+
+.container .info_equipo h3{
+    font-size: 30px;
+    color: red;
+}
+
+@media only screen and (max-width:768px) {
+    .container .info_equipo h3 {
+        font-size: 15px;
+    }
 }
 
 .container .info_equipo .categoria {
@@ -321,10 +335,6 @@ button:hover .button-text {
     border: 1px solid #ccc;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
     z-index: 1000;
-}
-
-body{ 
-  font-weight: 900;
 }
 
 #popup .cargando { 

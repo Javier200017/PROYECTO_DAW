@@ -18,7 +18,6 @@
       <input type="checkbox" id="menu-toggle">
       <label for="menu-toggle" class="menu-icon">&#9776;</label>
       <ul class="menu">
-        <li><a href="#">PÁGINA PRINCIPAL</a></li>
         <% if( user && user.RANGO == "administrador") {%>
               <li><a href="/eventos">AGREGAR EVENTO</a></li>
         <% } %>
@@ -54,7 +53,18 @@
 
   <section id="popup">
     <i onclick="close_popup()" class="fa-solid fa-x"></i>
-
+    <h3>PRIMER PASO:</h3>
+    <h2>Observe y analice todos los torneos que se promocionan en la web. Puede ver el cartel del torneo su pulsa en "VER CARTEL.</h2>
+    <h3>SEGUNDO PASO:</h3>
+    <h2>Si ha encontrado un torneo que le encaja tanto de horario como de precio, pulse en "INSCRIBIRSE". Si no tiene cuenta, creese una. Si ya la tiene, inicie sesión y se le redirigira automaticamente a la página de inscripcion.</h2>
+    <h3>TERCER PASO:</h3>
+    <h2>Ya en la página de inscripción, puede elegir si va a jugar solo o con pareja. Si ha elegido solo, se podra inscribir y al organizador le llegara la petición de que le busque pareja.</h2>
+    <h3>CUARTO PASO:</h3>
+    <h2>Si ya tiene pareja, ponga su nickname en la seccion de nickname y podrá elegir a su pareja. <span> ¡ATENCIÓN! Su pareja debe estar registrada en la página web para poderse inscribirse, por lo tanto, si no lo esta, pidale que se registre antes de proceder a la inscripción.</span></h2>
+    <h3>QUINTO PASO:</h3>
+    <h2>Cuando ya lo tenga todo, puede proceder a pulsar el boton de "INSCRIBIRSE", se le redirigira automaticamnte a la pasarela de pago.</h2>
+    <h3>SEXTO PASO:</h3>
+    <h2>Despues de haber pagado, se le redirigira a la pagina principal. arriba a la derecha tiene una apartado dodne pone "MIS INSCRPCIONES", ahi podrá ver a que torneos esta inscrito.</h2>
   </section>
   <footer>
     <div class="eleccion">
