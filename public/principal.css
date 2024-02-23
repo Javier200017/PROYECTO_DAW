@@ -95,6 +95,7 @@ nav {
   margin: 2em;
   width: 95%;
   height: 90vh;
+  display: none;
 }
 #popup i {
   color: #9be604;

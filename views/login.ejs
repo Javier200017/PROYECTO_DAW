@@ -19,7 +19,11 @@
             <div class="form-content">
                 <div class="login-form">
                     <div class="title">INICIAR SESIÓN</div>
-                    <form action="/login?event_from_id=<%=event_from_id%>" method="post">
+                    <% if (event_from_id){ %>
+                        <form action="/login?event_from_id=<%=event_from_id%>" method="post">
+                    <% }else{ %>
+                        <form action="/login" method="post">
+                    <% } %>
                         <div class="input-boxes">
                             <div class="input-box">
                                 <% if (error == "mail" || error == "both"){ %>

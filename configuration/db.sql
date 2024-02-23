@@ -71,3 +71,13 @@ CREATE TABLE IF NOT EXISTS Inscripciones (
     ID_EVENTO INT UNSIGNED,
     Foreign Key (ID_EVENTO) references Eventos(ID)
 );
+
+
+-- bugfix =====> eliminar eventos (cambiamos a borrado en cascada)
+
+ALTER TABLE Inscripciones
+DROP FOREIGN KEY inscripciones_ibfk_1,
+ADD CONSTRAINT nueva_restriccion_fk
+FOREIGN KEY (ID_EVENTO)
+REFERENCES Eventos(ID)
+ON DELETE CASCADE;
