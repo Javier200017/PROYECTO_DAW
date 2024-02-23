@@ -52,20 +52,7 @@ body{
     }
 }
 
-i {
-    color: #00DCFF;
-    font-size: 20px;
-    position: absolute;
-    top: 2.5%;
-    right: 2%;
-    cursor: pointer;
-}
 
-@media only screen and (max-width:768px) {
-    i {
-        right: 5%;
-    }
-}
 
 h1 {
     text-align: center;
