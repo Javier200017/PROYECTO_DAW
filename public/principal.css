@@ -125,7 +125,6 @@ nav {
   grid-gap: 1rem;
   margin: 1rem;
   align-content: start;
-  
 }
 
 .card {
@@ -155,14 +154,12 @@ nav {
   text-transform: uppercase;
   margin: 1px;
   padding: 5px;
-  
 }
 
 .fecha_precio .precio {
   color: black;
   border: none;
   font-size: 23px;
-  
 }
 
 h3 {
@@ -173,7 +170,6 @@ h3 {
   justify-content: center;
   text-transform: uppercase;
   margin-top: 8px;
-  
 }
 
 .tel_cartel {
@@ -314,6 +310,7 @@ button:hover i::after {
   #popup {
     margin: 10px;
     margin-top: 50px;
+    height: 100vh;
   }
 }
 
@@ -346,7 +343,6 @@ button:hover i::after {
   #popup h2 {
     font-size: 15px;
   }
-  
 }
 
 #popup h2 span{
