@@ -13,22 +13,22 @@
             <div class="form_container">
                 <h1>¿CON QUIÉN JUEGAS?</h1>
                 <div class="eleccion_juego">
-                    <button class="solo">SOLO</button>
-                    <button class="en_pareja">EN PAREJA</button>
+                    <button id="solo" class="solo">SOLO</button>
+                    <button id="en_pareja" class="en_pareja">EN PAREJA</button>
                 </div>
                 <form id="ins" action="/inscripcion" method="post">
                     <input name="id_evento" style="display: none;" value=" <%= id_evento %> "></input>
-                    <div class="info_jugador_1">
+                    <div class="info_jugador_1" style="display: none;">
                         <input class="nombre" name="nombre_jugador_uno" type="text" placeholder="NOMBRE JUGADOR 1 ..." required>
                         <input class="apellidos" name="apellidos_jugador_uno" type="text" placeholder="APELLIDOS JUGADOR 1 ..." required>
                         <input class="telefono" name="telefono_jugador_uno" type="tel" placeholder="TELÉFONO JUGADOR 1 ..." required>
                     </div>
-                    <div class="info_jugador_2">
+                    <div class="info_jugador_2" style="display: none;">
                         <input class="nombre" name="nombre_jugador_dos" type="text" placeholder="NOMBRE JUGADOR 2 ...">
                         <input class="apellidos" name="apellidos_jugador_dos" type="text" placeholder="APELLIDOS JUGADOR 2 ...">
                         <input class="telefono" name="telefono_jugador_dos" type="tel" placeholder="TELÉFONO JUGADOR 2 ...">
                     </div>
-                    <div class="info_equipo">
+                    <div class="info_equipo"">
                         <label for="">¿EN QUÉ CATEGORIA QUIEREN JUGAR?</label>
                         <select name="categoria">
                             <option value="null" selected>CATEGORIA ...</option>
@@ -38,12 +38,12 @@
                         </select>
                         <h3>¡ HAGA EL BIZUM AL TELÉFONO DEL ORGANIZADOR !</h3>
                     </div>
-                    <button class="publicar">
+                    <button class="publicar" >
                         <span class="circle" aria-hidden="true">
                         <span class="icon arrow"></span>
                         </span>
                         <span class="button-text">INSCRIBIRSE</span>
-                      </button>
+                    </button>
                 </form>
                 <div id="popup" class="popup">
                     <div id="contenedor">
@@ -56,6 +56,6 @@
             </div>
         </div>
     </div>
-    <script src="/scripts/popup_inscripcion.js"></script>
+    <script src="/scripts/inscripcion.js"></script>
 </body>
 </html>

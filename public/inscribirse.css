@@ -21,6 +21,8 @@ body{
     
 }
 
+
+
 @media only screen and (max-width:768px) {
     .contenedor {
         display: flex;
@@ -137,14 +139,13 @@ h1 {
     }
 }
 
-.container .info_equipo {
-        display: flex;
-        flex-direction: row;
+.info_equipo {
+        display: none;
+
         align-items: center;
 }
 
-.container .info_equipo {
-    display: flex;
+.info_equipo {
     flex-direction: column;
     color: #00DCFF;
 }
@@ -191,7 +192,6 @@ h1 {
 }
 
 .container form div {
-    display: flex;
     width: 100%;
     justify-content: space-evenly;
 }
@@ -250,6 +250,7 @@ button {
 button.publicar {
     width: 12rem;
     height: auto;
+    display: none;
 }
    
 button.publicar .circle {
