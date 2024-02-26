@@ -304,4 +304,23 @@ main_router.post("/inscripcion", async (req, res) => {
     await pool.query ("INSERT INTO Inscripciones SET ?", [inscripccion])
     res.redirect("/")
 })
+
+
+main_router.get("/check_nickname", async(req,res)=>{
+
+    console.log(req.query)
+
+    let nickname = req.query.nickname
+
+    const [match] = await pool.query("SELECT NOMBRE_DE_USUARIO FROM Usuarios where NOMBRE_DE_USUARIO = ?",[nickname])
+
+    console.log("check => ",match)
+
+    res.json({
+        "match": match ? true : false
+    })
+
+})
+
+
 module.exports = main_router
