@@ -19,9 +19,9 @@
                 <form id="ins" action="/inscripcion" method="post">
                     <input name="id_evento" style="display: none;" value=" <%= id_evento %> "></input>
                     <div class="info_jugador_1" style="display: none;">
-                        <input class="nombre" name="nombre_jugador_uno" type="text" placeholder="NOMBRE JUGADOR 1 ..." required>
-                        <input class="apellidos" name="apellidos_jugador_uno" type="text" placeholder="APELLIDOS JUGADOR 1 ..." required>
-                        <input class="telefono" name="telefono_jugador_uno" type="tel" placeholder="TELÉFONO JUGADOR 1 ..." required>
+                        <input value="<%= datos_jugador_1.NOMBRE %>" class="nombre" name="nombre_jugador_uno" type="text" placeholder="NOMBRE JUGADOR 1 ..." required>
+                        <input value="<%= datos_jugador_1.APELLIDOS %>" class="apellidos" name="apellidos_jugador_uno" type="text" placeholder="APELLIDOS JUGADOR 1 ..." required>
+                        <input value="<%= datos_jugador_1.TELEFONO %>" class="telefono" name="telefono_jugador_uno" type="tel" placeholder="TELÉFONO JUGADOR 1 ..." required>
                     </div>
                     <div class="info_jugador_2" style="display: none;">
                         <input class="nombre" name="nombre_jugador_dos" type="text" placeholder="NOMBRE JUGADOR 2 ...">

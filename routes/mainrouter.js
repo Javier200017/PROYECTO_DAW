@@ -281,8 +281,11 @@ main_router.get("/inscribirse", async (req, res) => {
 
         console.log(array_categorias_empty)
 
+        let [datos_jugador_1] = await pool.query("select NOMBRE,APELLIDOS,TELEFONO from Usuarios where id = ?",[req.user.ID])
 
-        res.render("inscribirse.ejs",{id_evento,array_categorias_empty})
+        datos_jugador_1 = datos_jugador_1[0]
+
+        res.render("inscribirse.ejs",{id_evento,array_categorias_empty,datos_jugador_1})
     }else[
         res.redirect("/login?from="+req.query.id)
     ]
