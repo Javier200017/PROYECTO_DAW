@@ -297,9 +297,7 @@ main_router.post("/inscripcion", async (req, res) => {
         NOMBRE_JUGADOR_UNO: req.body.nombre_jugador_uno,
         APELLIDOS_JUGADOR_UNO: req.body.apellidos_jugador_uno,
         TELEFONO_JUGADOR_UNO: req.body.telefono_jugador_uno,
-        NOMBRE_JUGADOR_DOS: req.body.nombre_jugador_dos ? req.body.nombre_jugador_dos : "solitario",
-        APELLIDOS_JUGADOR_DOS: req.body.apellidos_jugador_dos ? req.body.apellidos_jugador_dos : "solitario",
-        TELEFONO_JUGADOR_DOS: req.body.telefono_jugador_dos ? req.body.telefono_jugador_dos : 0,
+        NOMBRE_DE_USUARIO_DOS: req.body.username_jugador_dos ? req.body.username_jugador_dos : "solitario",
         CATEGORIA: req.body.categoria,
         ID_EVENTO: req.body.id_evento
     }

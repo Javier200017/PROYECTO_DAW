@@ -11,8 +11,8 @@ document.addEventListener('DOMContentLoaded', function () {
         jugador1.style.display = 'flex';
         jugador2.style.display = 'none';
         console.log("solo")
-        categoria.style.display = "flex !important"
-        publicar.style.display = "flex !important"
+        categoria.style.display = "flex"
+        publicar.style.display = "flex"
     });
 
     parejaButton.addEventListener('click', function () {

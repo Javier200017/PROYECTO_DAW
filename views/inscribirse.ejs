@@ -24,14 +24,12 @@
                         <input value="<%= datos_jugador_1.TELEFONO %>" class="telefono" name="telefono_jugador_uno" type="tel" placeholder="TELÉFONO JUGADOR 1 ..." required>
                     </div>
                     <div class="info_jugador_2" style="display: none;">
-                        <input class="nombre" name="nombre_jugador_dos" type="text" placeholder="NOMBRE JUGADOR 2 ...">
-                        <input class="apellidos" name="apellidos_jugador_dos" type="text" placeholder="APELLIDOS JUGADOR 2 ...">
-                        <input class="telefono" name="telefono_jugador_dos" type="tel" placeholder="TELÉFONO JUGADOR 2 ...">
+                        <input class="nombre" name="username_jugador_dos" type="text" placeholder="NOMBRE DE USUARIO DE TU PAREJA ..." required>
                     </div>
                     <div class="info_equipo"">
                         <label for="">¿EN QUÉ CATEGORIA QUIEREN JUGAR?</label>
-                        <select name="categoria">
-                            <option value="null" selected>CATEGORIA ...</option>
+                        <select name="categoria" required>
+                            <option value="" selected>CATEGORIA ...</option>
                             <% for (const obj of array_categorias_empty) { %>
                                 <option><%= `${obj.nombre} ${obj.valor}` %></option>
                             <% } %>
