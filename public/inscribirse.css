@@ -118,12 +118,11 @@ h1 {
     border: #9be604 solid;
 }
 
-.container .info_jugador_2 .apellidos {
-    border: #9be604 solid;
-}
-
-.container .info_jugador_2 .telefono {
-    border: #9be604 solid;
+@media only screen and (max-width:768px) {
+    .container .info_jugador_2 ::placeholder {
+        font-size: 12px;
+        text-align: center;
+    }
 }
 
 @media only screen and (max-width:768px) {
