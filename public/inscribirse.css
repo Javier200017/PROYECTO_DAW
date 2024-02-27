@@ -21,8 +21,6 @@ body{
     
 }
 
-
-
 @media only screen and (max-width:768px) {
     .contenedor {
         display: flex;
@@ -53,8 +51,6 @@ body{
         width: 90%;
     }
 }
-
-
 
 h1 {
     text-align: center;
@@ -331,7 +327,7 @@ button:hover .button-text {
     left: 50%;
     transform: translate(-50%, -50%);
     padding: 20px;
-    opacity: .7;
+    opacity: 1;
     background-color: #fff;
     border: 1px solid #ccc;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
@@ -352,8 +348,10 @@ button:hover .button-text {
     #popup .cargando {
         text-align: center;
         margin-top: 10rem;
-        font-size: 20px;
+        font-size: 25px;
         color: white;
+        margin-left: 10px;
+        margin-right: 10px;
     }
 }
 
@@ -375,7 +373,7 @@ button:hover .button-text {
   background: #FFF;
   animation: cargando 1s infinite ease-in-out;
   width: 1em;
-  height: 4em;
+  height:4em;
 }
 .loader:before,
 .loader:after {
