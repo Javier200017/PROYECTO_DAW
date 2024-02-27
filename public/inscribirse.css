@@ -138,6 +138,15 @@ h1 {
         align-items: center;
 }
 
+.info_jugador_2{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    #error_message{
+        color: red;
+    }
+}
+
 .info_equipo {
     flex-direction: column;
     color: #00DCFF;

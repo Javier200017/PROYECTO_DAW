@@ -4,11 +4,15 @@ function check_nickname () {
 
     console.log("check nickname => ",nickname.value)
 
-    fetch(`/check_nickname?nickname=${nickname.value}`,{
+    return fetch(`/check_nickname?nickname=${nickname.value}`,{
         method:"GET",
-    }).then( (response)=> {
-        console.log(response)
-    } )
+    }).then( (response) => response.json()).then((responseJSON) => {
+
+        console.log("JSON response => ",responseJSON)
+
+        return responseJSON.match
+
+    })
 
 }
 
@@ -43,14 +47,26 @@ document.addEventListener('DOMContentLoaded', function () {
 
 });
 
-document.getElementById('ins').addEventListener('submit', function (event) {
+const popup = document.getElementById('popup')
+const error_message = document.querySelector("#error_message")
+const nickname = document.querySelector("#nickname")
+
+document.getElementById('ins').addEventListener('submit', async function (event) {
     event.preventDefault(); 
-    document.getElementById('popup').style.display = 'block';
+    
+    const check = await check_nickname()
+    
+    console.log("usuario 2 existe => ",check)
+    
+    if(check){
+        popup.style.display = 'block'
+        setTimeout(function() {
+            popup.style.display = 'none';
+            event.target.submit()
+        }, 3000)
+    }else{
+        error_message.textContent = "Not a valid Username"
+        nickname.style.border = "2px solid red"
+    }
 
-    check_nickname()
-
-    setTimeout(function() {
-        document.getElementById('popup').style.display = 'none';
-        event.target.submit()
-    }, 3000);
 });

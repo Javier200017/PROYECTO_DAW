@@ -317,7 +317,7 @@ main_router.get("/check_nickname", async(req,res)=>{
     console.log("check => ",match)
 
     res.json({
-        "match": match ? true : false
+        "match": match.length > 0
     })
 
 })
