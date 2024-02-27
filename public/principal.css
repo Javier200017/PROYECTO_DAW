@@ -7,6 +7,16 @@
   font-family: "Dosis", sans-serif;
 }
 
+#inscripciones{
+  height: 90vh;
+  margin-top: 1em;
+}
+.inscription{
+  margin: 2em;
+  padding: 1em;
+  border: 1px solid brown;
+}
+
 /* HEADER */
 
 .header {

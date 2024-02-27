@@ -322,6 +322,17 @@ main_router.get("/check_nickname", async(req,res)=>{
 
 })
 
+main_router.get("/misinscripciones",async(req,res) => {
+
+    console.log("req.user.id",req.user.ID)
+
+    const [my_inscriptions] = await pool.query("select * from Inscripciones where TELEFONO_JUGADOR_UNO = (select TELEFONO from Usuarios where ID = ? )",[req.user.ID])
+
+    console.log("my inscriptions => ",my_inscriptions)
+
+    res.render("misinscripciones.ejs",{my_inscriptions})
+})
+
 
 
 module.exports = main_router

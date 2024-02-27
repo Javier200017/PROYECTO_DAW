@@ -22,7 +22,7 @@
               <li><a href="/eventos">AGREGAR EVENTO</a></li>
         <% } %>
         <li onclick="getpopup()"><a href="#">¿COMO ME INSCRIBO A UN TORNEO?</a></li>
-        <li><a href="/misinscripciones">MIS INSCRIPCIONES</a></li>
+        <li><a href="#">MIS INSCRIPCIONES</a></li>
         <% if ( !user ) {%>
           <li><a href="/login">INICIAR SESIÓN</a></li>
         <% } else { %>
@@ -34,22 +34,15 @@
       </ul>
     </nav>
   </header>
-  
-  <div class="container">
-    <% for (let i = 0; i < eventos.length; i++){ %>
-      <div class="card">
-        <div class="fecha_precio">
-          <h1><%= eventos[i].FECHA.split("---")[0] %> <br> <%= eventos[i].FECHA.split("---")[1] %> - <%= eventos[i].FECHA.split("---")[2] %></h1>
-          <h1 class="precio">DESDE <%= eventos[i].PRECIO + " € / JUGADOR" %> <br> <%= eventos[i].DIRECCION %></h1>
+
+  <section id="inscripciones">
+    <% for (let i = 0;i<my_inscriptions.length;i++) {%>
+        <div class="inscription">
+            <h2>inscripcion numero :<%= my_inscriptions[i].ID %></h2>
         </div>
-        <h3><%= eventos[i].NOMBRE %></h3>
-        <div class="tel_cartel">
-          <a href="https://edit.org/img/blog/jp6-flyer-torneo-padel-editable-gratis.webp" target="_blank">VER CARTEL</a>
-        </div>
-        <button onclick="location.href='/inscribirse/?id=<%=eventos[i].ID%>' "style="--clr:white"><span>INSCRIBIRSE</span><i></i></button>
-      </div>
     <% } %>
-  </div>
+  </section>
+
 
   <section id="popup">
     <i onclick="close_popup()" class="fa-solid fa-x"></i>
@@ -67,14 +60,6 @@
     <h2>Despues de haber pagado, se le redirigira a la pagina principal. arriba a la derecha tiene una apartado dodne pone "MIS INSCRPCIONES", ahi podrá ver a que torneos esta inscrito.</h2>
   </section>
   <footer>
-    <div class="eleccion">
-      <div class="eleccion1">
-        <h4><a href="/login?user=p">¿QUIERES COMPETIR? CLICK AQUÍ ...</a></h4>
-      </div>
-      <div class="eleccion2">
-        <h4><a href="/login?user=o">¿ERES ORGANIZADOR? SUBE TU EVENTO AQUÍ ...</a></h4>
-      </div>
-    </div>
     <div class="footer_container">
       <p>&copy;2024 DERECHOS RESERVADOS -- BOOKPADEL TECH</p>
     </div>
