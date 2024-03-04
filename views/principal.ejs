@@ -70,6 +70,7 @@
   </section>
 
   <section id="popup_myinscriptions">
+    <h1 id="titulo">TORNEOS A LOS QUE SE HA INSCRITO :</h1>
     <i id="exit" onclick="close_popup(2)" class="fa-solid fa-x"></i>
     <% if(my_inscriptions){ %>
       <% for (let i = 0;i<my_inscriptions.length;i++){ %>
@@ -82,18 +83,16 @@
               <p class="info"><%= my_inscriptions[i].CATEGORIA %></p>
             </section>
             <section>
-              <strong>TELEFONO DEL ORGANIZADOR:</strong>
+              <strong>TELÉFONO DEL ORGANIZADOR: </strong>
               <p class="info"><%= my_inscriptions[i].TELEFONO_JUGADOR_UNO %></p>
             </section>
-          </section>
-          <section class="info_pack">
             <section>
-              <strong>DONDE SE JUEGA:</strong>
+              <strong>DONDE SE JUEGA: </strong>
               <p class="info"><%= my_inscriptions[i].DIRECCION %></p>
             </section>
             <section>
-              <strong>FECHA Y HORA</strong>
-              <p class="info"><%= my_inscriptions[i].FECHA %></p>
+              <strong>FECHA Y HORA DE JUEGO: </strong>
+              <p class="info"> <%= my_inscriptions[i].FECHA %></p>
             </section>
           </section>
           <a href="/delete_inscription/?id=<%=my_inscriptions[i].ID%>" class="bt">BORRAR INSCRIPCIÓN <i class="fa-solid fa-trash"></i></a>
