@@ -22,8 +22,30 @@ main_router.get("/login",(req, res) => {
 })
 
 main_router.get("/", async (req, res) => {
+
     const [eventos] = await pool.query ("SELECT * FROM Eventos order by FECHA_NUMERICA ASC")
-    res.render("principal.ejs", {eventos})
+
+    let my_inscriptions
+
+    if(req.user && req.user.ID){
+        [my_inscriptions] = await pool.query(
+        `SELECT i.ID,i.NOMBRE_JUGADOR_UNO,i.APELLIDOS_JUGADOR_UNO,i.TELEFONO_JUGADOR_UNO,i.NOMBRE_DE_USUARIO_DOS,i.CATEGORIA, e.NOMBRE,e.PRECIO,e.FECHA,e.DIRECCION
+        FROM Inscripciones i
+        JOIN Eventos e ON i.ID_EVENTO = e.ID
+        WHERE i.TELEFONO_JUGADOR_UNO = (SELECT TELEFONO FROM Usuarios WHERE ID = ?);
+        `,
+        [req.user.ID])
+    } 
+
+    console.log("my inscriptions => ",my_inscriptions)
+
+    res.render("principal.ejs", {eventos,my_inscriptions})
+})
+
+main_router.get("/delete_inscription",async(req,res) =>{
+    await pool.query("delete from Inscripciones where ID = ?",[req.query.id])
+
+    res.redirect("/")
 })
 
 main_router.get('/get_img/:id', async (req, res) => {
@@ -322,16 +344,8 @@ main_router.get("/check_nickname", async(req,res)=>{
 
 })
 
-main_router.get("/misinscripciones",async(req,res) => {
 
-    console.log("req.user.id",req.user.ID)
 
-    const [my_inscriptions] = await pool.query("select * from Inscripciones where TELEFONO_JUGADOR_UNO = (select TELEFONO from Usuarios where ID = ? )",[req.user.ID])
-
-    console.log("my inscriptions => ",my_inscriptions)
-
-    res.render("misinscripciones.ejs",{my_inscriptions})
-})
 
 
 

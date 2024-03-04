@@ -7,10 +7,97 @@
   font-family: "Dosis", sans-serif;
 }
 
+#popup_myinscriptions {
+  z-index: 2;
+  position: fixed;
+  top: 0;
+  right: 0;
+  height: 100vh;
+  padding-top: 5em;
+  width: 45%;
+  background: #2f2f2f;
+  transform: translateX(100%);
+  transition: transform 0.5s ease-in-out;
+
+  flex-wrap: wrap;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#popup_myinscriptions .inscription {
+  background: whitesmoke;
+  width: 80%;
+  height: 32%;
+  padding: 1em;
+  border-radius: 8px;
+  border: none;
+  display: flex;
+  flex-direction: column;
+  margin: 1em;
+}
+#popup_myinscriptions .inscription .bt{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #27272c;
+  padding: .3em;
+  letter-spacing: .2px;
+  width: 100%;
+  font-size: 20px;
+  color: white;
+  cursor: pointer;
+  margin-top: .3em;
+  transition: .4s;
+}
+.bt:hover{
+  background: red !important;
+  opacity: .8;
+}
+#popup_myinscriptions .inscription .bt i{
+  margin-left: 1em;
+}
+#popup_myinscriptions .inscription h3{
+  font-size: 25px;
+  color: black;
+}
+.info_pack{
+  display: flex;
+  padding: .3em 0 .3em 0;
+}
+.info_pack section{
+  margin-right: 3em;
+}
+#popup_myinscriptions .inscription .team{
+  font-size: 15px;
+  margin-bottom: 1em;
+}
+
+#popup_myinscriptions .inscription h5{
+  font-size: 23px;
+  color: black;
+}
+
+#popup_myinscriptions .inscription strong{
+  color: black;
+  font-size: 20px;
+}
+
+
+#popup_myinscriptions #exit{
+  position: absolute;
+  left: 4%;
+  top: 4%;
+  color: white;
+  font-size: 23px;
+  cursor: pointer;
+}
+
 #inscripciones{
   height: 90vh;
   margin-top: 1em;
 }
+
 .inscription{
   margin: 2em;
   padding: 1em;
