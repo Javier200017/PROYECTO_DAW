@@ -157,7 +157,7 @@ main_router.post("/eventos", async (req, res) => {
     const evento = {
         NOMBRE: req.body.nombre,
         PRECIO: req.body.precio,
-        FECHA: nuevaFecha + " --- " + req.body.hora_inicio + "---" + req.body.hora_fin,
+        FECHA: nuevaFecha + " --- " + req.body.hora_inicio + " --- " + req.body.hora_fin,
         FECHA_NUMERICA: req.body.fecha,
         CATEGORIA_MASCULINA_1_1: parseFloat (req.body.categoria_masculina_1_1),
         CATEGORIA_MASCULINA_1_2: parseFloat (req.body.categoria_masculina_1_2),

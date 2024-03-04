@@ -71,58 +71,35 @@
 
   <section id="popup_myinscriptions">
     <i id="exit" onclick="close_popup(2)" class="fa-solid fa-x"></i>
-
     <% if(my_inscriptions){ %>
-
       <% for (let i = 0;i<my_inscriptions.length;i++){ %>
         <div class="inscription">
           <h3><%= my_inscriptions[i].NOMBRE %></h3>
-          
           <h3 class="team"><%= my_inscriptions[i].NOMBRE_JUGADOR_UNO  %> <%= my_inscriptions[i].APELLIDOS_JUGADOR_UNO %> & <%= my_inscriptions[i].NOMBRE_DE_USUARIO_DOS %></h3>
-  
           <section class="info_pack">
-  
             <section>
-              <strong>Teléfono de Contacto</strong>
-              <p class="info"><%= my_inscriptions[i].TELEFONO_JUGADOR_UNO %></p>
-            </section>
-  
-            <section>
-              <strong>Categoria</strong>
+              <strong>CATEGORIA SELECCIONADA: </strong>
               <p class="info"><%= my_inscriptions[i].CATEGORIA %></p>
             </section>
-  
             <section>
-              <strong>Precio</strong>
-              <P class="info"><%= my_inscriptions[i].PRECIO %></P>
+              <strong>TELEFONO DEL ORGANIZADOR:</strong>
+              <p class="info"><%= my_inscriptions[i].TELEFONO_JUGADOR_UNO %></p>
             </section>
-  
           </section>
-  
-  
           <section class="info_pack">
-  
             <section>
-              <strong>Dirección del Evento</strong>
+              <strong>DONDE SE JUEGA:</strong>
               <p class="info"><%= my_inscriptions[i].DIRECCION %></p>
             </section>
-  
             <section>
-              <strong>Fecha y Hora del Evento</strong>
+              <strong>FECHA Y HORA</strong>
               <p class="info"><%= my_inscriptions[i].FECHA %></p>
             </section>
-  
           </section>
-  
-          <a href="/delete_inscription/?id=<%=my_inscriptions[i].ID%>" class="bt">Cancelar Inscripción <i class="fa-solid fa-trash"></i></a>
-  
+          <a href="/delete_inscription/?id=<%=my_inscriptions[i].ID%>" class="bt">BORRAR INSCRIPCIÓN <i class="fa-solid fa-trash"></i></a>
         </div>
-
       <% } %>
-
     <% } %>
-
-
   </section>
   <footer>
     <div class="eleccion">

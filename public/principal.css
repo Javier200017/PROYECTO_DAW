@@ -12,23 +12,33 @@
   position: fixed;
   top: 0;
   right: 0;
-  height: 100vh;
+  max-height: 100vh;
   padding-top: 5em;
-  width: 45%;
-  background: #2f2f2f;
+  width: 50%;
+  background: black;
   transform: translateX(100%);
   transition: transform 0.5s ease-in-out;
-
   flex-wrap: wrap;
   display: flex;
   align-items: center;
   justify-content: center;
+  border: 2px solid #9be604;
+  border-radius: 15px;
+  overflow-y: auto;
+}
+
+@media only screen and (max-width: 768px) {
+  #popup_myinscriptions {
+    width: 98%;
+    max-height: 85vh;
+    top: 80px;
+  }
 }
 
 #popup_myinscriptions .inscription {
-  background: whitesmoke;
-  width: 80%;
-  height: 32%;
+  background: white;
+  width: 90%;
+  height: 45%;
   padding: 1em;
   border-radius: 8px;
   border: none;
@@ -36,6 +46,7 @@
   flex-direction: column;
   margin: 1em;
 }
+
 #popup_myinscriptions .inscription .bt{
   display: flex;
   align-items: center;
@@ -50,27 +61,34 @@
   margin-top: .3em;
   transition: .4s;
 }
+
 .bt:hover{
   background: red !important;
   opacity: .8;
 }
+
 #popup_myinscriptions .inscription .bt i{
   margin-left: 1em;
 }
+
 #popup_myinscriptions .inscription h3{
-  font-size: 25px;
+  font-size: 30px;
   color: black;
 }
+
 .info_pack{
   display: flex;
   padding: .3em 0 .3em 0;
 }
+
 .info_pack section{
   margin-right: 3em;
 }
+
 #popup_myinscriptions .inscription .team{
-  font-size: 15px;
+  font-size: 18px;
   margin-bottom: 1em;
+  color: #9be604;
 }
 
 #popup_myinscriptions .inscription h5{
@@ -82,7 +100,6 @@
   color: black;
   font-size: 20px;
 }
-
 
 #popup_myinscriptions #exit{
   position: absolute;
