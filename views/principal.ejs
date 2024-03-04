@@ -22,7 +22,9 @@
               <li><a href="/eventos">AGREGAR EVENTO</a></li>
         <% } %>
         <li onclick="getpopup(1)"><a href="#">¿COMO ME INSCRIBO A UN TORNEO?</a></li>
-        <li><a onclick="getpopup(2)">MIS INSCRIPCIONES</a></li>
+        <% if(user){ %>
+          <li><a onclick="getpopup(2)">MIS INSCRIPCIONES</a></li>
+        <% } %>
         <% if ( !user ) {%>
           <li><a href="/login">INICIAR SESIÓN</a></li>
         <% } else { %>
@@ -70,50 +72,56 @@
   <section id="popup_myinscriptions">
     <i id="exit" onclick="close_popup(2)" class="fa-solid fa-x"></i>
 
-    <% for (let i = 0;i<my_inscriptions.length;i++){ %>
-      <div class="inscription">
-        <h3><%= my_inscriptions[i].NOMBRE %></h3>
-        
-        <h3 class="team"><%= my_inscriptions[i].NOMBRE_JUGADOR_UNO  %> <%= my_inscriptions[i].APELLIDOS_JUGADOR_UNO %> & <%= my_inscriptions[i].NOMBRE_DE_USUARIO_DOS %></h3>
+    <% if(my_inscriptions){ %>
 
-        <section class="info_pack">
-
-          <section>
-            <strong>Teléfono de Contacto</strong>
-            <p class="info"><%= my_inscriptions[i].TELEFONO_JUGADOR_UNO %></p>
+      <% for (let i = 0;i<my_inscriptions.length;i++){ %>
+        <div class="inscription">
+          <h3><%= my_inscriptions[i].NOMBRE %></h3>
+          
+          <h3 class="team"><%= my_inscriptions[i].NOMBRE_JUGADOR_UNO  %> <%= my_inscriptions[i].APELLIDOS_JUGADOR_UNO %> & <%= my_inscriptions[i].NOMBRE_DE_USUARIO_DOS %></h3>
+  
+          <section class="info_pack">
+  
+            <section>
+              <strong>Teléfono de Contacto</strong>
+              <p class="info"><%= my_inscriptions[i].TELEFONO_JUGADOR_UNO %></p>
+            </section>
+  
+            <section>
+              <strong>Categoria</strong>
+              <p class="info"><%= my_inscriptions[i].CATEGORIA %></p>
+            </section>
+  
+            <section>
+              <strong>Precio</strong>
+              <P class="info"><%= my_inscriptions[i].PRECIO %></P>
+            </section>
+  
           </section>
-
-          <section>
-            <strong>Categoria</strong>
-            <p class="info"><%= my_inscriptions[i].CATEGORIA %></p>
+  
+  
+          <section class="info_pack">
+  
+            <section>
+              <strong>Dirección del Evento</strong>
+              <p class="info"><%= my_inscriptions[i].DIRECCION %></p>
+            </section>
+  
+            <section>
+              <strong>Fecha y Hora del Evento</strong>
+              <p class="info"><%= my_inscriptions[i].FECHA %></p>
+            </section>
+  
           </section>
+  
+          <a href="/delete_inscription/?id=<%=my_inscriptions[i].ID%>" class="bt">Cancelar Inscripción <i class="fa-solid fa-trash"></i></a>
+  
+        </div>
 
-          <section>
-            <strong>Precio</strong>
-            <P class="info"><%= my_inscriptions[i].PRECIO %></P>
-          </section>
+      <% } %>
 
-        </section>
-
-
-        <section class="info_pack">
-
-          <section>
-            <strong>Dirección del Evento</strong>
-            <p class="info"><%= my_inscriptions[i].DIRECCION %></p>
-          </section>
-
-          <section>
-            <strong>Fecha y Hora del Evento</strong>
-            <p class="info"><%= my_inscriptions[i].FECHA %></p>
-          </section>
-
-        </section>
-
-        <a href="/delete_inscription/?id=<%=my_inscriptions[i].ID%>" class="bt">Cancelar Inscripción <i class="fa-solid fa-trash"></i></a>
-
-      </div>
     <% } %>
+
 
   </section>
   <footer>
