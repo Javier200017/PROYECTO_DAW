@@ -1,3 +1,5 @@
+let current_state = true
+
 function check_nickname () {
 
     let nickname = document.getElementById("nickname")
@@ -13,8 +15,8 @@ function check_nickname () {
         return responseJSON.match
 
     })
-
 }
+
 
 document.addEventListener('DOMContentLoaded', function () {
     const soloButton = document.getElementById('solo');
@@ -34,6 +36,9 @@ document.addEventListener('DOMContentLoaded', function () {
         categoria.style.display = "flex"
         publicar.style.display = "flex"
         nickname.removeAttribute("required")
+
+        current_state = true
+
     });
 
     parejaButton.addEventListener('click', function () {
@@ -43,6 +48,8 @@ document.addEventListener('DOMContentLoaded', function () {
         categoria.style.display = "flex"
         publicar.style.display = "flex"
         nickname.setAttribute("required","")
+
+        current_state = false
     });
 
 });
@@ -53,20 +60,27 @@ const nickname = document.querySelector("#nickname")
 
 document.getElementById('ins').addEventListener('submit', async function (event) {
     event.preventDefault(); 
-    
+
     const check = await check_nickname()
     
     console.log("usuario 2 existe => ",check)
     
-    if(check){
-        popup.style.display = 'block'
+    popup.style.display = 'block'
+    if(check && !current_state){
         setTimeout(function() {
             popup.style.display = 'none';
             event.target.submit()
         }, 3000)
-    }else{
+    }else if (!check && !current_state){
         error_message.textContent = "Not a valid Username"
         nickname.style.border = "2px solid red"
+        popup.style.display = "none"
+    }else if (current_state) {
+        setTimeout(function() {
+            popup.style.display = 'none';
+            event.target.submit()
+        }, 3000)
     }
+    
 
 });
