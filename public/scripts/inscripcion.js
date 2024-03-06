@@ -72,8 +72,9 @@ document.getElementById('ins').addEventListener('submit', async function (event)
             event.target.submit()
         }, 3000)
     }else if (!check && !current_state){
-        error_message.textContent = "¡EL NOMBRE DE USUARIO DE TU PAREJA NO EXISTE! SI SU PAREJA NO TIENE CUENTA, POR FAVOR QUE SE CREE UNA. "
+        error_message.textContent = "¡NOMBRE DE USUARIO DE SU PAREJA NO EXISTE! SU PAREJA DEBE TENER UNA CUENTA"
         nickname.style.border = "2px solid red"
+        error_message.style.fontSize = "10px"
         popup.style.display = "none"
     }else if (current_state) {
         setTimeout(function() {
