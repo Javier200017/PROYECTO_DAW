@@ -30,3 +30,6 @@ selectRango.addEventListener('change', function() {
         inputClaveSeguridad.removeAttribute('required');
     }
 });
+
+
+

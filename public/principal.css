@@ -7,28 +7,53 @@
   font-family: "Dosis", sans-serif;
 }
 
+#titulo {
+  color: #9be604;
+  font-size: 35px;
+  margin-top: -4rem;
+}
+
+@media only screen and (max-width: 768px) {
+  #titulo {
+    color: #9be604;
+    font-size: 22px;
+    margin-top: -2rem;
+    
+  }
+}
+
 #popup_myinscriptions {
   z-index: 2;
   position: fixed;
   top: 0;
   right: 0;
-  height: 100vh;
+  max-height: 100vh;
   padding-top: 5em;
-  width: 45%;
-  background: #2f2f2f;
+  width: 50%;
+  background: black;
   transform: translateX(100%);
   transition: transform 0.5s ease-in-out;
-
   flex-wrap: wrap;
   display: flex;
   align-items: center;
   justify-content: center;
+  border: 2px solid #9be604;
+  border-radius: 15px;
+  overflow-y: auto;
+}
+
+@media only screen and (max-width: 768px) {
+  #popup_myinscriptions {
+    width: 100%;
+    max-height: 85vh;
+    top: 80px;
+  }
 }
 
 #popup_myinscriptions .inscription {
-  background: whitesmoke;
-  width: 80%;
-  height: 32%;
+  background: white;
+  width: 90%;
+  height: 45%;
   padding: 1em;
   border-radius: 8px;
   border: none;
@@ -36,6 +61,7 @@
   flex-direction: column;
   margin: 1em;
 }
+
 #popup_myinscriptions .inscription .bt{
   display: flex;
   align-items: center;
@@ -47,47 +73,98 @@
   font-size: 20px;
   color: white;
   cursor: pointer;
-  margin-top: .3em;
+  margin-top: 1em;
   transition: .4s;
+  border-radius: 10px;
 }
+
 .bt:hover{
   background: red !important;
   opacity: .8;
 }
+
 #popup_myinscriptions .inscription .bt i{
   margin-left: 1em;
+  color: red;
 }
+
 #popup_myinscriptions .inscription h3{
-  font-size: 25px;
+  font-size: 40px;
   color: black;
 }
+
+@media only screen and (max-width: 768px) {
+  #popup_myinscriptions .inscription h3 {
+    font-size: 30px;
+  }
+}
+
 .info_pack{
   display: flex;
-  padding: .3em 0 .3em 0;
+  flex-direction: column;
+  align-items: center;
+  margin-top: -15px;
 }
+
 .info_pack section{
-  margin-right: 3em;
+  margin-right: 1em;
+  display: flex;
+  flex-direction: row;
 }
-#popup_myinscriptions .inscription .team{
-  font-size: 15px;
+
+@media only screen and (max-width: 768px) {
+  .info_pack section {
+    flex-direction: column;
+  }
+}
+
+#popup_myinscriptions .inscription .team {
+  font-size: 25px;
   margin-bottom: 1em;
+  color: #9be604;
 }
 
-#popup_myinscriptions .inscription h5{
-  font-size: 23px;
-  color: black;
+@media only screen and (max-width: 768px) {
+  #popup_myinscriptions .inscription .team {
+    font-size: 20px;
+  }
 }
 
-#popup_myinscriptions .inscription strong{
+#popup_myinscriptions .inscription strong {
   color: black;
   font-size: 20px;
+  text-decoration: underline 1px;
+  text-underline-offset: 2px;
 }
 
+@media only screen and (max-width: 768px) {
+  #popup_myinscriptions .inscription strong {
+    font-size: 22px;
+    display: flex;
+    justify-content: center;
+  }
+}
+
+#popup_myinscriptions .inscription p {
+  margin: 0;
+  font-size: 20px;
+  margin-left: 5px;
+  text-transform: uppercase;
+  color: red;
+}
+
+@media only screen and (max-width: 768px) {
+  #popup_myinscriptions .inscription p {
+    font-size: 18px;
+    display: flex;
+    justify-content: center;
+  }
+}
 
 #popup_myinscriptions #exit{
   position: absolute;
-  left: 4%;
-  top: 4%;
+  right: 5%;
+  top: 2%;
   color: white;
   font-size: 23px;
   cursor: pointer;
@@ -96,12 +173,6 @@
 #inscripciones{
   height: 90vh;
   margin-top: 1em;
-}
-
-.inscription{
-  margin: 2em;
-  padding: 1em;
-  border: 1px solid brown;
 }
 
 /* HEADER */

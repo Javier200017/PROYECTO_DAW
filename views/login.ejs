@@ -53,7 +53,11 @@
                 </div>
                 <div class="signup-form">
                     <div class="title">CREAR PERFIL</div>
-                    <form action="/register" method="post">
+                    <% if (event_from_id){ %>
+                        <form action="/register?event_from_id=<%=event_from_id%>" method="post">
+                    <% }else{ %>
+                        <form action="/register" method="post">
+                    <% } %>
                         <div class="input-boxes">
                             <div class="input-box">
                                 <i class="fas fa-user"></i>

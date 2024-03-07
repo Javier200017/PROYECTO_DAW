@@ -13,11 +13,7 @@ main_router.get("/login",(req, res) => {
     let from = req.query.user
     console.log(from)
 
-    if (req.query.from == "inscription"){
-        null
-    }else{
-        null
-    }
+
     res.render("login.ejs",{"error":false,"error_message":null,from,event_from_id})
 })
 
@@ -34,6 +30,7 @@ main_router.get("/", async (req, res) => {
         JOIN Eventos e ON i.ID_EVENTO = e.ID
         WHERE i.TELEFONO_JUGADOR_UNO = (SELECT TELEFONO FROM Usuarios WHERE ID = ?)
         AND i.NOMBRE_JUGADOR_UNO = (SELECT NOMBRE FROM Usuarios WHERE ID = ?);
+        ORDER BY e.FECHA_NUMERICA;
         `,
         [req.user.ID,req.user.ID])
     } 
@@ -72,6 +69,11 @@ main_router.get('/get_img/:id', async (req, res) => {
 
 main_router.post("/register", async (req, res,next)=> {
     console.log(req.body)
+
+    let event_from_id = req.query.event_from_id
+
+    console.log("event id => ",event_from_id)
+
     if (req.body.rango == "administrador" ) {
         if (req.body.clave_seguridad != process.env.ADMIN_PASS){
             console.log("rango admin pero clave incorrecta")
@@ -95,7 +97,7 @@ main_router.post("/register", async (req, res,next)=> {
     console.log(user)
     const result = await pool.query("INSERT INTO Usuarios SET ?", [user])
     await passport.authenticate("local.signin",{
-        successRedirect:"/",
+        successRedirect: event_from_id ? "/inscribirse?id=" + event_from_id : "/",
         failureFlash:true}
       )
     (req,res,next)
@@ -121,11 +123,11 @@ main_router.post("/login", async(req, res, next) => {
             (req,res,next)
         }else{
             console.log("¡¡ LA CONTRASEÑA NO COINCIDE !!")
-            res.render("login.ejs",{"error":"passwd","error_message":null})
+            res.render("login.ejs",{"error":"passwd","error_message":null,event_from_id,"from":undefined})
         }
     }else{
         console.log("¡¡ EL CORREO ELECTRÓNICO NO COINCIDE !!")
-        res.render("login.ejs",{"error":"mail","error":"both","error_message":"El usuario introducido no existe"})
+        res.render("login.ejs",{"error":"mail","error":"both","error_message":"El usuario introducido no existe",event_from_id,"from":undefined})
     }
 })
 
@@ -158,7 +160,7 @@ main_router.post("/eventos", async (req, res) => {
     const evento = {
         NOMBRE: req.body.nombre,
         PRECIO: req.body.precio,
-        FECHA: nuevaFecha + " --- " + req.body.hora_inicio + "---" + req.body.hora_fin,
+        FECHA: nuevaFecha + " --- " + req.body.hora_inicio + " --- " + req.body.hora_fin,
         FECHA_NUMERICA: req.body.fecha,
         CATEGORIA_MASCULINA_1_1: parseFloat (req.body.categoria_masculina_1_1),
         CATEGORIA_MASCULINA_1_2: parseFloat (req.body.categoria_masculina_1_2),
@@ -346,6 +348,12 @@ main_router.get("/check_nickname", async(req,res)=>{
 })
 
 
+main_router.get("/check_username",async(req,res) =>{
+    let username = req.query.username
+
+    let [result] = await pool.query("select ID from Usuarios where NOMBRE_DE_USUARIO = ?")
+
+})
 
 
 
