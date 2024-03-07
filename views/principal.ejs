@@ -99,6 +99,34 @@
         </div>
       <% } %>
     <% } %>
+
+    <% if(my_guest_inscriptions){ %>
+      <% for (let i = 0;i<my_guest_inscriptions.length;i++){ %>
+        <div class="inscription">
+          <h3><%= my_guest_inscriptions[i].NOMBRE %></h3>
+          <h3 class="team"><%= my_guest_inscriptions[i].NOMBRE_JUGADOR_UNO  %> <%= my_guest_inscriptions[i].APELLIDOS_JUGADOR_UNO %> & <%= my_guest_inscriptions[i].NOMBRE_DE_USUARIO_DOS %></h3>
+          <section class="info_pack">
+            <section>
+              <strong>CATEGORÍA SELECCIONADA: </strong>
+              <p class="info"><%= my_guest_inscriptions[i].CATEGORIA %></p>
+            </section>
+            <section>
+              <strong>TELÉFONO DEL ORGANIZADOR: </strong>
+              <p class="info"><%= my_guest_inscriptions[i].TELEFONO_JUGADOR_UNO %></p>
+            </section>
+            <section>
+              <strong>DÓNDE SE JUEGA: </strong>
+              <p class="info"><%= my_guest_inscriptions[i].DIRECCION %></p>
+            </section>
+            <section>
+              <strong>FECHA Y HORA DE JUEGO: </strong>
+              <p class="info"> <%= my_guest_inscriptions[i].FECHA %></p>
+            </section>
+          </section>
+          <a href="/delete_inscription/?id=<%=my_guest_inscriptions[i].ID%>" class="bt">BORRAR INSCRIPCIÓN <i class="fa-solid fa-trash"></i></a>
+        </div>
+      <% } %>
+    <% } %>
   </section>
   <footer>
     <div class="eleccion">

@@ -22,22 +22,35 @@ main_router.get("/", async (req, res) => {
     const [eventos] = await pool.query ("SELECT * FROM Eventos order by FECHA_NUMERICA ASC")
 
     let my_inscriptions
+    let my_guest_inscriptions
 
     if(req.user && req.user.ID){
-        [my_inscriptions] = await pool.query(
+        ([my_inscriptions] = await pool.query(
         `SELECT i.ID,i.NOMBRE_JUGADOR_UNO,i.APELLIDOS_JUGADOR_UNO,i.TELEFONO_JUGADOR_UNO,i.NOMBRE_DE_USUARIO_DOS,i.CATEGORIA, e.NOMBRE,e.PRECIO,e.FECHA,e.DIRECCION
         FROM Inscripciones i
         JOIN Eventos e ON i.ID_EVENTO = e.ID
         WHERE i.TELEFONO_JUGADOR_UNO = (SELECT TELEFONO FROM Usuarios WHERE ID = ?)
-        AND i.NOMBRE_JUGADOR_UNO = (SELECT NOMBRE FROM Usuarios WHERE ID = ?);
+        AND i.NOMBRE_JUGADOR_UNO = (SELECT NOMBRE FROM Usuarios WHERE ID = ?)
         ORDER BY e.FECHA_NUMERICA;
         `,
-        [req.user.ID,req.user.ID])
+        [req.user.ID,req.user.ID]))
+
     } 
-
+    if(req.user && req.user.ID){
+        [my_guest_inscriptions] = await pool.query(
+        `SELECT i.ID,i.NOMBRE_JUGADOR_UNO,i.APELLIDOS_JUGADOR_UNO,i.TELEFONO_JUGADOR_UNO,i.NOMBRE_DE_USUARIO_DOS,i.CATEGORIA, e.NOMBRE,e.PRECIO,e.FECHA,e.DIRECCION
+        FROM Inscripciones i
+        JOIN Eventos e ON i.ID_EVENTO = e.ID
+        where i.NOMBRE_DE_USUARIO_DOS = ?
+        ORDER BY e.FECHA_NUMERICA;
+        `,
+        [req.user.NOMBRE_DE_USUARIO])
+    }
     console.log("my inscriptions => ",my_inscriptions)
+    console.log("my guest inscriptions => ",my_guest_inscriptions)
+    console.log("username",req.user.NOMBRE_DE_USUARIO)
 
-    res.render("principal.ejs", {eventos,my_inscriptions})
+    res.render("principal.ejs", {eventos,my_inscriptions,my_guest_inscriptions})
 })
 
 main_router.get("/delete_inscription",async(req,res) =>{
