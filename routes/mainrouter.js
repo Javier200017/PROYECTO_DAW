@@ -32,9 +32,10 @@ main_router.get("/", async (req, res) => {
         `SELECT i.ID,i.NOMBRE_JUGADOR_UNO,i.APELLIDOS_JUGADOR_UNO,i.TELEFONO_JUGADOR_UNO,i.NOMBRE_DE_USUARIO_DOS,i.CATEGORIA, e.NOMBRE,e.PRECIO,e.FECHA,e.DIRECCION
         FROM Inscripciones i
         JOIN Eventos e ON i.ID_EVENTO = e.ID
-        WHERE i.TELEFONO_JUGADOR_UNO = (SELECT TELEFONO FROM Usuarios WHERE ID = ?);
+        WHERE i.TELEFONO_JUGADOR_UNO = (SELECT TELEFONO FROM Usuarios WHERE ID = ?)
+        AND i.NOMBRE_JUGADOR_UNO = (SELECT NOMBRE FROM Usuarios WHERE ID = ?);
         `,
-        [req.user.ID])
+        [req.user.ID,req.user.ID])
     } 
 
     console.log("my inscriptions => ",my_inscriptions)
