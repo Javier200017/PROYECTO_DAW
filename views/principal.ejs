@@ -76,7 +76,11 @@
       <% for (let i = 0;i<my_inscriptions.length;i++){ %>
         <div class="inscription">
           <h3><%= my_inscriptions[i].NOMBRE %></h3>
-          <h3 class="team"><%= my_inscriptions[i].NOMBRE_JUGADOR_UNO  %> <%= my_inscriptions[i].APELLIDOS_JUGADOR_UNO %> & <%= my_inscriptions[i].NOMBRE_DE_USUARIO_DOS %></h3>
+          <% if (my_inscriptions[i].NOMBRE_USUARIO_DOS){ %>
+            <h3 class="team"><%= my_inscriptions[i].NOMBRE_JUGADOR_UNO  %> <%= my_inscriptions[i].APELLIDOS_JUGADOR_UNO %> & <%= my_inscriptions[i].NOMBRE_USUARIO_DOS %></h3>
+            <% }else{ %>
+              <h3 class="team"><%= my_inscriptions[i].NOMBRE_JUGADOR_UNO  %> <%= my_inscriptions[i].APELLIDOS_JUGADOR_UNO %> & <%= my_inscriptions[i].NICKNAME_USUARIO_DOS %></h3>
+            <% } %>
           <section class="info_pack">
             <section>
               <strong>CATEGORÍA SELECCIONADA: </strong>
@@ -104,7 +108,7 @@
       <% for (let i = 0;i<my_guest_inscriptions.length;i++){ %>
         <div class="inscription">
           <h3><%= my_guest_inscriptions[i].NOMBRE %></h3>
-          <h3 class="team"><%= my_guest_inscriptions[i].NOMBRE_JUGADOR_UNO  %> <%= my_guest_inscriptions[i].APELLIDOS_JUGADOR_UNO %> & <%= my_guest_inscriptions[i].NOMBRE_DE_USUARIO_DOS %></h3>
+          <h3 class="team"><%= my_guest_inscriptions[i].NOMBRE_JUGADOR_UNO  %> <%= my_guest_inscriptions[i].APELLIDOS_JUGADOR_UNO %> & <%= my_guest_inscriptions[i].NICKNAME_USUARIO_DOS %></h3>
           <section class="info_pack">
             <section>
               <strong>CATEGORÍA SELECCIONADA: </strong>
