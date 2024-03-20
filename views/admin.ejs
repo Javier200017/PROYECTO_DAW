@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        h1{
+            text-align: center;
+            color: white;
+            padding: .5em 0 .5em 0;
+            width: 100%;
+            background: grey;
+            margin-bottom: 1em;
+        }
+        th, td {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <h1>Lista de Inscritos</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Evento ID</th>
+                <th>Nombre Evento</th>
+                <th>Nombre Jugador Uno</th>
+                <th>Apellidos Jugador Uno</th>
+                <th>Teléfono Jugador Uno</th>
+                <th>Nickname Usuario Dos</th>
+                <th>Nombre Usuario Dos</th>
+                <th>Apellidos Usuario Dos</th>
+                <th>Teléfono Usuario Dos</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% result.forEach(row => { %>
+                <tr>
+                    <td><%= row.Evento_ID %></td>
+                    <td><%= row.Nombre_Evento %></td>
+                    <td><%= row.Nombre_Jugador_Uno %></td>
+                    <td><%= row.Apellidos_Jugador_Uno %></td>
+                    <td><%= row.Telefono_Jugador_Uno %></td>
+                    <td><%= row.Nickname_Usuario_Dos %></td>
+                    <td><%= row.Nombre_Usuario_Dos %></td>
+                    <td><%= row.Apellidos_Usuario_Dos %></td>
+                    <td><%= row.Telefono_Usuario_Dos %></td>
+                </tr>
+            <% }); %>
+        </tbody>
+    </table>
+</body>
+</html>

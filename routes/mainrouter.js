@@ -53,6 +53,32 @@ main_router.get("/", async (req, res) => {
     res.render("principal.ejs", {eventos,my_inscriptions,my_guest_inscriptions})
 })
 
+main_router.get("/admin",async(req,res)=>{
+
+    const [result] = await pool.query(`
+    SELECT 
+    e.ID AS Evento_ID,
+    e.NOMBRE AS Nombre_Evento,
+    i.NOMBRE_JUGADOR_UNO AS Nombre_Jugador_Uno,
+    i.APELLIDOS_JUGADOR_UNO AS Apellidos_Jugador_Uno,
+    i.TELEFONO_JUGADOR_UNO AS Telefono_Jugador_Uno,
+    i.NICKNAME_USUARIO_DOS AS Nickname_Usuario_Dos,
+    i.NOMBRE_USUARIO_DOS AS Nombre_Usuario_Dos,
+    i.APELLIDOS_USUARIO_DOS AS Apellidos_Usuario_Dos,
+    i.TELEFONO_USUARIO_DOS AS Telefono_Usuario_Dos
+    FROM 
+        Eventos e
+    JOIN 
+        Inscripciones i ON e.ID = i.ID_EVENTO
+    WHERE 
+        e.ID = ?;
+    `,[req.query.id_evento])
+
+    console.log("admin",result)
+
+    res.render("admin.ejs",{result})
+})
+
 main_router.get("/delete_inscription",async(req,res) =>{
     await pool.query("delete from Inscripciones where ID = ?",[req.query.id])
 
