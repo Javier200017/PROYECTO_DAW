@@ -3,11 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin</title>
+    <link href="https://fonts.googleapis.com/css?family=Dosis:400,500|Poppins:400,600,700&display=swap" rel="stylesheet">
+    <title>PANEL DE ADMINISTRADOR</title>
     <style>
         *{
             margin: 0;
             padding: 0;
+            font-family: "Dosis", sans-serif;
         }
         table {
             width: 100%;
@@ -23,35 +25,33 @@
         }
         th, td {
             border: 1px solid #dddddd;
-            text-align: left;
+            text-align: center;
             padding: 8px;
+            text-transform: uppercase;
         }
         th {
             background-color: #f2f2f2;
+            
         }
     </style>
 </head>
 <body>
-    <h1>Lista de Inscritos</h1>
+    <h1>LISTA DE JUGADORES</h1>
     <table>
         <thead>
             <tr>
-                <th>Evento ID</th>
-                <th>Nombre Evento</th>
-                <th>Nombre Jugador Uno</th>
-                <th>Apellidos Jugador Uno</th>
-                <th>Teléfono Jugador Uno</th>
+                <th>NOMBRE JUGADOR 1</th>
+                <th>APELLIDOS JUGADOR 1</th>
+                <th>TELEFÓNO JUGADOR 1</th>
                 <th>Nickname Usuario Dos</th>
-                <th>Nombre Usuario Dos</th>
-                <th>Apellidos Usuario Dos</th>
-                <th>Teléfono Usuario Dos</th>
+                <th>NOMBRE JUGADOR 2</th>
+                <th>APELLIDOS JUGADOR 2</th>
+                <th>TELEFÓNO JUGADOR 2</th>
             </tr>
         </thead>
         <tbody>
             <% result.forEach(row => { %>
                 <tr>
-                    <td><%= row.Evento_ID %></td>
-                    <td><%= row.Nombre_Evento %></td>
                     <td><%= row.Nombre_Jugador_Uno %></td>
                     <td><%= row.Apellidos_Jugador_Uno %></td>
                     <td><%= row.Telefono_Jugador_Uno %></td>
