@@ -48,7 +48,6 @@ main_router.get("/", async (req, res) => {
     }
     console.log("my inscriptions => ",my_inscriptions)
     console.log("my guest inscriptions => ",my_guest_inscriptions)
-    console.log("username",req.user.NOMBRE_DE_USUARIO)
 
     res.render("principal.ejs", {eventos,my_inscriptions,my_guest_inscriptions})
 })
