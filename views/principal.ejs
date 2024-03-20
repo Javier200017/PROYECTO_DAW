@@ -77,7 +77,7 @@
         <div class="inscription">
           <h3><%= my_inscriptions[i].NOMBRE %></h3>
           <% if (my_inscriptions[i].NOMBRE_USUARIO_DOS){ %>
-            <h3 class="team"><%= my_inscriptions[i].NOMBRE_JUGADOR_UNO  %> <%= my_inscriptions[i].APELLIDOS_JUGADOR_UNO %> & <%= my_inscriptions[i].NOMBRE_USUARIO_DOS %></h3>
+            <h3 class="team"><%= my_inscriptions[i].NOMBRE_JUGADOR_UNO  %> <%= my_inscriptions[i].APELLIDOS_JUGADOR_UNO %> & <%= my_inscriptions[i].NOMBRE_USUARIO_DOS %> <%= my_inscriptions[i].APELLIDOS_USUARIO_DOS %></h3>
             <% }else{ %>
               <h3 class="team"><%= my_inscriptions[i].NOMBRE_JUGADOR_UNO  %> <%= my_inscriptions[i].APELLIDOS_JUGADOR_UNO %> & <%= my_inscriptions[i].NICKNAME_USUARIO_DOS %></h3>
             <% } %>
