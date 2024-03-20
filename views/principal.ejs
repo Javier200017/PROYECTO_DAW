@@ -50,7 +50,7 @@
         </div>
         <button onclick="location.href='/inscribirse/?id=<%=eventos[i].ID%>' "style="--clr:white"><span>INSCRIBIRSE</span><i></i></button>
         <% if( user && user.RANGO == "administrador"){ %>
-          <button style="margin-top: 1em;" onclick="location.href='/admin/?id_evento=<%=eventos[i].ID%>' "style="--clr:white"><span>VER INSCRITOS</span><i></i></button>
+          <button style="margin-top: 1em;" onclick="location.href='/admin/?id_evento=<%=eventos[i].ID%>' "style="--clr:white"><span>YA INSCRITOS</span><i></i></button>
         <% } %>
       </div>
     <% } %> 
