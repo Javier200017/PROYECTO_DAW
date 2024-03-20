@@ -60,6 +60,7 @@ main_router.get("/admin",async(req,res)=>{
     e.ID AS Evento_ID,
     e.NOMBRE AS Nombre_Evento,
     i.NOMBRE_JUGADOR_UNO AS Nombre_Jugador_Uno,
+    i.CATEGORIA,
     i.APELLIDOS_JUGADOR_UNO AS Apellidos_Jugador_Uno,
     i.TELEFONO_JUGADOR_UNO AS Telefono_Jugador_Uno,
     i.NICKNAME_USUARIO_DOS AS Nickname_Usuario_Dos,

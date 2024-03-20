@@ -40,6 +40,7 @@
     <table>
         <thead>
             <tr>
+                <th>CATEGORIA</th>
                 <th>NOMBRE JUGADOR 1</th>
                 <th>APELLIDOS JUGADOR 1</th>
                 <th>TELEFÓNO JUGADOR 1</th>
@@ -52,6 +53,7 @@
         <tbody>
             <% result.forEach(row => { %>
                 <tr>
+                    <td><%= row.CATEGORIA %></td>
                     <td><%= row.Nombre_Jugador_Uno %></td>
                     <td><%= row.Apellidos_Jugador_Uno %></td>
                     <td><%= row.Telefono_Jugador_Uno %></td>
