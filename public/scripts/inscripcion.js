@@ -54,6 +54,20 @@ document.addEventListener('DOMContentLoaded', function () {
 
 });
 
+function check_null_form (dataset) {
+
+    let state = true
+
+    for(let i = 0 ;i<dataset.length;i++){
+        if (dataset[i].value == ""){
+            state = false
+        }
+    }
+
+    return state
+
+}
+
 const popup = document.getElementById('popup')
 const error_message = document.querySelector("#error_message")
 const nickname = document.querySelector("#nickname")
@@ -62,6 +76,11 @@ document.getElementById('ins').addEventListener('submit', async function (event)
     event.preventDefault(); 
 
     const check = await check_nickname()
+
+    let user2_dataset = document.getElementsByClassName("user2")
+    const check_form_user2 = check_null_form(user2_dataset)
+
+    console.log("campos user 2 ",check_form_user2)
     
     console.log("usuario 2 existe => ",check)
     
@@ -71,17 +90,29 @@ document.getElementById('ins').addEventListener('submit', async function (event)
             popup.style.display = 'none';
             event.target.submit()
         }, 3000)
+    }else if (check_form_user2){
+        setTimeout(function() {
+            popup.style.display = 'none';
+            event.target.submit()
+        }, 3000)
     }else if (!check && !current_state){
         error_message.textContent = "¡NOMBRE DE USUARIO DE SU PAREJA NO EXISTE! SU PAREJA DEBE TENER UNA CUENTA"
         nickname.style.border = "2px solid red"
         error_message.style.fontSize = "10px"
         popup.style.display = "none"
+
+        let user2_dataset = document.getElementsByClassName("user2")
+
+        for(let i = 0 ;i< user2_dataset.length;i++){
+            user2_dataset[i].setAttribute("required","")
+            user2_dataset[i].style.display = "block"
+        }
+
     }else if (current_state) {
         setTimeout(function() {
             popup.style.display = 'none';
             event.target.submit()
         }, 3000)
     }
-    
 
 });

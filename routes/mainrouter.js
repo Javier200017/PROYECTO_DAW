@@ -26,7 +26,7 @@ main_router.get("/", async (req, res) => {
 
     if(req.user && req.user.ID){
         ([my_inscriptions] = await pool.query(
-        `SELECT i.ID,i.NOMBRE_JUGADOR_UNO,i.APELLIDOS_JUGADOR_UNO,i.TELEFONO_JUGADOR_UNO,i.NOMBRE_DE_USUARIO_DOS,i.CATEGORIA, e.NOMBRE,e.PRECIO,e.FECHA,e.DIRECCION
+        `SELECT i.ID,i.NOMBRE_JUGADOR_UNO,i.APELLIDOS_JUGADOR_UNO,i.TELEFONO_JUGADOR_UNO,i.NICKNAME_USUARIO_DOS,i.NOMBRE_USUARIO_DOS,i.APELLIDOS_USUARIO_DOS,i.CATEGORIA, e.NOMBRE,e.PRECIO,e.FECHA,e.DIRECCION
         FROM Inscripciones i
         JOIN Eventos e ON i.ID_EVENTO = e.ID
         WHERE i.TELEFONO_JUGADOR_UNO = (SELECT TELEFONO FROM Usuarios WHERE ID = ?)
@@ -38,18 +38,45 @@ main_router.get("/", async (req, res) => {
     } 
     if(req.user && req.user.ID){
         [my_guest_inscriptions] = await pool.query(
-        `SELECT i.ID,i.NOMBRE_JUGADOR_UNO,i.APELLIDOS_JUGADOR_UNO,i.TELEFONO_JUGADOR_UNO,i.NOMBRE_DE_USUARIO_DOS,i.CATEGORIA, e.NOMBRE,e.PRECIO,e.FECHA,e.DIRECCION
+        `SELECT i.ID,i.NOMBRE_JUGADOR_UNO,i.APELLIDOS_JUGADOR_UNO,i.TELEFONO_JUGADOR_UNO,i.NICKNAME_USUARIO_DOS,i.NOMBRE_USUARIO_DOS,i.APELLIDOS_USUARIO_DOS,i.CATEGORIA, e.NOMBRE,e.PRECIO,e.FECHA,e.DIRECCION
         FROM Inscripciones i
         JOIN Eventos e ON i.ID_EVENTO = e.ID
-        where i.NOMBRE_DE_USUARIO_DOS = ?
+        where i.NICKNAME_USUARIO_DOS = ?
         ORDER BY e.FECHA_NUMERICA;
         `,
         [req.user.NOMBRE_DE_USUARIO])
     }
     console.log("my inscriptions => ",my_inscriptions)
     console.log("my guest inscriptions => ",my_guest_inscriptions)
+    console.log("username",req.user.NOMBRE_DE_USUARIO)
 
     res.render("principal.ejs", {eventos,my_inscriptions,my_guest_inscriptions})
+})
+
+main_router.get("/admin",async(req,res)=>{
+
+    const [result] = await pool.query(`
+    SELECT 
+    e.ID AS Evento_ID,
+    e.NOMBRE AS Nombre_Evento,
+    i.NOMBRE_JUGADOR_UNO AS Nombre_Jugador_Uno,
+    i.APELLIDOS_JUGADOR_UNO AS Apellidos_Jugador_Uno,
+    i.TELEFONO_JUGADOR_UNO AS Telefono_Jugador_Uno,
+    i.NICKNAME_USUARIO_DOS AS Nickname_Usuario_Dos,
+    i.NOMBRE_USUARIO_DOS AS Nombre_Usuario_Dos,
+    i.APELLIDOS_USUARIO_DOS AS Apellidos_Usuario_Dos,
+    i.TELEFONO_USUARIO_DOS AS Telefono_Usuario_Dos
+    FROM 
+        Eventos e
+    JOIN 
+        Inscripciones i ON e.ID = i.ID_EVENTO
+    WHERE 
+        e.ID = ?;
+    `,[req.query.id_evento])
+
+    console.log("admin",result)
+
+    res.render("admin.ejs",{result})
 })
 
 main_router.get("/delete_inscription",async(req,res) =>{
@@ -330,11 +357,15 @@ main_router.get("/inscribirse", async (req, res) => {
 
 main_router.post("/inscripcion", async (req, res) => {
     console.log(req.body)
+
     const inscripccion = {
         NOMBRE_JUGADOR_UNO: req.body.nombre_jugador_uno,
         APELLIDOS_JUGADOR_UNO: req.body.apellidos_jugador_uno,
         TELEFONO_JUGADOR_UNO: req.body.telefono_jugador_uno,
-        NOMBRE_DE_USUARIO_DOS: req.body.username_jugador_dos ? req.body.username_jugador_dos : "solitario",
+        NICKNAME_USUARIO_DOS: req.body.username_jugador_dos ? req.body.username_jugador_dos : "solitario",
+        NOMBRE_USUARIO_DOS: req.body.nombre_user2 ? req.body.nombre_user2 : "",
+        APELLIDOS_USUARIO_DOS : req.body.apellidos_user2 ? req.body.apellidos_user2 : "",
+        TELEFONO_USUARIO_DOS : req.body.telefono_user2 ? req.body.telefono_user2 : "",
         CATEGORIA: req.body.categoria,
         ID_EVENTO: req.body.id_evento
     }
