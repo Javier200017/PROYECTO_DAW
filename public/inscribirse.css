@@ -147,6 +147,11 @@ h1 {
     }
 }
 
+.info_jugador_2_1{
+    display: flex;
+    flex-direction: row;
+}
+
 .info_equipo {
     flex-direction: column;
     color: #00DCFF;
