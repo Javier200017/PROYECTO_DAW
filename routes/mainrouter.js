@@ -3,6 +3,21 @@ const main_router = Router()
 const {pool} = require("../configuration/connection_db")
 const {secreto} = require("../helpers/bcrypt")
 const passport = require("passport")
+const multer = require("multer")
+
+const storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+        cb(null, './public/uploads/') // Directorio donde se guardarán los archivos
+    },
+    filename: function (req, file, cb) {
+        // Generar un nombre de archivo único con la extensión del archivo original
+        const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9);
+        const extension = file.originalname.split('.').pop(); // Obtener la extensión del archivo
+        cb(null, uniqueSuffix + '.' + extension); // Nombre del archivo con extensión
+    }
+});
+
+const upload = multer({ storage: storage });
 
 main_router.get("/login",(req, res) => {
     console.log("query strings : \n",req.query)
@@ -180,7 +195,7 @@ main_router.get("/eventos", async(req, res) => {
     }
 })
 
-main_router.post("/eventos", async (req, res) => {
+main_router.post("/eventos",upload.single("portada_evento"), async (req, res) => {
     console.log(req.body)
     console.log("valor cat 1 parseado =>",parseFloat( req.body.categoria_1 ))
     console.log("fecha => ",req.body.fecha)
@@ -194,8 +209,11 @@ main_router.post("/eventos", async (req, res) => {
     ];
     var nombreMes = meses[mes];
     var nuevaFecha = dia + " de " + nombreMes + " de " + año;
-    const base64Image = req.body.portada;
-    const binaryImage = Buffer.from(base64Image, 'base64');
+
+    console.log("files",req.files,req.file)
+
+    const rutaArchivo = req.file.path;
+    console.log("ruta archivo => ",rutaArchivo)
 
     const evento = {
         NOMBRE: req.body.nombre,
@@ -239,7 +257,7 @@ main_router.post("/eventos", async (req, res) => {
         CATEGORIA_FEMENINA_6_1: parseFloat (req.body.categoria_femenina_6_1),
         CATEGORIA_FEMENINA_6_2: parseFloat (req.body.categoria_femenina_6_2),
         DIRECCION: req.body.direccion,
-        PORTADA: binaryImage,
+        PORTADA: rutaArchivo,
     }
     console.log(evento)
     const result = await pool.query("INSERT INTO Eventos SET ?", [evento])

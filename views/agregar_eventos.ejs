@@ -16,7 +16,7 @@
             <div class="form_container">
                 <i id="atras" onclick="close_popup()" class="fa-solid fa-x"></i>
                 <h1>PUBLICACIÓN DE NUEVO TORNEO</h1>
-                <form action="/eventos" method="post">
+                <form action="/eventos" method="post" enctype="multipart/form-data">
                     <div class="nombre_precio">
                         <input class="nombre_del_evento" name="nombre" type="text" placeholder="NOMBRE EVENTO ..." required>
                         <input class="precio_inscripcion" name="precio" type="number" placeholder="PRECIO INSCRIPCIÓN ..." required>
@@ -154,7 +154,7 @@
                     <div class="cartel">
                         <div class="mas_info">
                             <label for="">CARTEL DEL TORNEO</label>
-                            <input name="portada" type="file" value="PORTADA DEL EVENTO" required>
+                            <input name="portada_evento" type="file" value="PORTADA DEL EVENTO" required>
                         </div>
                     </div>
                     <button class="publicar">
